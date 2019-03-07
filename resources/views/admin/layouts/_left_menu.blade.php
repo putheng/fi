@@ -86,6 +86,13 @@
                         <span class="title">@lang('app/general.menu_traffic_logs')</span>
                     </a>
                 </li>
+
+                <li {!! (0 === strpos(Request::path(), 'admin/question') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/question') }}" class="menu-link">
+                        <i class="fa fa-angle-double-right"></i>
+                        <span class="title">@lang('questions.question_menu')</span>
+                    </a>
+                </li>
             </ul>
         </li>
     @else

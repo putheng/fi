@@ -33,3 +33,39 @@
         float: left;
     }
 }
+
+@font-face{
+    font-family:'Khmer OS content';
+    src:url('../fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS';
+    src:url('../fonts/KhmerOS.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol';
+    src:url('../fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol Light';
+    src:url('../fonts/KhmerOSmuollight.ttf');
+    
+}
+@font-face{
+    font-family:'Khmer OS Siemreap';
+    src:url('../fonts/KhmerOSsiemreap.ttf');
+
+}
+
+.font-muol{
+    font-family:'Khmer OS Muol Light';
+    color: black;
+}
+
+.font-sr{
+    font-family:'Khmer OS Siemreap' !important;
+    color: black;
+}

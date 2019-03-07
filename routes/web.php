@@ -133,6 +133,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::patch('{chain}', ['as' => 'chains.update', 'uses' => 'ChainsController@update']);
     });
 
+    # Question
+    Route::group(['prefix' => 'question', 'middleware' => 'permission_admin', 'as' => 'question.'], function(){
+        Route::get('/', 'QuestionController@index')->name('index');
+        Route::get('/create', 'QuestionController@create')->name('create');
+        Route::post('/create', 'QuestionController@store');
+
+        Route::get('/{question}/answer', 'AnswerController@answerkh')->name('answer');
+        Route::post('/{question}/answer', 'AnswerController@store');
+        Route::get('/delete/answer/{answer}', 'AnswerController@destroy')->name('destroy');
+    });
+
     # Clinics
     Route::group(array('prefix' => 'clinics', 'middleware' => 'permission_admin'), function () {
         Route::get('/', ['as' => 'clinics.index', 'uses' => 'ClinicsController@index']);
