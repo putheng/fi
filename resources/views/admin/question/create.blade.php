@@ -90,6 +90,17 @@
     </div>
 
     <div class="form-group">
+        <label for="titleEn" class="col-md-2 control-label">
+            {{ __('questions.can_be') }}
+        </label>
+        <div class="col-md-4">
+            <select class="form-control" name="type">
+                <option value="1">{{ __('questions.one_answer') }}</option>
+                <option value="2">{{ __('questions.multiple_answer') }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
             <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">Cancel</a>

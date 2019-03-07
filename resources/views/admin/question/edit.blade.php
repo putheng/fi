@@ -33,16 +33,16 @@
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>{{ __('questions.answers') }}</h1>
+        <h1>@lang('questions.question_title')</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                    {{ __('app/general.home') }}
+                    @lang('app/general.home')
                 </a>
             </li>
-            <li><a href="#">{{ __('users/title.user_list_page') }}</a></li>
-            <li class="active">{{ __('questions.answers') }}</li>
+            <li><a href="#">@lang('users/title.user_list_page')</a></li>
+            <li class="active">@lang('questions.question_title')</li>
         </ol>
     </section>
 
@@ -51,58 +51,58 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
-                    <h4 class="panel-title pull-left font-sr">
+                    <h4 class="panel-title pull-left">
                         <i class="livicon" data-name="list" data-size="16"
                            data-loop="true" data-c="#fff" data-hc="white"></i>
-                            {{ $question->titleKh }}
+                            @lang('questions.question_title')
                     </h4>
 
+                    <div class="pull-right">
+                        <a href="{{ route('admin.question.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Create</a>
+                    </div>
                 </div>
                     <div class="panel-body">
                         <!--main content-->
                         <div class="row">
                             <div class="col-md-12">
                                 <!--main content-->
-
-<form action="{{ route('admin.question.answer', $question) }}" method="post" accept-charset="UTF-8" class="form-horizontal">
-
+                                
+<form action="{{ route('admin.question.edit', $question) }}" method="post" class="form-horizontal">
     {{ csrf_field() }}
-    @foreach($question->answers as $key => $item)
-        <div class="form-group {{ $errors->has('answer.'. $key) ? ' has-error' : '' }}">
-            <label for="answer{{ $key }}" class="col-md-2 control-label">{{ __('questions.answer') }}</label>
-            <div class="col-md-4">
-                <input class="form-control required font-sr" value="{{ old('answer.'. $key) ? old('answer.'. $key) : $item->title }}" name="answer[]" type="text" id="answer{{ $key }}">
-                @if($errors->has('answer.'. $key))
-                    <span class="help-block">{{ $errors->first('answer.'. $key) }}</span>
-                @endif
-            </div>
-            <div class="col-md-1">
-                <input type="text" value="{{ $item->point }}" class="form-control" name="point[]" placeholder="Point">
-            </div>
-            <div class="col-md-2">
-                <a href="{{ route('admin.question.destroy', $item) }}" class="btn btn-link">Delete</a>
-            </div>
-        </div>
-    @endforeach
-
-    <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
-        <label for="title" class="col-md-2 control-label">{{ __('questions.answer') }}</label>
+    <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('questions.title_kn') }}</label>
         <div class="col-md-4">
-            <input class="form-control font-sr" name="title" type="text" id="title">
-            @if($errors->has('title'))
-                <span class="help-block">{{ $errors->first('title') }}</span>
+            <input class="form-control font-sr" value="{{ $question->titleKh }}" name="titleKh" type="text" id="titleKh">
+            @if($errors->has('titleKh'))
+                <span class="help-block">{{ $errors->first('titleKh') }}</span>
             @endif
         </div>
+    </div>
 
-        <div class="col-md-1">
-            <input type="text" value="0" class="form-control" name="points" placeholder="Point">
+    <div class="form-group {{ $errors->has('titleEn') ? ' has-error' : '' }}">
+        <label for="titleEn" class="col-md-2 control-label">{{ __('questions.title_en') }}</label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $question->titleEn }}" name="titleEn" type="text" id="titleEn">
+            @if($errors->has('titleEn'))
+                <span class="help-block">{{ $errors->first('titleEn') }}</span>
+            @endif
         </div>
     </div>
 
     <div class="form-group">
+        <label for="titleEn" class="col-md-2 control-label">
+            {{ __('questions.can_be') }}
+        </label>
+        <div class="col-md-4">
+            <select class="form-control" name="type">
+                <option {{ $question->type == '1' ? 'selected' : '' }} value="1">{{ __('questions.one_answer') }}</option>
+                <option {{ $question->type == '2' ? 'selected' : '' }} value="2">{{ __('questions.multiple_answer') }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="{{ __('questions.save') }}">
-            <a href="{{ route('admin.question.answeren', $question) }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.next') }}</a>
             <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.cancel') }}</a>
         </div>
     </div>

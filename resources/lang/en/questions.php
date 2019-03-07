@@ -13,7 +13,9 @@ return [
     'cancel'  => 'Cancel',
     'create'  => 'Create',
     'next'  => 'Next',
-    'one_answer'  => 'One',
-    'multiple_answer'  => 'Multiple'
+    'one_answer'  => 'One question',
+    'multiple_answer'  => 'Multiple questions',
+    'can_be' => 'Can be',
+    'edit' => 'Edit'
 
 ];

@@ -9,7 +9,8 @@ class Question extends Model
 {
     protected $fillable = [
     	'titleKh',
-    	'titleEn'
+    	'titleEn',
+    	'type'
     ];
 
     public function answers()

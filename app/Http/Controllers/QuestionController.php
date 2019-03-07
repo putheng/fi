@@ -30,4 +30,21 @@ class QuestionController extends Controller
 
     	return redirect()->route('admin.question.answer', $question);
     }
+
+    public function edit(Question $question)
+    {
+        return view('admin.question.edit', compact('question'));
+    }
+
+    public function storeUpdate(Request $request, Question $question)
+    {
+        $this->validate($request, [
+            'titleKh' => 'required',
+            'titleEn' => 'required',
+        ]);
+
+        $question->update($request->only('titleKh', 'titleEn', 'type'));
+
+        return back();
+    }
 }

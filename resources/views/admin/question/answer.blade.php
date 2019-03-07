@@ -136,14 +136,7 @@
         </div>
     </div>
 <hr>
-    <div class="form-group">
-        <div class="col-md-4 col-md-offset-2">
-            <select class="form-control" name="type">
-                <option value="1">{{ __('questions.one_answer') }}</option>
-                <option value="2">{{ __('questions.multiple_answer') }}</option>
-            </select>
-        </div>
-    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="{{ __('questions.save') }}">

@@ -139,6 +139,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::get('/create', 'QuestionController@create')->name('create');
         Route::post('/create', 'QuestionController@store');
 
+        Route::get('/{question}/edit', 'QuestionController@edit')->name('edit');
+        Route::post('/{question}/edit', 'QuestionController@storeUpdate');
+
         Route::get('/{question}/answer', 'AnswerController@answerkh')->name('answer');
         Route::post('/{question}/answer', 'AnswerController@store');
         Route::get('/delete/answer/{answer}', 'AnswerController@destroy')->name('destroy');

@@ -68,11 +68,17 @@
                                 <!--main content-->
                                 <ul class="list-group">
                                     @foreach($questions as $question)
-                                        <a href="{{ route('admin.question.answer', $question) }}" class="list-group-item">
+                                        <li class="list-group-item">
+                                            <span class="pull-right">
+                                                <a class="badge" href="{{ route('admin.question.answer', $question) }}">
+                                                    {{ __('questions.answer') }}
+                                                </a>
+                                                <a href="{{ route('admin.question.edit', $question) }}" class="badge">{{ __('questions.edit') }}</a>
+                                            </span>
                                             <span class="font-sr">{{ $question->titleKh }}</span>
                                             <br>
                                             {{ $question->titleEn }}
-                                        </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
