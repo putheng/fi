@@ -26,7 +26,7 @@ class QuestionController extends Controller
     		'titleEn' => 'required|unique:questions'
     	]);
 
-    	$question = Question::create($request->only('titleKh', 'titleEn'));
+    	$question = Question::create($request->only('titleKh', 'titleEn', 'type'));
 
     	return redirect()->route('admin.question.answer', $question);
     }
