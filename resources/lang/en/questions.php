@@ -13,8 +13,8 @@ return [
     'cancel'  => 'Cancel',
     'create'  => 'Create',
     'next'  => 'Next',
-    'one_answer'  => 'One question',
-    'multiple_answer'  => 'Multiple questions',
+    'one_answer'  => 'One answer',
+    'multiple_answer'  => 'Multiple answers',
     'can_be' => 'Can be',
     'edit' => 'Edit'
 
