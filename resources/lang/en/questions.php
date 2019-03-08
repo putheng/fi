@@ -12,10 +12,13 @@ return [
     'save'  => 'Save',
     'cancel'  => 'Cancel',
     'create'  => 'Create',
+    'add_answer'  => 'Add answer',
     'next'  => 'Next',
     'one_answer'  => 'One answer',
     'multiple_answer'  => 'Multiple answers',
     'can_be' => 'Can be',
+    'delete' => 'Delete',
+    'photo' => 'Photo',
     'edit' => 'Edit'
 
 ];

@@ -71,9 +71,10 @@
                                         <li class="list-group-item">
                                             <span class="pull-right">
                                                 <a class="badge" href="{{ route('admin.question.answer', $question) }}">
-                                                    {{ __('questions.answer') }}
+                                                    {{ __('questions.add_answer') }}
                                                 </a>
                                                 <a href="{{ route('admin.question.edit', $question) }}" class="badge">{{ __('questions.edit') }}</a>
+                                                <a onclick="deleteQuestion('{{ route('admin.question.delete', $question) }}')" href="#" class="badge">{{ __('questions.delete') }}</a>
                                             </span>
                                             <span class="font-sr">{{ $question->titleKh }}</span>
                                             <br>
@@ -97,4 +98,12 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/page/users.js') }}"></script>
+    <script>
+        function deleteQuestion(url)
+        {
+            if(confirm('Are you sure you want to delete this question ?')){
+                window.location.replace(url);
+            }
+        }
+    </script>
 @stop
