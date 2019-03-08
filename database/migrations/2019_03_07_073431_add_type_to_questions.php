@@ -14,7 +14,7 @@ class AddTypeToQuestions extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->string('type')->defalut(1);
+            $table->string('type')->default(1);
         });
     }
 
