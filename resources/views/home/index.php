@@ -50,7 +50,7 @@
 	value="<?php echo $answer->title; ?>"
 	></v-radio>
 <?php endforeach ?>
-							</v-radio-group>
+							</v-radio>
 					<?php else: ?>
 							<v-checkbox-group v-model="registration.question<?php echo $question->sort_order; ?>">
 <?php foreach($question->answers as $key => $answer): ?>
@@ -59,7 +59,7 @@
 	value="<?php echo $answer->title; ?>"
 	></v-radio>
 <?php endforeach ?>
-							</v-checkbox-group>
+							</v-checkbox>
 					<?php endif ?>
 <?php if($question->sort_order > 1):  ?>
 	<v-btn flat @click.native="step = <?php echo ($question->sort_order - 1); ?>">Previous</v-btn>
