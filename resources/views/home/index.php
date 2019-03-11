@@ -50,9 +50,9 @@
 	value="<?php echo $answer->title; ?>"
 	></v-radio>
 <?php endforeach ?>
-							</v-radio>
+							</v-radio-group>
 					<?php else: ?>
-							<v-checkbox-group v-model="registration.question<?php echo $question->sort_order; ?>">
+							<v-checkbox v-model="registration.question<?php echo $question->sort_order; ?>">
 <?php foreach($question->answers as $key => $answer): ?>
 	<v-radio
 	label="<?php echo $answer->title; ?>" class="font-sr"
