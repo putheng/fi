@@ -16,9 +16,7 @@
 
 Route::model('users', 'App\Models\User');
 
-Route::get('/', array('as' => 'home', function () {
-    return redirect()->route('admin.reservations');
-}));
+Route::get('/', 'HomeController@index');
 
 Route::group(array('prefix' => 'admin'), function () {
 
