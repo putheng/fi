@@ -19,7 +19,7 @@
 					<v-list-tile v-for="(item, index) in registration" :key="index">
 		              <v-list-tile-content>
 		                <v-list-tile-title>{{ index }}</v-list-tile-title>
-		                <v-list-tile-sub-title>Answer: {{ item }}</v-list-tile-sub-title>
+		                <v-list-tile-sub-title class="font-sr">Answer: {{ item }}</v-list-tile-sub-title>
 		              </v-list-tile-content>
 		            </v-list-tile>
 					<br>
