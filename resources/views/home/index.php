@@ -42,25 +42,27 @@
 						<v-stepper-content
 							step="<?php echo $question->sort_order; ?>"
 						>
-					<?php if($question->type == 1): ?>
-							<v-radio-group v-model="registration.question<?php echo $question->sort_order; ?>">
+<?php if($question->type == 1): ?>
+	<v-radio-group v-model="registration.question<?php echo $question->sort_order; ?>">
+	<?php foreach($question->answers as $key => $answer): ?>
+		<v-radio
+		label="<?php echo $answer->title; ?>" class="font-sr"
+		value="<?php echo $answer->title; ?>"
+		></v-radio>
+	<?php endforeach ?>
+	</v-radio-group>
+<?php else: ?>
+
 <?php foreach($question->answers as $key => $answer): ?>
-	<v-radio
+<v-checkbox 
+	v-model="registration.question<?php echo $question->sort_order; ?>"
 	label="<?php echo $answer->title; ?>" class="font-sr"
 	value="<?php echo $answer->title; ?>"
-	></v-radio>
+	>
+</v-checkbox>
 <?php endforeach ?>
-							</v-radio-group>
-					<?php else: ?>
-							<v-checkbox v-model="registration.question<?php echo $question->sort_order; ?>">
-<?php foreach($question->answers as $key => $answer): ?>
-	<v-radio
-	label="<?php echo $answer->title; ?>" class="font-sr"
-	value="<?php echo $answer->title; ?>"
-	></v-radio>
-<?php endforeach ?>
-							</v-checkbox>
 					<?php endif ?>
+
 <?php if($question->sort_order > 1):  ?>
 	<v-btn flat @click.native="step = <?php echo ($question->sort_order - 1); ?>">Previous</v-btn>
 <?php endif ?>
