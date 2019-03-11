@@ -104,7 +104,9 @@
 		      registration: {
 		        question1: null,
 		        question2: null,
-		        question3: null
+		        question3: [],
+		        question4: null,
+		        question5: [],
 		      }
 		  }),
 		  methods:{
