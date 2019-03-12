@@ -23,7 +23,7 @@
 		              </v-list-tile-content>
 		            </v-list-tile>
 					<br>
-					<span class="font-muol">{{ answer }}</span>
+					<span class="font-muol">{{ answer.title }}</span>
 					<br>
 				</template>
 				<v-stepper v-model="step" vertical>
@@ -125,7 +125,7 @@
 
 	    	this.answer = this.answers.filter((key, item) => {
 	    		return total >= key.from && total <= key.to
-	    	})
+	    	})[0]
 	    }
 	  },
 	  mounted(){
