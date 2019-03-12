@@ -19,10 +19,11 @@
 					<v-list-tile v-for="(item, index) in registration" :key="index">
 		              <v-list-tile-content>
 		                <v-list-tile-title>{{ index }}</v-list-tile-title>
-		                <v-list-tile-sub-title class="font-sr">Answer: {{ item }}</v-list-tile-sub-title>
+		                <v-list-tile-sub-title class="font-sr">{{ item }}</v-list-tile-sub-title>
 		              </v-list-tile-content>
 		            </v-list-tile>
 					<br>
+					<span class="font-muol">{{ answer.title }}</span>
 					<br>
 				</template>
 				<v-stepper v-model="step" vertical>
@@ -47,7 +48,7 @@
 	<?php foreach($question->answers as $key => $answer): ?>
 		<v-radio
 		label="<?php echo $answer->title; ?>" class="font-sr"
-		value="<?php echo $answer->title; ?>"
+		value="<?php echo $answer->point; ?>"
 		></v-radio>
 	<?php endforeach ?>
 	</v-radio-group>
@@ -57,7 +58,7 @@
 <v-checkbox 
 	v-model="registration.question<?php echo $question->sort_order; ?>"
 	label="<?php echo $answer->title; ?>" class="font-sr"
-	value="<?php echo $answer->title; ?>"
+	value="<?php echo $answer->point; ?>"
 	>
 </v-checkbox>
 <?php endforeach ?>
@@ -92,32 +93,47 @@
 </div>
 
 
-	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
-	<script>
-		new Vue({
-		  el: '#app',
-		  data: () => ({
-		      step:1,
-		      isActive: false,
-		      questions: [],
-		      registration: {
-		        question1: null,
-		        question2: null,
-		        question3: [],
-		        question4: null,
-		        question5: [],
-		      }
-		  }),
-		  methods:{
-		    submit() {
-		    	this.isActive = true
-		    }
-		  },
-		  mounted(){
-		  	this.questions = <?php echo $questions->toJson() ?>
-		  }
-		})
-	</script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
+<script>
+	new Vue({
+	  el: '#app',
+	  data: () => ({
+	      step:1,
+	      isActive: false,
+	      questions: [],
+	      answers: [],
+	      answer: {},
+	      registration: {
+	        question1: null,
+	        question2: null,
+	        question3: [],
+	        question4: null,
+	        question5: [],
+	      }
+	  }),
+	  methods:{
+	    submit() {
+	    	this.isActive = true
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
+
+	    	let total = values.reduce(function(a, b) { return +a + +b })
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
+	    }
+	  },
+	  mounted(){
+	  	this.questions = <?php echo $questions->toJson() ?>
+
+	  	this.answers = <?php echo $results->toJson() ?>
+
+	  	console.log(this.answers)
+	  }
+	})
+</script>
 </body>
 </html>

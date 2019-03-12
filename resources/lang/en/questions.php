@@ -10,6 +10,7 @@ return [
     'answers' => 'Answers',
     'answer' => 'Answer',
     'save'  => 'Save',
+    'submit'  => 'Submit',
     'cancel'  => 'Cancel',
     'create'  => 'Create',
     'add_answer'  => 'Add answer',
@@ -17,8 +18,12 @@ return [
     'one_answer'  => 'One answer',
     'multiple_answer'  => 'Multiple answers',
     'can_be' => 'Can be',
+    'point_range' => 'Point Range',
     'delete' => 'Delete',
     'photo' => 'Photo',
-    'edit' => 'Edit'
+    'results' => 'Results List',
+    'edit' => 'Edit',
+    'result_kh' => 'Result KH',
+    'result_en' => 'Result EN',
 
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Result;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,7 +11,8 @@ class HomeController extends Controller
     public function index()
     {
     	$questions = Question::with('answers')->get();
+    	$results = Result::get();
 
-    	return view('home.index', compact('questions'));
+    	return view('home.index', compact('questions', 'results'));
     }
 }

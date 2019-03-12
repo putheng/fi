@@ -134,6 +134,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     # Question
     Route::group(['prefix' => 'question', 'middleware' => 'permission_admin', 'as' => 'question.'], function(){
         Route::get('/', 'QuestionController@index')->name('index');
+
+        Route::get('/results', 'ResultController@index')->name('result');
+        Route::post('/results', 'ResultController@store');
+        Route::get('/results/{result}/edit', 'ResultController@edit')->name('result.edit');
+        Route::post('/results/{result}/edit', 'ResultController@update');
+
+        Route::get('/results/{result}/delete', 'ResultController@destroy')->name('result.delete');
+
         Route::get('/create', 'QuestionController@create')->name('create');
         Route::post('/create', 'QuestionController@store');
 

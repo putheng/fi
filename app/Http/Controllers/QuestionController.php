@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Question;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,8 +13,9 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::get();
+        $results = Result::get();
 
-    	return view('admin.question.index', compact('questions'));
+    	return view('admin.question.index', compact('questions', 'results'));
     }
 
     public function create()
