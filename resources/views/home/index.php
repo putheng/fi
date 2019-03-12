@@ -23,7 +23,7 @@
 		              </v-list-tile-content>
 		            </v-list-tile>
 					<br>
-					<span class="font-muol">{{ answer.title }}</span>
+					<span class="font-muol">{{ answer }}</span>
 					<br>
 				</template>
 				<v-stepper v-model="step" vertical>
@@ -62,7 +62,7 @@
 	>
 </v-checkbox>
 <?php endforeach ?>
-					<?php endif ?>
+<?php endif ?>
 
 <?php if($question->sort_order > 1):  ?>
 	<v-btn flat @click.native="step = <?php echo ($question->sort_order - 1); ?>">Previous</v-btn>
@@ -119,19 +119,19 @@
 	    		return key !== null
 	    	})
 
-	    	let total = values.reduce(function(a, b) { return +a + +b })
+	    	var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
 
 	    	this.answer = this.answers.filter((key, item) => {
 	    		return total >= key.from && total <= key.to
-	    	})[0]
+	    	})
 	    }
 	  },
 	  mounted(){
 	  	this.questions = <?php echo $questions->toJson() ?>
 
 	  	this.answers = <?php echo $results->toJson() ?>
-
-	  	console.log(this.answers)
 	  }
 	})
 </script>
