@@ -13,6 +13,9 @@
 /**
  * Model binding into route
  */
+Route::get('/template', function(){
+    return view('template');
+});
 
 Route::model('users', 'App\Models\User');
 

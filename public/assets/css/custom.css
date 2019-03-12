@@ -1,0 +1,55 @@
+.nav-item{
+	color: rgb(255, 255, 255) !important;
+}
+
+@media (max-width: 576px) {
+	.navbar .container {
+		width: 100%;
+	}
+}
+
+
+.app-model{
+	background-color: #141420;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+
+.app-model-content{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 30px;
+	width: 90%;
+	max-width: 900px;
+}
+
+.title {
+    max-width: 100%;
+    font-weight: unset;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(76, 71, 71);
+    overflow-wrap: break-word;
+    margin: 0px;
+}
+
+.model-list-group{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.model-list-group li {
+	
+}
+
+.model-list-group li a{
+	
+}
