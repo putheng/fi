@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}">
+  <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
 
 </head>
 <body >
