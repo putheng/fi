@@ -13,7 +13,7 @@ class HomeController extends Controller
     	$questions = Question::with('answers')->get();
     	$results = Result::get();
 
-    	return view('home.index', compact('questions', 'results'));
+    	return view('home.show', compact('questions', 'results'));
     }
 
     public function show()
@@ -21,6 +21,6 @@ class HomeController extends Controller
       	$questions = Question::with('answers')->get();
     	$results = Result::get();
     	
-    	return view('home.show', compact('questions', 'results'));
+    	return view('home.index', compact('questions', 'results'));
     }
 }
