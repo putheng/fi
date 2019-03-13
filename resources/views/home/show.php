@@ -18,7 +18,7 @@
 	<template v-if="step == question.sort_order">
 		<div class="app-modelx" :key="index">
 			<div class="app-model-contentx">
-				<p class="title font-sr">
+				<p class="title font-muol">
 					{{ question.sort_order }}
 					{{ question.titleKh }}
 				</p>
