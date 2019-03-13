@@ -15,18 +15,22 @@
   
 <div class="app-model">
 	<div class="app-model-content">
-		<p class="title">How long have you been studying here?</p>
+		<p class="title">1. How long have you been studying here?</p>
 		<ul class="model-list-group">
 			<li>
+				<span>A</span>
 				<a href="#">Under 1 year</a>
 			</li>
 			<li class="mlg-item">
+				<span>A</span>
 				<a href="#">Under 1 year</a>
 			</li>
 			<li class="mlg-item">
+				<span>A</span>
 				<a href="#">Under 1 year</a>
 			</li>
 			<li class="mlg-item">
+				<span>A</span>
 				<a href="#">Under 1 year</a>
 			</li>
 		</ul>

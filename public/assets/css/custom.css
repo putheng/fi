@@ -10,7 +10,10 @@
 
 
 .app-model{
-	background-color: #141420;
+background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
+    background-size: cover;
+    background-color: rgb(100, 203, 250);
+    background-position: center top;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -21,10 +24,9 @@
 
 .app-model-content{
 	position: fixed;
-	top: 50%;
+	top: 45%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #fff;
+	transform: translate(-50%, -45%);
 	padding: 30px;
 	width: 90%;
 	max-width: 900px;
@@ -32,12 +34,14 @@
 
 .title {
     max-width: 100%;
-    font-weight: unset;
-    font-size: 24px;
+    font-weight: 500;
+    font-size: 30px;
     line-height: 32px;
-    color: rgb(76, 71, 71);
     overflow-wrap: break-word;
     margin: 0px;
+    margin-bottom: 50px;
+    color: rgb(255, 255, 255);
+    font-family: 'Open Sans', sans-serif;
 }
 
 .model-list-group{
@@ -47,9 +51,57 @@
 }
 
 .model-list-group li {
-	
+	display: block;
+	margin: 10px 0px;
+	width: 100%;
+	max-width: 250px;
+	position: relative;
+	padding: 5px 5px;
+	border: 1px solid #ffffffab;
+	border-radius: 3px;
+	background-color: rgba(255, 255, 255, 0.1);
+	cursor: pointer;
+	padding-bottom: 10px;
+	padding-left: 8px;
+}
+
+.model-list-group li:hover{
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.model-list-group li span{
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: sans-serif;
+    background-color: rgba(100, 203, 250, 0.8);
+    color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.6);
+    padding: 6px 8px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.model-list-group li a:hover{
+	text-decoration: none;
 }
 
 .model-list-group li a{
-	
+	max-width: 100%;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+	overflow-wrap: break-word;
+	margin: 0px;
+	color: rgb(255, 255, 255);
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 3px;
+	display: inline-block;
+}
+
+.bg-inverse {
+    background-color: #36749421 !important;
+    border-top: 1px solid #00649821;
 }
