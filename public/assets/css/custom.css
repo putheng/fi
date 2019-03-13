@@ -24,9 +24,9 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
 
 .app-model-content{
 	position: fixed;
-	top: 45%;
+	top: 40%;
 	left: 50%;
-	transform: translate(-50%, -45%);
+	transform: translate(-50%, -40%);
 	padding: 30px;
 	width: 90%;
 	max-width: 900px;
