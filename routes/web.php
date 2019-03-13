@@ -13,9 +13,7 @@
 /**
  * Model binding into route
  */
-Route::get('/template', function(){
-    return view('template');
-});
+Route::get('/template', 'HomeController@show');
 
 Route::model('users', 'App\Models\User');
 

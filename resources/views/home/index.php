@@ -26,6 +26,7 @@
 					<span class="font-muol">{{ answer.title }}</span>
 					<br>
 				</template>
+				
 				<v-stepper v-model="step" vertical>
 					<v-stepper-header>
 						<v-stepper-step

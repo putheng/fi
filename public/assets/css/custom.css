@@ -9,10 +9,45 @@
 }
 
 
-.app-model{
-background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
+@font-face{
+    font-family:'Khmer OS content';
+    src:url('../fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS';
+    src:url('../fonts/KhmerOS.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol';
+    src:url('../fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol Light';
+    src:url('../fonts/KhmerOSmuollight.ttf');
+    
+}
+@font-face{
+    font-family:'Khmer OS Siemreap';
+    src:url('../fonts/KhmerOSsiemreap.ttf');
+
+}
+
+.font-muol{
+    font-family:'Khmer OS Muol Light';
+}
+
+.font-sr{
+    font-family:'Khmer OS Siemreap' !important;
+}
+
+.app-modelx{
+	background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
     background-size: cover;
-    background-color: rgb(100, 203, 250);
+    /*background-color: rgb(100, 203, 250);*/
+    background-color: rgb(250, 100, 211);
     background-position: center top;
 	position: fixed;
 	width: 100%;
@@ -22,7 +57,7 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
 	z-index: 99;
 }
 
-.app-model-content{
+.app-model-contentx{
 	position: fixed;
 	top: 40%;
 	left: 50%;
@@ -42,6 +77,7 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
     margin-bottom: 50px;
     color: rgb(255, 255, 255);
     font-family: 'Open Sans', sans-serif;
+    line-height: 45px;
 }
 
 .model-list-group{
@@ -54,7 +90,7 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
 	display: block;
 	margin: 10px 0px;
 	width: 100%;
-	max-width: 250px;
+	min-width: 250px;
 	position: relative;
 	padding: 5px 5px;
 	border: 1px solid #ffffffab;
@@ -69,7 +105,7 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
-.model-list-group li span{
+.model-list-group li span.gat{
     position: relative;
     font-size: 12px;
     line-height: 16px;
@@ -104,4 +140,58 @@ background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
 .bg-inverse {
     background-color: #36749421 !important;
     border-top: 1px solid #00649821;
+}
+
+.model-list-group li label:before{
+	content: "";
+}
+.model-list-group li label{
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+	color: rgb(255, 255, 255);
+	font-weight: 400;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 0;
+}
+.model-list-group li .checkbox{
+	display: none;
+}
+
+.model-list-group li .checkbox:checked + label  {
+	background-image: url(/images/check.png);
+	background-size: 40px;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#app {
+  overflow: hidden;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
+}
+.slide-enter {
+  transform: translate(100%, 0);
+}
+.slide-leave-to {
+  transform: translate(-100%, 0);
+}
+
+.img-slider{
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  width: 400px;
+}
+
+.img-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right:0;
 }

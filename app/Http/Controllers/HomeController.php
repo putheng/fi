@@ -15,4 +15,12 @@ class HomeController extends Controller
 
     	return view('home.index', compact('questions', 'results'));
     }
+
+    public function show()
+    {
+      	$questions = Question::with('answers')->get();
+    	$results = Result::get();
+    	
+    	return view('home.show', compact('questions', 'results'));
+    }
 }

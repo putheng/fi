@@ -7,31 +7,51 @@
   <title>Preview</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body >
   
+<div id="app">
 <div class="app-model">
 	<div class="app-model-content">
+
+
+      <transition-group tag="div" class="img-slider" name="slide">
+    	
+      </transition-group>
+
+
 		<p class="title">1. How long have you been studying here?</p>
 		<ul class="model-list-group">
 			<li>
-				<span>A</span>
-				<a href="#">Under 1 year</a>
+				<input class="checkbox" id="answera" type="radio" name="answer" value="1">
+				<label for="answera">
+					<span class="gat">A</span>
+					<span>Under 1 year</span>
+				</label>
 			</li>
-			<li class="mlg-item">
-				<span>A</span>
-				<a href="#">Under 1 year</a>
+			<li>
+				<input class="checkbox" id="answerb" type="radio" name="answer" value="1">
+				<label for="answerb">
+					<span class="gat">A</span>
+					<span>Under 1 year</span>
+				</label>
 			</li>
-			<li class="mlg-item">
-				<span>A</span>
-				<a href="#">Under 1 year</a>
+			<li>
+				<input class="checkbox" id="answerc" type="radio" name="answer" value="1">
+				<label for="answerc">
+					<span class="gat">A</span>
+					<span>Under 1 year</span>
+				</label>
 			</li>
-			<li class="mlg-item">
-				<span>A</span>
-				<a href="#">Under 1 year</a>
+			<li>
+				<input class="checkbox" id="answer" type="radio" name="answer" value="1">
+				<label for="answer">
+					<span class="gat">A</span>
+					<span>Under 1 year</span>
+				</label>
 			</li>
 		</ul>
 	</div>
@@ -58,10 +78,11 @@
 	        </ul>
 	    </div>
 
-	    <div class="hidden-md-up w-100">
-	    </div>
+	    <div class="hidden-md-up w-100"></div>
     </div>
 </nav>
-
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
 </body>
 </html>
