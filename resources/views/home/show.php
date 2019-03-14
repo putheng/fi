@@ -7,61 +7,92 @@
   <title>Preview</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body >
   
 <div id="app">
-<template v-for="(question, index) in questions">
-	<template v-if="step == question.sort_order">
-		<div class="app-modelx" :key="index">
+
+<?php foreach($questions as $key => $question): ?>
+	<template v-if="step === <?php echo ($key+1) ?>">
+		<div class="app-modelx">
 			<div class="app-model-contentx">
-				<p class="title font-muol">
-					{{ question.sort_order }}
-					{{ question.titleKh }}
+			<div class="row">
+				<div class="col-md-3">
+					<img class="img-fluid" src="<?php echo optional($question->image)->path(); ?>">
+				</div>
+				<div class="col-md-9">
+				<p class="title font-sr">
+					<?php echo ($key+1) ?>
+					<?php echo $question->titleKh ?>
 				</p>
 				<ul class="model-list-group">
-					<template v-for="(answer, key) in question.answers">
-						<li :key="answer.id">
-							<input class="checkbox" :id="answer.id" type="radio" name="answer" value="1">
-							<label :for="answer.id" @click="next">
-								<span class="gat">A</span>
-								<span class="font-sr">{{ answer.title }}</span>
+				<?php if($question->type == 1): ?>
+						<?php foreach($question->answers as $index => $answer): ?>
+							<li>
+								<input
+									class="checkbox"
+									id="<?php echo $answer->id; ?>"
+									type="radio"
+									value="<?php echo $answer->point; ?>"
+									v-model="registration.question<?php echo ($key+1); ?>"
+								>
+								<label for="<?php echo $answer->id; ?>" @click="next">
+									<span class="gat"><?php echo ($index+1); ?></span>
+									<span class="font-sr"><?php echo $answer->title; ?></span>
+								</label>
+							</li>
+						<?php endforeach ?>
+				<?php else: ?>
+					<?php foreach($question->answers as $index => $answer): ?>
+						<li>
+							<input
+								class="checkbox"
+								id="<?php echo $answer->id; ?>"
+								type="checkbox"
+								value="<?php echo $answer->point; ?>"
+								v-model="registration.question<?php echo ($key+1); ?>"
+							>
+							<label for="<?php echo $answer->id; ?>">
+								<span class="gat"><?php echo ($index+1); ?></span>
+								<span class="font-sr"><?php echo $answer->title; ?></span>
 							</label>
 						</li>
-					</template>
+					<?php endforeach ?>
+					<div class="text-right">
+						<a href="#" @click="next" class="btn btn-primary font-sr">
+							បន្ទាប់
+						</a>
+					</div>
+				<?php endif?>
 				</ul>
+			</div>
+			</div>
 			</div>
 		</div>
 	</template>
-</template>
+<?php endforeach; ?>
 
-<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
-    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
-         <ul class="navbar-nav">
-            <li class="nav-item">
-                <div class="nav-item">0 of 7 answered</div>
-            </li>
-        </ul>
-
-	    <div class="d-flex ml-auto">
+	<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
+	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
 	         <ul class="navbar-nav">
-	                
 	            <li class="nav-item">
-	                <a class="nav-link" href="#">Previous</a>
-	            </li>
-
-	            <li class="nav-item">
-	                <a class="nav-link" href="#">Next</a>
+	                <div class="nav-item">{{ step }} of {{ stepLength }} answered</div>
 	            </li>
 	        </ul>
-	    </div>
 
-	    <div class="hidden-md-up w-100"></div>
-    </div>
-</nav>
+		    <div class="d-flex ml-auto">
+		         <ul class="navbar-nav">
+		            <li class="nav-item">
+		                <a class="nav-link" @click.prevent="previous" href="#">Back</a>
+		            </li>
+		        </ul>
+		    </div>
+
+		    <div class="hidden-md-up w-100"></div>
+	    </div>
+	</nav>
 </div>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
@@ -75,16 +106,27 @@
 	      answers: [],
 	      answer: {},
 	      registration: {
-	        question1: null,
-	        question2: null,
+	        question1: [],
+	        question2: [],
 	        question3: [],
-	        question4: null,
+	        question4: [],
 	        question5: [],
 	      }
 	  }),
 	  methods:{
 	  	next(){
-	  		this.step++
+	  		if(this.step <= this.stepLength){
+	  			setTimeout(() => {
+				   this.step++
+
+				   console.log(this.registration)
+				}, 1000)
+	  		}
+	  	},
+	  	previous(){
+	  		if(this.step >= 1){
+	  			this.step--
+	  		}
 	  	},
 	    submit() {
 	    	this.isActive = true
@@ -105,6 +147,13 @@
 	  	this.questions = <?php echo $questions->toJson() ?>
 
 	  	this.answers = <?php echo $results->toJson() ?>
+
+
+	  },
+	  computed: {
+	  	stepLength(){
+	  		return this.questions.length
+	  	}
 	  }
 	})
 </script>

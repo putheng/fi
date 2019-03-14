@@ -29,7 +29,7 @@
 	transform: translate(-50%, -40%);
 	padding: 30px;
 	width: 90%;
-	max-width: 900px;
+	max-width: 1200px;
 }
 
 .title {
@@ -64,6 +64,16 @@
 	cursor: pointer;
 	padding-bottom: 10px;
 	padding-left: 8px;
+}
+
+.btn-primary{
+  border: 1px solid #ffffffab;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover{
+  border: 1px solid #ffffffab;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .model-list-group li:hover{
