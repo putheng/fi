@@ -79,6 +79,7 @@
 	</template>
 </transition>
 <?php endforeach; ?>
+<transition name="slide" >
 <template v-if="step === 6">
 <div class="app-modelx">
 	<div class="app-model-contentx">
@@ -113,6 +114,7 @@
 	</div>
 </div>
 </template>
+</transition>
 	<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
 	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
 	         <ul class="navbar-nav">
