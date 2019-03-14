@@ -78,7 +78,7 @@
 		<div class="app-model-contentx">
 		<div class="row fit">
 			<div class="col-md-3">
-				<img class="img-fluid" src="/images/step-1.png">
+				<img class="img-fluid" :src="'/uploads/'+ answer.image.path">
 			</div>
 			<div class="col-md-9">
 			<p class="title font-sr">

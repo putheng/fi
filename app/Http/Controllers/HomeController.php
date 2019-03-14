@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
     	$questions = Question::with('answers')->get();
-    	$results = Result::get();
+    	$results = Result::with('image')->get();
 
     	return view('home.show', compact('questions', 'results'));
     }
@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function show()
     {
       	$questions = Question::with('answers')->get();
-    	$results = Result::get();
+    	$results = Result::with('image')->get();
     	
     	return view('home.index', compact('questions', 'results'));
     }
