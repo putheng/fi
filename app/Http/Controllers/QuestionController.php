@@ -32,6 +32,12 @@ class QuestionController extends Controller
 
     	$question = Question::create($request->only('titleKh', 'titleEn', 'type'));
 
+        if(!empty($request->image)){
+            $image = Image::find($request->image);
+
+            $image->update(['question_id' => $question->id]);
+        }
+
     	return redirect()->route('admin.question.answer', $question);
     }
 

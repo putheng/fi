@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
@@ -12,4 +13,9 @@ class Result extends Model
     	'from',
     	'to'
     ];
+
+    public function image()
+    {
+    	return $this->hasOne(Image::class);
+    }
 }

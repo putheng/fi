@@ -18,7 +18,7 @@
 	<template v-if="step === <?php echo ($key+1) ?>">
 		<div class="app-modelx">
 			<div class="app-model-contentx">
-			<div class="row">
+			<div class="row fit">
 				<div class="col-md-3">
 					<img class="img-fluid" src="<?php echo optional($question->image)->path(); ?>">
 				</div>
@@ -76,7 +76,7 @@
 <template v-if="step === 6">
 	<div class="app-modelx">
 		<div class="app-model-contentx">
-		<div class="row">
+		<div class="row fit">
 			<div class="col-md-3">
 				<img class="img-fluid" src="/images/step-1.png">
 			</div>
@@ -109,7 +109,7 @@
 	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
 	         <ul class="navbar-nav">
 	            <li class="nav-item">
-	                <div class="nav-item">{{ step }} of {{ stepLength }} answered</div>
+	                <div class="nav-item">{{ stepLength }} of {{ questionLength }} answered</div>
 	            </li>
 	        </ul>
 
@@ -193,6 +193,9 @@
 	  },
 	  computed: {
 	  	stepLength(){
+	  		return this.step <= this.questions.length ? this.step : this.questions.length
+	  	},
+	  	questionLength(){
 	  		return this.questions.length
 	  	}
 	  }

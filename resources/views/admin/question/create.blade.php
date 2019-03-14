@@ -100,6 +100,19 @@
             </select>
         </div>
     </div>
+
+    <div id="image-upload">
+
+    </div>
+    <div class="form-group">
+        <label for="titleEn" class="col-md-2 control-label">
+            {{ __('questions.photo') }}
+        </label>
+        <div class="col-md-10">
+            <input type="file" id="file" name="file" accept="image/*" />
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
@@ -124,4 +137,46 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/page/users.js') }}"></script>
+
+           <script type="text/javascript">
+                $(document).ready(function (e) {
+                    $('#file').on('change', function () {
+                        var file_data = $('#file').prop('files')[0];
+                        var _token = $("input[name='_token']").val();
+
+                        var form_data = new FormData();
+                        form_data.append('file', file_data);
+                        form_data.append('_token', _token);
+
+                        $.ajax({
+                            url: '{{ route('admin.question.upload') }}', // point to server-side controller method
+                            dataType: 'text', // what to expect back from the server
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: form_data,
+                            type: 'post',
+                            success: function (response) {
+                                var data = JSON.parse(response);
+
+                                $('#image-upload').html(`
+<div class="form-group">
+    <div class="col-md-4 col-md-offset-2">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail">
+                <img class="clinic-img" src="${data.path}" alt="Logo URL">
+                <input type="hidden" name="image" value="${data.id}">
+            </div>
+        </div>
+    </div>
+</div>
+                                `);
+                            },
+                            error: function (response) {
+                                $('#msg').html(response); // display error response from the server
+                            }
+                        });
+                    });
+                });
+            </script>
 @stop

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Result;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,12 @@ class ResultController extends Controller
     		'to' => $request->to,
     	]);
 
+        if(!empty($request->image)){
+            $image = Image::find($request->image);
+
+            $image->update(['result_id' => $result->id]);
+        }
+
     	return redirect()->route('admin.question.index');
     }
 
@@ -52,11 +59,19 @@ class ResultController extends Controller
     		'to' => $request->to,
     	]);
 
+        if(!empty($request->image)){
+            Image::where('result_id', $result->id)->delete();
+
+            Image::find($request->image)->update(['result_id' => $result->id]);
+        }
+
     	return redirect()->route('admin.question.index');
     }
 
     public function destroy(Request $request, Result $result)
     {
+        $result->image->delete();
+        
     	$result->delete();
 
     	return back();

@@ -146,6 +146,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::get('/create', 'QuestionController@create')->name('create');
         Route::post('/create', 'QuestionController@store');
 
+        Route::post('/file/upload', 'UploadController@store')->name('upload');
+
         Route::get('/{question}/edit', 'QuestionController@edit')->name('edit');
         Route::post('/{question}/edit', 'QuestionController@storeUpdate');
         Route::get('/{question}/delete', 'QuestionController@deleteQ')->name('delete');
