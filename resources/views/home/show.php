@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-md-9">
 
-				<div>			
+				<div class="full-content">			
 				<p class="title font-sr">
 					<?php echo ($key+1) ?>
 					<?php echo $question->titleKh ?>
@@ -131,12 +131,10 @@
 	    </div>
 	</nav>
 </div>
-<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/js/perfect-scrollbar.jquery.js"></script>
+
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
 <script>
-	$('.app-model-contentx').perfectScrollbar();
 	new Vue({
 	  el: '#app',
 	  data: () => ({

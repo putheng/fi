@@ -208,7 +208,9 @@
   .row.fit {
     position: relative;
     overflow: auto;
-    height: auto;
+    height: -webkit-fill-available;
+    padding-bottom: 60px;
+    padding-top: 20px;
   }
 
   .col-md-3{
@@ -227,7 +229,7 @@
   p.title.font-sr {
       font-size: 17px;
   }
-  
+
   .title{
     margin-bottom: 15px;
     line-height: 30px;
@@ -235,5 +237,9 @@
 
   .model-list-group li .checkbox:checked + label {
     background-size: 28px;
+  }
+
+  .full-content{
+
   }
 }
