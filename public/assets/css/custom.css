@@ -2,12 +2,6 @@
 	color: rgb(255, 255, 255) !important;
 }
 
-@media (max-width: 576px) {
-	.navbar .container {
-		width: 100%;
-	}
-}
-
 .app-modelx{
 	background-image: url(https://images.typeform.com/images/UPc7kw73Nb);
     background-size: cover;
@@ -27,7 +21,6 @@
 	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -40%);
-	padding: 30px;
 	width: 90%;
 	max-width: 1200px;
 }
@@ -204,4 +197,43 @@
 
 .font-sr{
     font-family:'Khmer OS Siemreap' !important;
+}
+
+
+@media (max-width: 576px) {
+  .navbar .container {
+    width: 100%;
+  }
+
+  .row.fit {
+    position: relative;
+    overflow: auto;
+    height: auto;
+  }
+
+  .col-md-3{
+    max-width: 100px;
+    padding: 0;
+  }
+
+  .col-md-9{
+    max-width: 300px;
+  }
+
+  .font-sr{
+    font-size: 13px;
+  }
+
+  p.title.font-sr {
+      font-size: 17px;
+  }
+  
+  .title{
+    margin-bottom: 15px;
+    line-height: 30px;
+  }
+
+  .model-list-group li .checkbox:checked + label {
+    background-size: 28px;
+  }
 }

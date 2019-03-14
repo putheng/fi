@@ -7,6 +7,7 @@
   <title>Preview</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/css/perfect-scrollbar.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -74,36 +75,36 @@
 	</template>
 <?php endforeach; ?>
 <template v-if="step === 6">
-	<div class="app-modelx">
-		<div class="app-model-contentx">
+<div class="app-modelx">
+	<div class="app-model-contentx">
 		<div class="row fit">
 			<div class="col-md-3">
 				<img class="img-fluid" :src="'/uploads/'+ answer.image.path">
 			</div>
 			<div class="col-md-9">
-			<p class="title font-sr">
-				{{ answer.title }}
-			</p>
-			<ul class="model-list-group">
-				<li>
-					<input
-						class="checkbox"
-						id="asd"
-						type="radio"
-						value="asd"
-					>
-					<label for="asd">
-						<span class="gat">1</span>
-						<span class="font-sr">
-							View all clinics
-						</span>
-					</label>
-				</li>
-			</ul>
-		</div>
-		</div>
+				<p class="title font-sr">
+					{{ answer.title }}
+				</p>
+				<ul class="model-list-group">
+					<li>
+						<input
+							class="checkbox"
+							id="asd"
+							type="radio"
+							value="asd"
+						>
+						<label for="asd">
+							<span class="gat">1</span>
+							<span class="font-sr">
+								View all clinics
+							</span>
+						</label>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
+</div>
 </template>
 	<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
 	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
@@ -125,9 +126,12 @@
 	    </div>
 	</nav>
 </div>
+<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/js/perfect-scrollbar.jquery.js"></script>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
 <script>
+	$('.app-model-contentx').perfectScrollbar();
 	new Vue({
 	  el: '#app',
 	  data: () => ({
