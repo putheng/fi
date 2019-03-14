@@ -123,7 +123,7 @@
 	            </li>
 	        </ul>
 
-		    <div class="d-flex ml-auto">
+		    <div class="d-flex ml-auto" v-if="step > 1">
 		         <ul class="navbar-nav">
 		            <li class="nav-item">
 		                <a class="nav-link" @click.prevent="previous" href="#">Back</a>
