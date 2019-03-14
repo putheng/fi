@@ -243,3 +243,8 @@
 
   }
 }
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
+}

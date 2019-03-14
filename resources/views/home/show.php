@@ -16,6 +16,7 @@
 <div id="app">
 
 <?php foreach($questions as $key => $question): ?>
+<transition name="slide" >
 	<template v-if="step === <?php echo ($key+1) ?>">
 		<div class="app-modelx">
 			<div class="app-model-contentx">
@@ -76,6 +77,7 @@
 			</div>
 		</div>
 	</template>
+</transition>
 <?php endforeach; ?>
 <template v-if="step === 6">
 <div class="app-modelx">
