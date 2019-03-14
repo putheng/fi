@@ -200,7 +200,7 @@
 }
 
 
-@media (max-width: 776px) {
+@media (max-width: 576px) {
   .navbar .container {
     width: 100%;
   }
@@ -227,7 +227,7 @@
   p.title.font-sr {
       font-size: 17px;
   }
-
+  
   .title{
     margin-bottom: 15px;
     line-height: 30px;

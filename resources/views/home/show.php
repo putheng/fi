@@ -20,10 +20,12 @@
 		<div class="app-modelx">
 			<div class="app-model-contentx">
 			<div class="row fit">
-				<div class="col-md-3">
+				<div class="col-md-3 text-center">
 					<img class="img-fluid" src="<?php echo optional($question->image)->path(); ?>">
 				</div>
 				<div class="col-md-9">
+
+				<div>			
 				<p class="title font-sr">
 					<?php echo ($key+1) ?>
 					<?php echo $question->titleKh ?>
@@ -71,6 +73,7 @@
 			</div>
 			</div>
 			</div>
+			</div>
 		</div>
 	</template>
 <?php endforeach; ?>
@@ -82,25 +85,27 @@
 				<img class="img-fluid" :src="'/uploads/'+ answer.image.path">
 			</div>
 			<div class="col-md-9">
-				<p class="title font-sr">
-					{{ answer.title }}
-				</p>
-				<ul class="model-list-group">
-					<li>
-						<input
-							class="checkbox"
-							id="asd"
-							type="radio"
-							value="asd"
-						>
-						<label for="asd">
-							<span class="gat">1</span>
-							<span class="font-sr">
-								View all clinics
-							</span>
-						</label>
-					</li>
-				</ul>
+				<div>
+					<p class="title font-sr">
+						{{ answer.title }}
+					</p>
+					<ul class="model-list-group">
+						<li>
+							<input
+								class="checkbox"
+								id="asd"
+								type="radio"
+								value="asd"
+							>
+							<label for="asd">
+								<span class="gat">1</span>
+								<span class="font-sr">
+									View all clinics
+								</span>
+							</label>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
