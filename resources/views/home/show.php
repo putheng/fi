@@ -73,7 +73,38 @@
 		</div>
 	</template>
 <?php endforeach; ?>
-
+<template v-if="step === 6">
+	<div class="app-modelx">
+		<div class="app-model-contentx">
+		<div class="row">
+			<div class="col-md-3">
+				<img class="img-fluid" src="/images/step-1.png">
+			</div>
+			<div class="col-md-9">
+			<p class="title font-sr">
+				លទ្ធផលរបស់អ្នកមានហានិភ័យ​​ {{ answer.title }}
+			</p>
+			<ul class="model-list-group">
+				<li>
+					<input
+						class="checkbox"
+						id="asd"
+						type="radio"
+						value="asd"
+					>
+					<label for="asd">
+						<span class="gat">1</span>
+						<span class="font-sr">
+							View all clinics
+						</span>
+					</label>
+				</li>
+			</ul>
+		</div>
+		</div>
+		</div>
+	</div>
+</template>
 	<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
 	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
 	         <ul class="navbar-nav">
@@ -118,10 +149,20 @@
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
 				   this.step++
-
-				   console.log(this.registration)
 				}, 1000)
 	  		}
+
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
+
+			var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
 	  	},
 	  	previous(){
 	  		if(this.step >= 1){
@@ -129,10 +170,11 @@
 	  		}
 	  	},
 	    submit() {
-	    	this.isActive = true
 	    	let values = Object.values(this.registration).filter((key) => {
 	    		return key !== null
 	    	})
+
+	    	console.log(values)
 
 	    	var total = [].concat
 	    			.apply([], values)
@@ -147,7 +189,6 @@
 	  	this.questions = <?php echo $questions->toJson() ?>
 
 	  	this.answers = <?php echo $results->toJson() ?>
-
 
 	  },
 	  computed: {
