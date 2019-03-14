@@ -82,7 +82,7 @@
 			</div>
 			<div class="col-md-9">
 			<p class="title font-sr">
-				លទ្ធផលរបស់អ្នកមានហានិភ័យ​​ {{ answer.title }}
+				{{ answer.title }}
 			</p>
 			<ul class="model-list-group">
 				<li>
