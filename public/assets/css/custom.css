@@ -233,7 +233,7 @@
     overflow: auto;
     height: -webkit-fill-available;
     padding-bottom: 60px;
-    padding-top: 20px;
+    padding-top: 60px;
   }
 
   .col-md-3{
@@ -275,4 +275,8 @@
 .top-nav {
   z-index: 111;
   background-color: #fff0 !important;
+}
+
+.navbar-nav{
+  display: inline-block;
 }
