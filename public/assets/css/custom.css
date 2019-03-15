@@ -203,8 +203,27 @@
     font-family:'Khmer OS Siemreap' !important;
 }
 
+@media (max-width: 1536px) {
+  .row.fit {
+      position: relative;
+      overflow: auto;
+      height: -webkit-fill-available;
+      padding-bottom: 80px;
+      padding-top: 30px;
+  }
+}
 
-@media (max-width: 576px) {
+@media (max-height: 680px) {
+  .row.fit {
+      position: relative;
+      overflow: auto;
+      height: -webkit-fill-available;
+      padding-bottom: 80px;
+      padding-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
   .navbar .container {
     width: 100%;
   }
