@@ -161,7 +161,7 @@
                                         <span class="glyphicon glyphicon-arrow-left"></span>
                                     </button>
                                     <button type="button" class="btn btn-info" disabled="disabled">
-                                        @lang('reservations/res.filter_date_from'):
+                                        {{ __('reservations/res.filter_date_from') }}:
                                     </button>
                                 </div>
                                 <input type="text" class="form-control" value="{{ $dateStartDisplay  }}"

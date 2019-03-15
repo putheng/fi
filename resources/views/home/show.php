@@ -14,7 +14,21 @@
 <body >
   
 <div id="app">
+	<nav class="navbar top-nav navbar-toggleable-sm navbar-inverse bg-inverse">
+	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
+	         <ul class="navbar-nav">
+                <a class="nav-item font-sr" href="/lang/hi">
+                	<?php echo __('page.kh'); ?>
+            	</a>
+            	&nbsp;|&nbsp;
+            	<a class="nav-item" href="/lang/en">
+                	EN
+            	</a>
+	        </ul>
 
+		    <div class="hidden-md-up w-100"></div>
+	    </div>
+	</nav>
 <?php foreach($questions as $key => $question): ?>
 <transition name="slide" >
 	<template v-if="step === <?php echo ($key+1) ?>">
@@ -29,7 +43,7 @@
 				<div class="full-content">			
 				<p class="title font-sr">
 					<?php echo ($key+1) ?>
-					<?php echo $question->titleKh ?>
+					<?php echo $question->{__('page.title')} ?>
 				</p>
 				<ul class="model-list-group">
 				<?php if($question->type == 1): ?>
@@ -44,7 +58,7 @@
 								>
 								<label for="<?php echo $answer->id; ?>" @click="next">
 									<span class="gat"><?php echo ($index+1); ?></span>
-									<span class="font-sr"><?php echo $answer->title; ?></span>
+									<span class="font-sr"><?php echo $answer->{__('page.answer_title')}; ?></span>
 								</label>
 							</li>
 						<?php endforeach ?>
@@ -60,13 +74,13 @@
 							>
 							<label for="<?php echo $answer->id; ?>">
 								<span class="gat"><?php echo ($index+1); ?></span>
-								<span class="font-sr"><?php echo $answer->title; ?></span>
+								<span class="font-sr"><?php echo $answer->{__('page.answer_title')}; ?></span>
 							</label>
 						</li>
 					<?php endforeach ?>
 					<div class="text-right">
 						<a href="#" @click="next" class="btn btn-primary font-sr">
-							បន្ទាប់
+							<?php echo __('page.next'); ?>
 						</a>
 					</div>
 				<?php endif?>
@@ -90,7 +104,7 @@
 			<div class="col-md-9">
 				<div>
 					<p class="title font-sr">
-						{{ answer.title }}
+						{{ answer.<?php echo __('page.result'); ?> }}
 					</p>
 					<ul class="model-list-group">
 						<li>
@@ -119,14 +133,17 @@
 	    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
 	         <ul class="navbar-nav">
 	            <li class="nav-item">
-	                <div class="nav-item">{{ stepLength }} of {{ questionLength }} answered</div>
+	                <div class="nav-item font-sr">{{ stepLength }} of {{ questionLength }} 
+	                	<?php echo __('page.answer'); ?></div>
 	            </li>
 	        </ul>
 
 		    <div class="d-flex ml-auto" v-if="step > 1">
 		         <ul class="navbar-nav">
 		            <li class="nav-item">
-		                <a class="nav-link" @click.prevent="previous" href="#">Back</a>
+		                <a class="nav-link font-sr" @click.prevent="previous" href="#">
+		                	<?php echo __('page.back'); ?>
+		                </a>
 		            </li>
 		        </ul>
 		    </div>
