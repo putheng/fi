@@ -203,7 +203,7 @@
     font-family:'Khmer OS Siemreap' !important;
 }
 
-@media (max-width: 1536px) {
+@media (max-width: 1200px) {
   .row.fit {
       position: relative;
       overflow: auto;
