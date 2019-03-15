@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/css/perfect-scrollbar.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/custom.css?v=<?php echo time(); ?>">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body >
