@@ -58,10 +58,10 @@
 				<template v-if="step === <?php echo ($key+1) ?>">
 				<div class="main container">
 					<div class="row">
-						<div class="col-sm-3 col-xs-4 col-md-offset-1">
+						<div class="col-sm-3 col-md-offset-1">
 							<img src="<?php echo optional($question->image)->path(); ?>" class="img-responsive">
 						</div>
-						<div class="col-sm-7 col-xs-8">
+						<div class="col-sm-7">
 							<br>
 							<p class="font-sr title"><?php echo $question->{__('page.title')} ?></p>
 							<br>
