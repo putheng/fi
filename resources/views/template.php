@@ -112,6 +112,7 @@
 			</template>
 		</transition>
 </div>
+<br><br><br>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
