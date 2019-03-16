@@ -175,9 +175,7 @@ code {
 }
 
 .list-group input[type="checkbox"] + .list-group-item:before {
-  content: "\2713";
-  color: transparent;
-  font-weight: bold;
+
 }
 
 .list-group input[type="checkbox"]:checked + .list-group-item {
@@ -186,7 +184,10 @@ code {
 }
 
 .list-group input[type="checkbox"]:checked + .list-group-item:before {
-  margin-right: 1em;
+    margin-right: 1em;
+    content: "\2713";
+    color: transparent;
+    font-weight: bold;
 }
 
 .list-group input[type="checkbox"]:checked + .list-group-item:before {
