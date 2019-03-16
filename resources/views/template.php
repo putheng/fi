@@ -104,10 +104,10 @@
 			<template v-if="step === 6">
 				<div class="main container">
 					<div class="row">
-						<div class="col-sm-3 col-md-offset-1">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
 							<img :src="'/uploads/'+ answer.image.path" class="img-responsive">
 						</div>
-						<div class="col-sm-7">
+						<div class="col-sm-7 col-xs-6">
 							<br>
 							<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
 							<br>
