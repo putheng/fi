@@ -1,88 +1,195 @@
-
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Stepper</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+	<link rel="stylesheet" type="text/css" href="/css/style.css?v=<?php echo time(); ?>">
 </head>
 <body >
-  
-<div id="app">
-<div class="app-model">
-	<div class="app-model-content">
+<div id="wrap">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-with-search">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img 
+						src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" 
+						width="30" height="30" class="d-inline-block align-top" alt=""
+					>
+					Stepper
+				</a>
+			</div>
+			<form class="navbar-form">
+				<div class="dropdown pull-left">
+					<a class="dropdown-toggle" 
+						id="language-button"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="true">
+						<span class="glyphicon glyphicon-globe" 
+							aria-hidden="true"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right" 
+						aria-labelledby="language-button">
 
+						<li class="dropdown-header">Language</li>
+						<li><a class="translation-en" href="#">Khmer</a></li>
+						<li><a href="#">English</a></li>
 
-      <transition-group tag="div" class="img-slider" name="slide">
-    	
-      </transition-group>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</nav>
+<br><br><br>
 
-
-		<p class="title">1. How long have you been studying here?</p>
-		<ul class="model-list-group">
-			<li>
-				<input class="checkbox" id="answera" type="radio" name="answer" value="1">
-				<label for="answera">
-					<span class="gat">A</span>
-					<span>Under 1 year</span>
-				</label>
-			</li>
-			<li>
-				<input class="checkbox" id="answerb" type="radio" name="answer" value="1">
-				<label for="answerb">
-					<span class="gat">A</span>
-					<span>Under 1 year</span>
-				</label>
-			</li>
-			<li>
-				<input class="checkbox" id="answerc" type="radio" name="answer" value="1">
-				<label for="answerc">
-					<span class="gat">A</span>
-					<span>Under 1 year</span>
-				</label>
-			</li>
-			<li>
-				<input class="checkbox" id="answer" type="radio" name="answer" value="1">
-				<label for="answer">
-					<span class="gat">A</span>
-					<span>Under 1 year</span>
-				</label>
-			</li>
-		</ul>
-	</div>
+		<?php foreach($questions as $key => $question): ?>
+			<transition name="slide" >
+				<template v-if="step === <?php echo ($key+1) ?>">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-md-offset-1">
+							<img src="<?php echo optional($question->image)->path(); ?>" class="img-responsive">
+						</div>
+						<div class="col-sm-7">
+							<br>
+							<p class="font-sr title"><?php echo $question->{__('page.title')} ?></p>
+							<br>
+							
+							<div class="list-group">
+								<?php if($question->type == 1): ?>
+									<?php foreach($question->answers as $index => $answer): ?>
+										<input type="checkbox" 
+											id="<?php echo $answer->id; ?>"
+											type="checkbox"
+											value="<?php echo $answer->point; ?>"
+											v-model="registration.question<?php echo ($key+1); ?>"
+										 />
+										<label  for="<?php echo $answer->id; ?>" @click="next" class="list-group-item font-sr"><?php echo $answer->{__('page.answer_title')}; ?></label>
+									<?php endforeach ?>
+								<?php else: ?>
+									<?php foreach($question->answers as $index => $answer): ?>
+										<input type="checkbox" 
+											id="<?php echo $answer->id; ?>"
+											type="radio"
+											value="<?php echo $answer->point; ?>"
+											v-model="registration.question<?php echo ($key+1); ?>"
+										 />
+										<label  for="<?php echo $answer->id; ?>" class="list-group-item font-sr"><?php echo $answer->{__('page.answer_title')}; ?></label>
+									<?php endforeach ?>
+									<br>
+									<a href="#" @click="next" class="btn btn-primary font-sr pull-right">
+										<?php echo __('page.next'); ?>
+									</a>
+								<?php endif?>
+							</div>
+						</div>
+					</div>
+					</div>
+				</template>
+			</transition>
+		<?php endforeach; ?>
+		<transition name="slide" >
+			<template v-if="step === 6">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-md-offset-1">
+							<img :src="'/uploads/'+ answer.image.path" class="img-responsive">
+						</div>
+						<div class="col-sm-7">
+							<br>
+							<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
+							<br>
+						</div>
+					</div>
+				</div>
+			</template>
+		</transition>
 </div>
-  
-<nav class="navbar fixed-bottom navbar-toggleable-sm navbar-inverse bg-inverse">
-    <div class="container d-flex flex-row flex-md-nowrap flex-wrap">
-         <ul class="navbar-nav">
-            <li class="nav-item">
-                <div class="nav-item">0 of 7 answered</div>
-            </li>
-        </ul>
 
-	    <div class="d-flex ml-auto">
-	         <ul class="navbar-nav">
-	                
-	            <li class="nav-item">
-	                <a class="nav-link" href="#">Previous</a>
-	            </li>
-
-	            <li class="nav-item">
-	                <a class="nav-link" href="#">Next</a>
-	            </li>
-	        </ul>
-	    </div>
-
-	    <div class="hidden-md-up w-100"></div>
-    </div>
-</nav>
-</div>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script>
+	new Vue({
+	  el: '#wrap',
+	  data: () => ({
+	      step: 1,
+	      isActive: false,
+	      questions: [],
+	      answers: [],
+	      answer: {},
+	      registration: {
+	        question1: [],
+	        question2: [],
+	        question3: [],
+	        question4: [],
+	        question5: [],
+	      }
+	  }),
+	  methods:{
+	  	next(){
+	  		if(this.step <= this.stepLength){
+	  			setTimeout(() => {
+				   this.step++
+				}, 300)
+	  		}
+
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
+
+			var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
+	  	},
+	  	previous(){
+	  		if(this.step >= 1){
+	  			this.step--
+	  		}
+	  	},
+	    submit() {
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
+
+	    	console.log(values)
+
+	    	var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
+	    }
+	  },
+	  mounted(){
+	  	this.questions = <?php echo $questions->toJson() ?>
+
+	  	this.answers = <?php echo $results->toJson() ?>
+
+	  },
+	  computed: {
+	  	stepLength(){
+	  		return this.step <= this.questions.length ? this.step : this.questions.length
+	  	},
+	  	questionLength(){
+	  		return this.questions.length
+	  	}
+	  }
+	})
+</script>
 </body>
 </html>

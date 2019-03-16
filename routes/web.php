@@ -13,7 +13,7 @@
 /**
  * Model binding into route
  */
-Route::get('/template', 'HomeController@show');
+Route::get('/template', 'HomeController@template');
 
 Route::model('users', 'App\Models\User');
 

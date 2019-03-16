@@ -7,7 +7,6 @@
   <title>Preview</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/css/perfect-scrollbar.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/custom.css?v=<?php echo time(); ?>">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -48,6 +47,10 @@
 				<ul class="model-list-group">
 				<?php if($question->type == 1): ?>
 						<?php foreach($question->answers as $index => $answer): ?>
+							<div>
+							<li>
+								<span class="gat"><?php echo ($index+1); ?></span>
+							</li>
 							<li>
 								<input
 									class="checkbox"
@@ -57,13 +60,18 @@
 									v-model="registration.question<?php echo ($key+1); ?>"
 								>
 								<label for="<?php echo $answer->id; ?>" @click="next">
-									<span class="gat"><?php echo ($index+1); ?></span>
+									
 									<span class="font-sr"><?php echo $answer->{__('page.answer_title')}; ?></span>
 								</label>
 							</li>
+							</div>
 						<?php endforeach ?>
 				<?php else: ?>
 					<?php foreach($question->answers as $index => $answer): ?>
+						<div>
+							<li>
+								<span class="gat"><?php echo ($index+1); ?></span>
+							</li>
 						<li>
 							<input
 								class="checkbox"
@@ -73,10 +81,11 @@
 								v-model="registration.question<?php echo ($key+1); ?>"
 							>
 							<label for="<?php echo $answer->id; ?>">
-								<span class="gat"><?php echo ($index+1); ?></span>
+								
 								<span class="font-sr"><?php echo $answer->{__('page.answer_title')}; ?></span>
 							</label>
 						</li>
+						</div>
 					<?php endforeach ?>
 					<div class="text-right">
 						<a href="#" @click="next" class="btn btn-primary font-sr">
@@ -177,7 +186,7 @@
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
 				   this.step++
-				}, 1000)
+				}, 300)
 	  		}
 
 	    	let values = Object.values(this.registration).filter((key) => {

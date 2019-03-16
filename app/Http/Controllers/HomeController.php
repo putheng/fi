@@ -23,4 +23,12 @@ class HomeController extends Controller
     	
     	return view('home.index', compact('questions', 'results'));
     }
+
+    public function template()
+    {
+        $questions = Question::with('answers')->get();
+        $results = Result::with('image')->get();
+        
+        return view('template', compact('questions', 'results'));
+    }
 }

@@ -1,0 +1,234 @@
+html,
+body {
+    height: 100%;
+}
+
+
+@font-face{
+    font-family:'Khmer OS content';
+    src:url('../fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS';
+    src:url('../assets/fonts/KhmerOS.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol';
+    src:url('../assets/fonts/KhmerOSmuol.ttf');
+}
+
+@font-face{
+    font-family:'Khmer OS Muol Light';
+    src:url('../assets/fonts/KhmerOSmuollight.ttf');
+    
+}
+@font-face{
+    font-family:'Khmer OS Siemreap';
+    src:url('../assets/fonts/KhmerOSsiemreap.ttf');
+
+}
+
+.font-muol{
+    font-family:'Khmer OS Muol Light';
+}
+
+.font-sr{
+    font-family:'Khmer OS Siemreap' !important;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+
+#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+#wrap > .container {
+    padding: 60px 15px 0;
+}
+
+.main{
+    height:95vh;
+    min-height: 95vh
+}
+
+.container .credit {
+    margin: 20px 0;
+}
+
+#footer > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.navbar-toggle {
+    margin-left: 8px;
+}
+
+.navbar-form {
+    float: right;
+    margin: 0px !important;
+    padding: 0px;
+    padding-left: 15px;
+}
+
+@media (max-width: 767px) {
+    .navbar-header, .navbar-brand {
+        float: left;
+    }
+
+    .navbar-form {
+        border: none;
+    }
+
+    #navbar {
+        clear: both;
+    }
+}
+
+#language-button, #search-button {
+    color: #777;
+    cursor: pointer;
+    padding: 15px;
+}
+
+#language-button {
+    display: inline-block;
+}
+
+#search-button {
+    margin-right: -15px;
+}
+
+#language-button:hover, #search-button:hover {
+    color: #333;
+}
+
+.translation-en:lang(en), .translation-pt:lang(pt) {
+    font-weight: bold;
+}
+
+#search-bar {
+    background-color: #F8F8F8;
+    position: absolute;
+
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+
+    -moz-transform-origin: 0 0 0;
+    -ms-transform-origin: 0 0 0;
+    -o-transform-origin: 0 0 0;
+    -webkit-transform-origin: 0 0 0;
+    transform-origin: 0 0 0;
+
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    visibility: hidden;
+    width: 100%;
+}
+
+#search-bar.open {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    visibility: visible;
+}
+
+
+.title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 32px;
+    /*color: rgb(255, 255, 255);*/
+}
+
+.list-group-item {
+  user-select: none;
+}
+
+.list-group input[type="checkbox"] {
+  display: none;
+}
+
+.list-group input[type="checkbox"] + .list-group-item {
+  cursor: pointer;
+}
+
+.list-group input[type="checkbox"] + .list-group-item:before {
+  content: "\2713";
+  color: transparent;
+  font-weight: bold;
+}
+
+.list-group input[type="checkbox"]:checked + .list-group-item {
+  background-color: #0275D8;
+  color: #FFF;
+}
+
+.list-group input[type="checkbox"]:checked + .list-group-item:before {
+  margin-right: 1em;
+}
+
+.list-group input[type="checkbox"]:checked + .list-group-item:before {
+  color: inherit;
+}
+
+.list-group input[type="radio"] {
+  display: none;
+}
+
+.list-group input[type="radio"] + .list-group-item {
+  cursor: pointer;
+}
+
+.list-group input[type="radio"] + .list-group-item:before {
+  content: "\2713";
+  color: transparent;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item {
+  background-color: #0275D8;
+  color: #FFF;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item:before {
+  color: inherit;
+}
+
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 0.5s;
+}
+.slide-enter {
+  transform: translate(150%, 0);
+}
+.slide-leave-to {
+  transform: translate(-150%, 0);
+}
