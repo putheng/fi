@@ -37,10 +37,14 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" 
 						aria-labelledby="language-button">
-
-						<li class="dropdown-header">Language</li>
-						<li><a class="translation-en" href="#">Khmer</a></li>
-						<li><a href="#">English</a></li>
+						<li>
+							<a href="/lang/hi">
+								<?php echo __('page.kh'); ?>
+							</a>
+						</li>
+						<li>
+							<a href="/lang/en">English</a>
+						</li>
 
 					</ul>
 				</div>
