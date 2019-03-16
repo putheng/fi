@@ -13,7 +13,7 @@ class HomeController extends Controller
     	$questions = Question::with('answers')->get();
     	$results = Result::with('image')->get();
 
-    	return view('home.show', compact('questions', 'results'));
+    	return view('template', compact('questions', 'results'));
     }
 
     public function show()
@@ -29,6 +29,6 @@ class HomeController extends Controller
         $questions = Question::with('answers')->get();
         $results = Result::with('image')->get();
         
-        return view('template', compact('questions', 'results'));
+        return view('home.show', compact('questions', 'results'));
     }
 }
