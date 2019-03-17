@@ -163,6 +163,7 @@
 	  }),
 	  methods:{
 	  	next(){
+
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
 				   this.step++
@@ -213,9 +214,18 @@
 	    	}
 	    },
 	    currentStep(index){
+
 	    	const id = index + 1
 
-	    	// console.log(this.registration.question + id)
+	    	if(id === 2 && this.registration.question1.length === 0){
+	    		return
+	    	}else if(id === 3 && this.registration.question2.length === 0){
+	    		return
+	    	}else if(id === 4 && this.registration.question3.length === 0){
+	    		return
+	    	}else if(id === 5 && this.registration.question4.length === 0){
+	    		return
+	    	}
 
 	    	return this.step = id
 
