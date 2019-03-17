@@ -335,12 +335,12 @@ code {
   font-weight: bold;
   margin-right: 1em;
 }
-/*
+
 .list-group input[type="radio"]:checked + .list-group-item {
-  background-color: #0275D8;
-  color: #FFF;
+    background-color: #e047fd;
+    color: #FFF;
 }
-*/
+
 .list-group input[type="radio"]:checked + .list-group-item:before {
   color: inherit;
 }
