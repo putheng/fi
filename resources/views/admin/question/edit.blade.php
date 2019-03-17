@@ -80,7 +80,7 @@
         </div>
 
         <div class="col-md-2">
-            <input class="form-control" value="{{ old('subtitle') }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
+            <input class="form-control" value="{{ $question->subtitle }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
             @if($errors->has('subtitle'))
                 <span class="help-block">{{ $errors->first('subtitle') }}</span>
             @endif
@@ -97,7 +97,7 @@
         </div>
 
         <div class="col-md-2">
-            <input class="form-control" value="{{ old('subtitleEn') }}" name="subtitleEn" type="text" id="subtitleEn" placeholder="Sub title">
+            <input class="form-control" value="{{ $question->subtitleEn }}" name="subtitleEn" type="text" id="subtitleEn" placeholder="Sub title">
             @if($errors->has('subtitleEn'))
                 <span class="help-block">{{ $errors->first('subtitleEn') }}</span>
             @endif
