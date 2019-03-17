@@ -304,3 +304,7 @@ code {
 }
 .breadcrumb li a:hover { background: #ffc107  ; }
 .breadcrumb li a:hover:after { border-left-color: #ffc107   !important; }
+
+label.list-group-item.font-sr {
+    margin-bottom: 15px;
+}

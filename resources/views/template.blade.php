@@ -62,9 +62,12 @@
 			<ul class="breadcrumb">
 				<template v-for="(question, index) in questions">
 					<li :class="getStep(index)">
-						<a href="#" class="font-sr">@{{ question.subtitle }}</a>
+						<a @click.prevent="currentStep(index)" href="#" class="font-sr">@{{ question.subtitle }}</a>
 					</li>
 				</template>
+				<li :class="resultCompletedClass">
+					<a href="#">Result</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -208,6 +211,14 @@
 	    	}else{
 	    		return ''
 	    	}
+	    },
+	    currentStep(index){
+	    	const id = index + 1
+
+	    	// console.log(this.registration.question + id)
+
+	    	return this.step = id
+
 	    }
 	  },
 	  mounted(){
@@ -222,6 +233,13 @@
 	  	},
 	  	questionLength(){
 	  		return this.questions.length
+	  	},
+	  	resultCompletedClass(){
+	  		let length = this.questions.length + 1
+
+	  		if(this.step == length){
+	  			return 'completed'
+	  		}
 	  	}
 	  }
 	})
