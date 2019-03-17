@@ -8,6 +8,6 @@ return [
     'result' => 'title',
     'answer' => 'ចម្លើយ',
     'answer_title' => 'title',
-    'kh' => 'ខ្មែរ',
+    'kh' => 'ភាសាខ្មែរ',
 
 ];

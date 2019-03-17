@@ -10,88 +10,107 @@
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="/css/style.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="/css/style.css?v={{ time() }}">
 </head>
 <body >
 <div id="wrap">
 	<nav class="navbar navbar-default navbar-fixed-top navbar-with-search">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					<img 
-						src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" 
-						width="30" height="30" class="d-inline-block align-top" alt=""
-					>
-					Stepper
-				</a>
-			</div>
-			<form class="navbar-form">
-				<div class="dropdown pull-left">
-					<a class="dropdown-toggle" 
-						id="language-button"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="true">
-						<span class="glyphicon glyphicon-globe" 
-							aria-hidden="true"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right" 
-						aria-labelledby="language-button">
-						<li>
-							<a href="/lang/hi">
-								<?php echo __('page.kh'); ?>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">
+							<img 
+								src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" 
+								width="30" height="30" class="d-inline-block align-top" alt=""
+							>
+							Stepper
+						</a>
+					</div>
+					<form class="navbar-form">
+						<div class="dropdown pull-left">
+							<a class="dropdown-toggle" 
+								id="language-button"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="true">
+								<span class="glyphicon glyphicon-globe" 
+									aria-hidden="true"></span>
 							</a>
-						</li>
-						<li>
-							<a href="/lang/en">English</a>
-						</li>
+							<ul class="dropdown-menu dropdown-menu-right" 
+								aria-labelledby="language-button">
+								<li>
+									<a href="/lang/hi" class="font-sr">
+										{{ __('page.kh') }}
+									</a>
+								</li>
+								<li>
+									<a href="/lang/en">English</a>
+								</li>
 
-					</ul>
+							</ul>
+						</div>
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
 	</nav>
-<br><br><br>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<ul class="breadcrumb">
+				<template v-for="(question, index) in questions">
+					<li :class="getStep(index)">
+						<a href="#" class="font-sr">@{{ question.subtitle }}</a>
+					</li>
+				</template>
+			</ul>
+		</div>
+	</div>
+</div>
 
-		<?php foreach($questions as $key => $question): ?>
+		@foreach($questions as $key => $question)
 			<transition name="slide" >
-				<template v-if="step === <?php echo ($key+1) ?>">
+				<template v-if="step === {{ ($key+1) }}">
 				<div class="main container">
 					<div class="row">
 						<div class="col-sm-3 col-md-offset-1">
-							<img src="<?php echo optional($question->image)->path(); ?>" class="img-responsive">
+							<img src="{{ optional($question->image)->path() }}" class="img-responsive">
 						</div>
 						<div class="col-sm-7">
 							<br>
-							<p class="font-sr title"><?php echo $question->{__('page.title')} ?></p>
+							<p class="font-sr title">{{ $question->{__('page.title')} }}</p>
 							<br>
 							
 							<div class="list-group">
-								<?php if($question->type == 1): ?>
-									<?php foreach($question->answers as $index => $answer): ?>
+								@if($question->type == 1)
+									@foreach($question->answers as $index => $answer)
 										<input type="checkbox" 
-											id="<?php echo $answer->id; ?>"
+											id="{{ $answer->id }}"
 											type="checkbox"
-											value="<?php echo $answer->point; ?>"
+											value="{{ $answer->point }}"
 											v-model="registration.question<?php echo ($key+1); ?>"
 										 />
-										<label  for="<?php echo $answer->id; ?>" @click="next" class="list-group-item font-sr"><?php echo $answer->{__('page.answer_title')}; ?></label>
-									<?php endforeach ?>
-								<?php else: ?>
-									<?php foreach($question->answers as $index => $answer): ?>
+										<label  for="<?php echo $answer->id; ?>" @click="next" class="list-group-item font-sr">
+											{{ $answer->{__('page.answer_title')} }}
+										</label>
+									@endforeach
+								@else
+									@foreach($question->answers as $index => $answer)
 										<input type="checkbox" 
-											id="<?php echo $answer->id; ?>"
+											id="{{ $answer->id }}"
 											type="radio"
-											value="<?php echo $answer->point; ?>"
-											v-model="registration.question<?php echo ($key+1); ?>"
+											value="{{ $answer->point }}"
+											v-model="registration.question{{ ($key+1) }}"
 										 />
-										<label  for="<?php echo $answer->id; ?>" class="list-group-item font-sr"><?php echo $answer->{__('page.answer_title')}; ?></label>
-									<?php endforeach ?>
+										<label  for="{{ $answer->id }}" class="list-group-item font-sr">{{ $answer->{__('page.answer_title')} }}</label>
+									@endforeach
 									<br>
 									<a href="#" @click="next" class="btn btn-primary font-sr pull-right">
-										<?php echo __('page.next'); ?>
+										{{ __('page.next') }}
 									</a>
-								<?php endif?>
+								@endif
 							</div>
 							<br><br><br>
 						</div>
@@ -178,6 +197,17 @@
 	    	this.answer = this.answers.filter((key, item) => {
 	    		return total >= key.from && total <= key.to
 	    	})[0]
+	    },
+	    getStep(id){
+	    	let step = +id + 1
+	    	
+	    	if(this.step === step){
+	    		return 'active'
+	    	}else if(this.step > step){
+	    		return 'completed'
+	    	}else{
+	    		return ''
+	    	}
 	    }
 	  },
 	  mounted(){
