@@ -317,7 +317,7 @@ label.list-group-item.font-sr {
         display: inline-block;
     }
 
-    .img-responsive{
+    .hide-mobile{
         display: none !important;
     }
 }
