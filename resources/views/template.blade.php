@@ -67,7 +67,7 @@
 						</a>
 					</li>
 				</template>
-				<li :class="resultCompletedClass">
+				<li :class="resultCompletedClass" class="alway-show">
 					<a href="#" class="font-sr">{{ __('page.results') }}</a>
 				</li>
 			</ul>
