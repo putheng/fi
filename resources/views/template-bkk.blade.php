@@ -14,7 +14,7 @@
 </head>
 <body >
 <div id="wrap">
-	<nav class="navbar navbar-default navbar-fixed-top navbar-with-search text-white">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-with-search">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -34,7 +34,6 @@
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="true">
-								Language
 								<span class="glyphicon glyphicon-globe" 
 									aria-hidden="true"></span>
 							</a>
@@ -99,9 +98,7 @@
 											v-model="registration.question<?php echo ($key+1); ?>"
 										 />
 										<label  for="<?php echo $answer->id; ?>" @click="next" class="list-group-item font-sr">
-											<div class="tick"></div><div class="answer">
 											{{ $answer->{__('page.answer_title')} }}
-											</div>
 										</label>
 									@endforeach
 								@else
@@ -112,11 +109,7 @@
 											value="{{ $answer->point }}"
 											v-model="registration.question{{ ($key+1) }}"
 										 />
-										<label  for="{{ $answer->id }}" class="list-group-item font-sr">
-											<div class="tick"></div><div class="answer">
-												{{ $answer->{__('page.answer_title')} }}
-											</div>
-										</label>
+										<label  for="{{ $answer->id }}" class="list-group-item font-sr">{{ $answer->{__('page.answer_title')} }}</label>
 									@endforeach
 									<br>
 									<a href="#" @click="next" class="btn btn-primary font-sr pull-right">
