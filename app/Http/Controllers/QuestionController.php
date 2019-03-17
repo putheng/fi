@@ -51,11 +51,13 @@ class QuestionController extends Controller
     public function storeUpdate(Request $request, Question $question)
     {
         $this->validate($request, [
-            'titleKh' => 'required',
-            'titleEn' => 'required',
+            'titleKh' => 'required|unique:questions',
+            'titleEn' => 'required|unique:questions',
+            'subtitle' => 'required|unique:questions',
+            'subtitleEn' => 'required|unique:questions',
         ]);
 
-        $question->update($request->only('titleKh', 'titleEn', 'type'));
+        $question->update($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         return back();
     }
