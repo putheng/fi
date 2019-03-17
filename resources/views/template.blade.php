@@ -92,13 +92,13 @@
 							<div class="list-group">
 								@if($question->type == 1)
 									@foreach($question->answers as $index => $answer)
-										<input type="checkbox" 
+										<input type="radio" 
 											id="{{ $answer->id }}"
-											type="checkbox"
+											type="radio"
 											value="{{ $answer->point }}"
 											v-model="registration.question<?php echo ($key+1); ?>"
 										 />
-										<label  for="<?php echo $answer->id; ?>" @click="next" class="list-group-item font-sr">
+										<label  for="{{ $answer->id }}" @click="next" class="list-group-item font-sr">
 											<div class="tick"></div><div class="answer">
 											{{ $answer->{__('page.answer_title')} }}
 											</div>
@@ -164,9 +164,13 @@
 	      answer: {},
 	      registration: {
 	      	@foreach($questions as $keys => $question)
-		        question{{ $keys + 1 }}: [],
+	      		@if($question->type == 1)
+question{{ $keys + 1 }}: null,
+	      		@else
+question{{ $keys + 1 }}: [],
+		        @endif
 	        @endforeach
-	      }
+	}
 	  }),
 	  methods:{
 	  	next(){
