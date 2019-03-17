@@ -6,8 +6,11 @@ return [
     'back' => 'ត្រឡប់ក្រោយ',
     'title' => 'titleKh',
     'result' => 'title',
+    'results' => 'លទ្ធផល',
     'answer' => 'ចម្លើយ',
     'answer_title' => 'title',
     'kh' => 'ភាសាខ្មែរ',
+
+    'sub_question' => 'subtitle',
 
 ];

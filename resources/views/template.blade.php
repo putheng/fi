@@ -62,11 +62,13 @@
 			<ul class="breadcrumb">
 				<template v-for="(question, index) in questions">
 					<li :class="getStep(index)">
-						<a @click.prevent="currentStep(index)" href="#" class="font-sr">@{{ question.subtitle }}</a>
+						<a @click.prevent="currentStep(index)" href="#" class="font-sr">
+							{{ question.<?php echo __('page.sub_question') ?> }}
+						</a>
 					</li>
 				</template>
 				<li :class="resultCompletedClass">
-					<a href="#">Result</a>
+					<a href="#" class="font-sr">{{ __('page.results') }}</a>
 				</li>
 			</ul>
 		</div>
