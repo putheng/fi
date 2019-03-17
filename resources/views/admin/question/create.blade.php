@@ -72,9 +72,16 @@
     <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
         <label for="titleKh" class="col-md-2 control-label">{{ __('questions.title_kn') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="titleKh" type="text" id="titleKh">
+            <input class="form-control" value="{{ old('titleKh') }}" name="titleKh" type="text" id="titleKh">
             @if($errors->has('titleKh'))
                 <span class="help-block">{{ $errors->first('titleKh') }}</span>
+            @endif
+        </div>
+
+        <div class="col-md-2">
+            <input class="form-control" value="{{ old('subtitle') }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
+            @if($errors->has('subtitle'))
+                <span class="help-block">{{ $errors->first('subtitle') }}</span>
             @endif
         </div>
     </div>
@@ -82,9 +89,16 @@
     <div class="form-group {{ $errors->has('titleEn') ? ' has-error' : '' }}">
         <label for="titleEn" class="col-md-2 control-label">{{ __('questions.title_en') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="titleEn" type="text" id="titleEn">
+            <input class="form-control" value="{{ old('titleEn') }}" name="titleEn" type="text" id="titleEn">
             @if($errors->has('titleEn'))
                 <span class="help-block">{{ $errors->first('titleEn') }}</span>
+            @endif
+        </div>
+
+        <div class="col-md-2">
+            <input class="form-control" value="{{ old('subtitleEn') }}" name="subtitleEn" type="text" id="subtitleEn" placeholder="Sub title">
+            @if($errors->has('subtitleEn'))
+                <span class="help-block">{{ $errors->first('subtitleEn') }}</span>
             @endif
         </div>
     </div>

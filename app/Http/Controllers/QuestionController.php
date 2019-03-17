@@ -27,10 +27,12 @@ class QuestionController extends Controller
     {
     	$this->validate($request, [
     		'titleKh' => 'required|unique:questions',
-    		'titleEn' => 'required|unique:questions'
+            'titleEn' => 'required|unique:questions',
+            'subtitle' => 'required|unique:questions',
+    		'subtitleEn' => 'required|unique:questions',
     	]);
 
-    	$question = Question::create($request->only('titleKh', 'titleEn', 'type'));
+    	$question = Question::create($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         if(!empty($request->image)){
             $image = Image::find($request->image);

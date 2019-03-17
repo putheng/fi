@@ -11,7 +11,9 @@ class Question extends Model
     protected $fillable = [
     	'titleKh',
     	'titleEn',
-    	'type'
+    	'type',
+        'shortEn',
+        ''
     ];
 
     public function answers()
