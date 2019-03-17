@@ -316,6 +316,10 @@ label.list-group-item.font-sr {
     .breadcrumb>.active {
         display: inline-block;
     }
+
+    .img-responsive{
+        display: none !important;
+    }
 }
 
 .alway-show{
