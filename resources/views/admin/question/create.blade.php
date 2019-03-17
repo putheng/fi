@@ -72,9 +72,9 @@
     <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
         <label for="titleKh" class="col-md-2 control-label">{{ __('questions.title_kn') }}</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ old('titleKh') }}" name="titleKh" type="text" id="titleKh">
+            <input class="form-control font-sr" value="{{ old('titleKh') }}" name="titleKh" type="text" id="titleKh">
             @if($errors->has('titleKh'))
-                <span class="help-block">{{ $errors->first('titleKh') }}</span>
+                <span class="help-block font-sr">{{ $errors->first('titleKh') }}</span>
             @endif
         </div>
 

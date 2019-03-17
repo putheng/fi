@@ -80,9 +80,9 @@
         </div>
 
         <div class="col-md-2">
-            <input class="form-control" value="{{ $question->subtitle }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
+            <input class="form-control font-sr" value="{{ $question->subtitle }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
             @if($errors->has('subtitle'))
-                <span class="help-block">{{ $errors->first('subtitle') }}</span>
+                <span class="help-block font-sr">{{ $errors->first('subtitle') }}</span>
             @endif
         </div>
     </div>
