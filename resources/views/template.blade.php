@@ -24,7 +24,7 @@
 								src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" 
 								width="30" height="30" class="d-inline-block align-top" alt=""
 							>
-							Stepper
+							Logo
 						</a>
 					</div>
 					<form class="navbar-form">
@@ -156,11 +156,9 @@
 	      answers: [],
 	      answer: {},
 	      registration: {
-	        question1: [],
-	        question2: [],
-	        question3: [],
-	        question4: [],
-	        question5: [],
+	      	@foreach($questions as $keys => $question)
+		        question{{ $keys + 1 }}: [],
+	        @endforeach
 	      }
 	  }),
 	  methods:{
