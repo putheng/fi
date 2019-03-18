@@ -228,6 +228,8 @@ question{{ $keys + 1 }}: [],
 
 	    	const id = index + 1
 
+	    	// console.log(this.registration["question"+ id])
+
 	    	if(id === 2 && this.registration.question1.length === 0){
 	    		return
 	    	}else if(id === 3 && this.registration.question2.length === 0){
