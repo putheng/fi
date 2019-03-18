@@ -254,6 +254,12 @@ code {
     color: transparent;
     font-weight: bold;
 }
+.list-group input[type="radio"]:checked + .tick:before {
+    margin-right: 1em;
+    content: "\2713";
+    color: transparent;
+    font-weight: bold;
+}
 .answer {
     width: 90%;
     position: relative;
@@ -282,7 +288,7 @@ label.list-group-item:hover {
     color: #FFF;
   }
 
-.list-group input[type="checkbox"]:checked + .list-group-item {
+.list-group input[type="radio"]:checked + .list-group-item {
     background-color: #e047fd;
     color: #FFF;
   }  
@@ -303,6 +309,9 @@ label.list-group-item:hover {
 .list-group input[type="checkbox"] + .list-group-item:before {
 
 }
+.list-group input[type="radio"] + .list-group-item:before {
+
+}
 
 .list-group input[type="checkbox"]:checked + .list-group-item {
     background-color: #e047fd;
@@ -315,9 +324,20 @@ label.list-group-item:hover {
     color: transparent;
     font-weight: bold;
 }
-
 .list-group input[type="checkbox"]:checked + .list-group-item:before {
-  color: inherit;
+    color: inherit;
+}
+.list-group input[type="radio"]:checked + .list-group-item:before {
+    margin-right: 1em;
+    content: "\2713";
+    color: transparent;
+    font-weight: bold;
+}
+.list-group input[type="radio"]:checked + .list-group-item:before {
+    color: inherit;
+  }
+.list-group input[type="radio"]:checked + .list-group-item:before {
+color: inherit;
 }
 
 .list-group input[type="radio"] {
@@ -328,7 +348,7 @@ label.list-group-item:hover {
   cursor: pointer;
 }
 
-.list-group input[type="radio"] + .list-group-item:before {
+.list-group input[type="radio"]:checked + div.tick:before {
   content: "\2713";
   color: transparent;
   font-weight: bold;
@@ -340,7 +360,7 @@ label.list-group-item:hover {
     color: #FFF;
 }
 
-.list-group input[type="radio"]:checked + .list-group-item:before {
+.list-group input[type="radio"]:checked + div.tick:before {
   color: inherit;
 }
 
