@@ -15,7 +15,7 @@ return array(
 	'code'			=> 'Code',
 	'name'			=> 'Name',
 	'name_lang1'	=> 'Name (English)',
-	'name_lang2'	=> 'Name (Hindi)',
+	'name_lang2'	=> 'Name (Khmer)',
 	'sort_index'	=> 'Sort',
 	'gps_lat'		=> 'Latitude',
 	'gps_long'		=> 'Longitude',

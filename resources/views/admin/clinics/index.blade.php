@@ -74,6 +74,9 @@
                                 <th style="width: 5%">
                                     @lang('clinics/title.is_enabled')
                                 </th>
+                                <th style="width: 5%">
+                                    Type
+                                </th>
                                 <th style="min-width: 110px">
                                     @lang('clinics/title.view_res_title')
                                 </th>
@@ -110,6 +113,9 @@
                                         @if($clinic->is_enabled)
                                             <img src='{{  asset('assets/img/chk_true32.png') }}' height='16' >
                                         @endif
+                                    </td>
+                                    <td>
+                                        {{ $clinic->type }}
                                     </td>
                                     <td>
                                         @if($clinic->id == 0)

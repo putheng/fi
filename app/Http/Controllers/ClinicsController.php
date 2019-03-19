@@ -32,7 +32,7 @@ class ClinicsController extends BaseController
 
         //Select clinics and reservations counts
         $allDesc = Lang::get("clinics/title.clinic_all");
-        $sql = "SELECT c.id, s.sort_index AS site_sort_index, c.sort_index AS clinic_sort_index, IFNULL(c.name$suff, c.name) as name, IFNULL(s.name$suff, s.name) as site_name, c.is_enabled, " .
+        $sql = "SELECT c.type, c.id, s.sort_index AS site_sort_index, c.sort_index AS clinic_sort_index, IFNULL(c.name$suff, c.name) as name, IFNULL(s.name$suff, s.name) as site_name, c.is_enabled, " .
             " SUM(IF(r.res_date > '$currDate', 1, 0)) as future_res,  " .
             " SUM(IF(r.res_date <= '$currDate', 1, 0)) as old_res_total,  " .
             " SUM(IF(r.res_date <= '$currDate' and (r.screened_status = " . ORAConsts::RES_SCREENED_STATUS_NEGATIVE . " or r.confirmed_status != " . ORAConsts::RES_CONFIRMED_STATUS_EMPTY . "), 1, 0)) as old_res_completed  " .

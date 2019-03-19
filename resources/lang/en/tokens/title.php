@@ -35,6 +35,6 @@ return array(
     'skip_risk_assessment'  => 'Skip risk assessment',
 
     'fe_welcome_text_default' => 'Welcome! It is so quick and easy to make a reservation to get tested. Just follow the steps below.',
-    'fe_welcome_text_lang2_default' => 'स्वागत है ! परीक्षण कराने के लिए आरक्षण करना बहुत आसान और जल्दी होने वाला है। आप बस नीचे दिए निर्देशों का पालन करें।',
+    'fe_welcome_text_lang2_default' => 'Welcome Khmer',
 
 );
