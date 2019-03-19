@@ -27,7 +27,7 @@ return array(
     'res_completed'         => 'Past Res. (Completed)',
 
     'code'                  => 'Code',
-    'site_id'               => 'Site',
+    'site_id'               => 'Address',
     'chain_id'              => 'Chain',
     'email'                 => 'E-Mail',
     'phone_num'             => 'Phone Num.',
