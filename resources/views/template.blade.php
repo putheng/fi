@@ -119,7 +119,7 @@
 										</label>
 									@endforeach
 									<br>
-									<a href="#" @click="next" class="btn btn-primary font-sr pull-right">
+									<a href="#" @click="nextContinue" class="btn btn-primary font-sr pull-right">
 										{{ __('page.next') }}
 									</a>
 								@endif
@@ -174,6 +174,30 @@ question{{ $keys + 1 }}: [],
 	  }),
 	  methods:{
 	  	next(){
+
+	  		if(this.step <= this.stepLength){
+	  			setTimeout(() => {
+				   this.step++
+				}, 300)
+	  		}
+
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
+
+			var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
+	  	},
+	  	nextContinue(){
+
+	  		if(this.registration["question"+ this.step].length == 0){
+	  			return
+	  		}
 
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
