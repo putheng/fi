@@ -44,8 +44,23 @@
                     </h4>
 
                     <div class="pull-right">
-                        <a href="{{ route('admin.clinics.create') }}" class="btn btn-sm btn-default"><span
-                                    class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
+                        <a href="{{ route('admin.clinics.create') }}"
+                            class="btn btn-sm btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            @lang('button.create')
+                        </a>
+
+                        <a href="{{ route('admin.clinics.export') }}"
+                            class="btn btn-sm btn-default">
+                            <span class="glyphicon glyphicon-download"></span>
+                            Export
+                        </a>
+
+                        <a href="{{ route('admin.clinics.import') }}"
+                            class="btn btn-sm btn-default">
+                            <span class="glyphicon glyphicon-upload"></span>
+                            Import
+                        </a>
                     </div>
                 </div>
 

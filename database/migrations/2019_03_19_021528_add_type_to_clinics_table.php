@@ -14,7 +14,7 @@ class AddTypeToClinicsTable extends Migration
     public function up()
     {
         Schema::table('clinics', function (Blueprint $table) {
-            $table->string('type')->after('is_enabled')->nullable();
+            $table->integer('type')->after('is_enabled')->default('1');
         });
     }
 

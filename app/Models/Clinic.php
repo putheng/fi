@@ -24,7 +24,7 @@ class Clinic extends Model
         'location_desc', 'address_desc', 'directions_desc',
         'email', 'phone_num',
         'website_url', 'video_url', 'logo_url', 'forward_url',
-        'res_notes', 'res_time_slot_length', 'sort_index', 'is_enabled',
+        'res_notes', 'res_time_slot_length', 'sort_index', 'is_enabled', 'type',
         'res_options', 'res_options_text', 'res_options_text_lang2',
         'days_visible',
         'created_at', 'updated_at', 'deleted_at',

@@ -85,6 +85,7 @@ class ClinicsController extends BaseController
     {
         DB::transaction(function () use ($request) {
             $clinic = new Clinic($request->except('_token'));
+            
             $clinic->fill($request->except('_method', '_token'));
             //Special handling for checkboxes. When unchecked they are not passed to the request
             $clinic->is_enabled = isset($request['is_enabled']) ? $request['is_enabled'] : 0;
@@ -108,6 +109,7 @@ class ClinicsController extends BaseController
             //Create default holidays
             $sql = "insert into clinics_holidays (clinic_id,holiday_name,holiday_date,is_recurring) " .
                 " select " . $clinic->id . ",holiday_name,holiday_date,is_recurring from default_holidays";
+            
             DB::insert($sql);
 
             //Create default working days

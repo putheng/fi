@@ -1,18 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-/**
- * Model binding into route
- */
 Route::get('/template', 'HomeController@template');
 
 Route::model('users', 'App\Models\User');
@@ -162,6 +149,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     # Clinics
     Route::group(array('prefix' => 'clinics', 'middleware' => 'permission_admin'), function () {
         Route::get('/', ['as' => 'clinics.index', 'uses' => 'ClinicsController@index']);
+
+        Route::get('/export', ['as' => 'clinics.export', 'uses' => 'ClinicsExportController@export']);
+        Route::get('/import', ['as' => 'clinics.import', 'uses' => 'ClinicsExportController@index']);
+        Route::post('/import', ['uses' => 'ClinicsExportController@import']);
+
         Route::post('data', ['as' => 'clinics.data', 'uses' => 'ClinicsController@data']);
         Route::get('{clinic}/delete', array('as' => 'clinics.delete', 'uses' => 'ClinicsController@delete'));
         Route::get('{clinic}/confirm-delete', array('as' => 'clinics.confirm-delete', 'uses' => 'ClinicsController@getModalDelete'));

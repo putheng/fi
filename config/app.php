@@ -170,6 +170,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Local Service Provider to load development related packages
@@ -235,6 +236,7 @@ return [
 
         /*
          * Third party aliases
+         * 
          */
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
@@ -245,7 +247,8 @@ return [
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'ORAHelper'       => 'App\Http\Common\ORAHelper',
-        'ORAConsts'       => 'App\Http\Common\ORAConsts'
+        'ORAConsts'       => 'App\Http\Common\ORAConsts',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

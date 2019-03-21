@@ -6,15 +6,16 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "box/spout": "^2.7",
+        "cartalyst/sentinel": "2.0.*",
+        "ied3vil/language-switcher": "^1.1.1",
+        "intervention/image": "dev-master",
+        "itsjavi/bootstrap-colorpicker": "^2.5",
         "laravel/framework": "5.5.*",
         "laravelcollective/html": "5.5.*",
-        "cartalyst/sentinel": "2.0.*",
-        "yajra/laravel-datatables-oracle": "~6.0",
-        "intervention/image" :"dev-master",
-        "box/spout": "^2.7",
-        "itsjavi/bootstrap-colorpicker": "^2.5",
+        "maatwebsite/excel": "3.1",
         "simplesoftwareio/simple-qrcode": "~1",
-        "ied3vil/language-switcher": "^1.1.1"
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "symfony/css-selector": "3.*.*",
