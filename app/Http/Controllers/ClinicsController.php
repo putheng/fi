@@ -46,7 +46,7 @@ class ClinicsController extends BaseController
             $sql .= " and c.site_id = $user->site_id ";
         }
 
-        $sql .= " GROUP BY id, name, site_name, is_enabled, s.sort_index, c.sort_index " .
+        $sql .= " GROUP BY id, name, site_name, is_enabled, s.sort_index, c.type, c.sort_index " .
             " ORDER BY site_sort_index, clinic_sort_index, name ";
 
         $clinics = DB::select($sql);

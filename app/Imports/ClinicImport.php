@@ -40,7 +40,7 @@ class ClinicImport implements ToModel
             'res_notes_lang2'       => $this->ifNull($row[21]),
             'res_time_slot_length'  => $this->ifNull($row[22]),
             'sort_index'        => $this->ifNull($row[23]),
-            'is_enabled'        => $this->ifNull($row[24]),
+            'is_enabled'        => 0,
             'type'              => $this->ifNull($row[25]),
             'res_options'       => $this->ifNull($row[26]),
             'res_options_text'  => $this->ifNull($row[27]),
