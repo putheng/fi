@@ -187,14 +187,14 @@ question{{ $keys + 1 }}: [],
 
 			var total = [].concat
 	    			.apply([], values)
-	    			.reduce(function(a, b) { return +a + +b });
+	    			.reduce(function(a, b) { return +a + +b })
 
 	    	this.answer = this.answers.filter((key, item) => {
 	    		return total >= key.from && total <= key.to
 	    	})[0]
 	  	},
 	  	nextContinue(){
-
+	  		console.log(this.registration["question"+ this.step].length)
 	  		if(this.registration["question"+ this.step].length == 0){
 	  			return
 	  		}
