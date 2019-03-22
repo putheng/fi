@@ -2,7 +2,7 @@
 
 use App\Http\Requests\SiteRequest;
 use App\Models\Site;
-use Datatables;
+use DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
@@ -36,12 +36,14 @@ class SitesController extends BaseController
 
         $records = $query->get();
 
-        return Datatables::of($records)
-            ->add_column('actions', function ($site) {
+        return DataTables::of($records)
+            ->addColumn('actions', function ($site) {
                 return
                     $this->getGridEditButton(route('admin.sites.edit', $site->id)) .
                     $this->getGridDeleteButton(route('admin.sites.confirm-delete', $site->id));
-            })->make(true);
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 
     public function create()

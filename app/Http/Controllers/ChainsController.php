@@ -2,7 +2,7 @@
 
 use App\Http\Requests\ChainRequest;
 use App\Models\Chain;
-use Datatables;
+use DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
@@ -36,12 +36,14 @@ class ChainsController extends BaseController
 
         $records = $query->get();
 
-        return Datatables::of($records)
-            ->add_column('actions', function ($chain) {
+        return DataTables::of($records)
+            ->addColumn('actions', function ($chain) {
                 return
                     $this->getGridEditButton(route('admin.chains.edit', $chain->id)) .
                     $this->getGridDeleteButton(route('admin.chains.confirm-delete', $chain->id));
-            })->make(true);
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 
     public function create()
