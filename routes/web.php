@@ -5,6 +5,7 @@ Route::get('/template', 'HomeController@template');
 Route::model('users', 'App\Models\User');
 
 Route::get('/', 'HomeController@index');
+Route::get('/map', 'HomeController@map');
 
 Route::group(array('prefix' => 'admin'), function () {
 
