@@ -11,9 +11,9 @@
 
       <form action="#" method="post">
         <label for="maxRadius">Find locations within
-          <input name="maxRadius" id="maxRadius" type="number" value="10" min="1" />
+          <input name="maxRadius" id="maxRadius" type="number" value="1000" min="1" />
         </label>
-        <label for="userAddress"> miles of
+        <label for="userAddress"> Meters of
           <input name="userAddress" id="userAddress" type="text" placeholder="Your Address" value="Calmette Hospital"/>
         </label>
         <button id="submitLocationSearch">Search</button>
@@ -26,10 +26,24 @@
       <div id="locations-near-you"></div>
 
 <br><br><br><br>
-      <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{ env('GOOGLE_MAP') }}&callback=createSearchableMap"></script>
+      <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{ env('GOOGLE_MAP') }}&callbackx=createSearchableMap"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/allLocations.js"></script>
+    <script>
+      $(document).ready(function(){
+          $.get('/data', {}, function(data){
+            createSearchableMap(data.data);
+          });
+      });
+
+    $('#submitLocationSearch').on('click', function(e) {
+      e.preventDefault();
+        $.get('/data', {}, function(data){
+          
+          filterLocations(data.data);
+        });
+    });
+    </script>
       <script src="/js/createSearchableMap.js"></script>
     </div>
   </body>

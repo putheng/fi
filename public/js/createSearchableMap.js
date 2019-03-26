@@ -1,4 +1,4 @@
-function createSearchableMap(locations = allLocations) {
+function createSearchableMap(locations) {
   var bounds = new google.maps.LatLngBounds();
   var mapOptions = {mapTypeId: 'roadmap'};
   var markers = [];
@@ -48,17 +48,18 @@ function createSearchableMap(locations = allLocations) {
   }
 }
 
-function filterLocations() {
+function filterLocations(allLocations) {
   var userLatLng;
   var geocoder = new google.maps.Geocoder();
   var userAddress = document.getElementById('userAddress').value.replace(/[^a-z0-9\s]/gi, '');
   var maxRadius = parseInt(document.getElementById('maxRadius').value, 10);
   
   if (userAddress && maxRadius) {
-    userLatLng = getLatLngViaHttpRequest(userAddress);
-  } 
+    userLatLng = getLatLngViaHttpRequest(allLocations, userAddress);
+  }
 
-  function getLatLngViaHttpRequest(address) {
+  function getLatLngViaHttpRequest(allLocations, address) {
+    
     // Set up a request to the Geocoding API
     // Supported address format is City, City + State, just a street address, or any combo
     var addressStripped = address.split(' ').join('+');
@@ -82,11 +83,11 @@ function filterLocations() {
       if (filteredLocations.length > 0) {
         createSearchableMap(filteredLocations);
         createListOfLocations(filteredLocations);
-        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + maxRadius + ' miles of ' + userAddress + ':';
+        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + maxRadius + ' meters of ' + userAddress + ':';
       } else {
         console.log("nothing found!");
         document.getElementById('locations-near-you').innerHTML = '';
-        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ maxRadius + ' miles of ' + userAddress + '.';
+        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ maxRadius + ' meters of ' + userAddress + '.';
       }
 
       function isWithinRadius(location) {
@@ -100,7 +101,8 @@ function filterLocations() {
 }
 
 function convertMetersToMiles(meters) {
-  return (meters * 0.000621371);
+  return meters;
+  // return (meters * 0.000621371);
 }
 
 function createListOfLocations(locations) {
@@ -118,8 +120,3 @@ function createListOfLocations(locations) {
     locationsList.appendChild(specificLocation);
   });
 }
-
-$('#submitLocationSearch').on('click', function(e) {
-  e.preventDefault();
-  filterLocations();
-});
