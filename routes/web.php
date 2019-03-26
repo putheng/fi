@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/template', 'HomeController@template');
+Route::get('/data', 'HomeController@data');
 
 Route::model('users', 'App\Models\User');
 
