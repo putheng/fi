@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use MongoClient;
 use App\Models\Clinic;
 use App\Models\Question;
 use App\Models\Result;
@@ -33,9 +34,21 @@ class HomeController extends Controller
         return view('home.show', compact('questions', 'results'));
     }
 
-    public function map()
+    public function mapz()
     {
-        // $mongo = \DB::connection('mongodb')->table('locations')->delete();
+        $mongo = \DB::connection('mongodb')->table('locations')->get();
+
+        return $mongo->toArray();
+    }
+
+    public function mapx()
+    {
+        $mongo = new MongoClient('mongodb://localhost:27017');
+    }
+
+    public function mapa()
+    {
+        
         $mongo = \DB::connection('mongodb');
 
         $lat = 11.548109;
@@ -51,7 +64,7 @@ class HomeController extends Controller
                     (float) $lng
                 ],
             ],
-            'spherical' => true,
+            'sphercial' => true,
             'maxDistance' => $distance,
         ]);
 
@@ -60,7 +73,7 @@ class HomeController extends Controller
         dd($locations);
     }
 
-    public function mapx()
+    public function map()
     {
         $clinics = Clinic::select(
             'name',
@@ -86,6 +99,8 @@ class HomeController extends Controller
             ]);
         });
 
+        return $mongo->get()->toArray();
+        
         // $mongo->createIndex(['location' => '2dsphere']);
         // return view('home.map', compact('clinics'));
     }
