@@ -66,12 +66,20 @@
 						<div class="form-filter">
 							<div class="form-group">
 								<label class="control-label">Locations</label>
-								<input type="text" name="" class="form-control">
+								<select class="form-control">
+									<option>My current location</option>
+									<option>Phnom Penh</option>
+									<option>Province</option>
+								</select>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label">Type</label>
-								<input type="text" name="" class="form-control">
+								<select class="form-control">
+									<option>Private</option>
+									<option>Public</option>
+									<option>NGO</option>
+								</select>
 							</div>
 
 							<div class="form-group">
