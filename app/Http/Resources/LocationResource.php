@@ -26,13 +26,3 @@ class LocationResource extends Resource
         ];
     }
 }
-
-
-// name: "Chipotle Campbell Blvd",
-// lat: 39.1954722,
-// lng: -76.6161568,
-// address: "5341 Campbell Blvd",
-// city: "Baltimore",
-// state: "MD",
-// zip: "21236",
-// phone: "(555) 555-5555",

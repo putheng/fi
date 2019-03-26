@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/js/style.css?v={{ time() }}">
   </head>
   <body>
-    <div class="content">
+    <div id="app" class="content">
 
       <form action="#" method="post">
         <label for="maxRadius">Find locations within
@@ -25,11 +25,14 @@
 
       <div id="locations-near-you"></div>
 
+      <button onclick="getLocation()">Try It</button>
+</div>
+<p id="demo"></p>
 <br><br><br><br>
       <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{ env('GOOGLE_MAP') }}&callbackx=createSearchableMap"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+<script>
       $(document).ready(function(){
           $.get('/data', {}, function(data){
             createSearchableMap(data.data);
@@ -43,8 +46,23 @@
           filterLocations(data.data);
         });
     });
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
     </script>
       <script src="/js/createSearchableMap.js"></script>
-    </div>
+    
   </body>
 </html> 
