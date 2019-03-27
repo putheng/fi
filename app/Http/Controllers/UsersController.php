@@ -22,7 +22,7 @@ use Redirect;
 use Sentinel;
 use URL;
 use View;
-use Datatables;
+use DataTables;
 use Validator;
 
 class UsersController extends BaseController
@@ -61,20 +61,22 @@ class UsersController extends BaseController
             )
             ->get();
 
-        return Datatables::of($users)
-            ->edit_column('role_name', function ($user) {
+        return DataTables::of($users)
+            ->editColumn('role_name', function ($user) {
                 if ($user->role_code == "admin") {
                     return '<span class="label label-sm label-danger label-mini">' . $user->role_name . '</span>';
                 }
                 return '<span class="label label-sm label-info label-mini">' . $user->role_name . '</span>';
             })
-            ->add_column('actions', function ($user) {
+            ->addColumn('actions', function ($user) {
                 $actions = $this->getGridEditButton(route('admin.users.edit', $user->id));
                 if ((Sentinel::getUser()->id != $user->id) && ($user->id != 1)) {
                     $actions .= $this->getGridDeleteButton(route('admin.users.confirm-delete', $user->id));
                 }
                 return $actions;
-            })->make(true);
+            })
+            ->rawColumns(['role_name', 'actions'])
+            ->make(true);
     }
 
     public function create()
