@@ -52,8 +52,9 @@ function filterLocations(allLocations) {
   var userLatLng;
   var geocoder = new google.maps.Geocoder();
   var userAddress = document.getElementById('userAddress').value.replace(/[^a-z0-9\s]/gi, '');
-  var kilomatter = ($('#matterRange').val() * 1000);
-  var maxRadius = parseInt(kilomatter, 10);
+  var matters = ($('#matterRange').val() * 1000);
+  var killomatter = $('#matterRange').val();
+  var maxRadius = parseInt(matters, 10);
   
   if (userAddress && maxRadius) {
     userLatLng = getLatLngViaHttpRequest(allLocations, userAddress);
@@ -84,11 +85,11 @@ function filterLocations(allLocations) {
       if (filteredLocations.length > 0) {
         createSearchableMap(filteredLocations);
         createListOfLocations(filteredLocations);
-        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + maxRadius + ' km of ' + userAddress + ':';
+        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + killomatter + ' km of ' + userAddress + ':';
       } else {
         searchResultsAlert.innerHTML = 'Nothing found!';
         document.getElementById('locations-near-you').innerHTML = '';
-        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ maxRadius + ' km of ' + userAddress + '.';
+        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ killomatter + ' km of ' + userAddress + '.';
       }
 
       function isWithinRadius(location) {
