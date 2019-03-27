@@ -24,9 +24,12 @@ class ClinicsExportController extends Controller
 
     public function import(Request $request) 
     {
-    	// dd($request->file('excel'));
-        Excel::import(new ClinicImport, $request->file('excel'));
+    	try{
+            Excel::import(new ClinicImport, $request->file('excel'));
+        }catch(Exception $e){
+
+        }
         
-        return back()->with('success', 'All good!');
+        return back()->with('success', 'import successfully');
     }
 }
