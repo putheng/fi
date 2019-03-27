@@ -35,9 +35,11 @@ class HomeController extends Controller
         return view('home.show', compact('questions', 'results'));
     }
 
-    public function data()
+    public function data(Request $request)
     {
-        return LocationResource::collection(Clinic::get());
+        $clinics = Clinic::filter()->get();
+
+        return LocationResource::collection($clinics);
     }
 
     public function map()

@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Http\Common\ORAConsts;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Sentinel;
 
 class Clinic extends Model
@@ -217,6 +218,15 @@ class Clinic extends Model
         }
 
         return $attributes;
+    }
+
+    public function scopeFilter(Builder $q)
+    {
+        if(request('type') == 'All' || empty(request('type'))){
+            return $q;
+        }
+
+        return $q->where('type', request('type'));
     }
 
 }

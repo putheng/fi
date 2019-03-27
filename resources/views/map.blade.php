@@ -70,18 +70,19 @@
 									<div class="form-group">
 										<label class="control-label">Locations</label>
 										<select id="userAddress" class="form-control">
-											<option>My current location</option>
-											<option>Phnom Penh</option>
-											<option>Province</option>
+											<option value="My current location">My current location</option>
+											<option value="Phnom Penh">Phnom Penh</option>
+											<option value="Province">Province</option>
 										</select>
 									</div>
 
 									<div class="form-group">
 										<label class="control-label">Type</label>
-										<select class="form-control">
-											<option>Private</option>
-											<option>Public</option>
-											<option>NGO</option>
+										<select id="type" class="form-control">
+											<option value="">All</option>
+											<option value="Private">Private</option>
+											<option value="Public">Public</option>
+											<option value="NGO3">NGO</option>
 										</select>
 									</div>
 
@@ -120,7 +121,7 @@
 <script src="/js/createSearchableMap.js?v=2"></script>
 <script>
 	function formatNumber(num) {
-	  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+		return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 	}
 	$('#matterRange').on('change', function(){
 		var currentMatter = $(this).val();
@@ -128,17 +129,19 @@
 
 		$('#currentMatter').text(currentMatter);
 	});
-      $(document).ready(function(){
-          $.get('/data', {}, function(data){
-            createSearchableMap(data.data);
-          });
-      });
+      	$(document).ready(function(){
+        	$.get('/data', {}, function(data){
+            	createSearchableMap(data.data);
+        	});
+      	});
 
     $('#submitLocationSearch').on('click', function(e) {
-      e.preventDefault();
-        $.get('/data', {}, function(data){
+    	var type = $('#type').val();
+
+      	e.preventDefault();
+        	$.get('/data', {type:type}, function(data){
           
-          filterLocations(data.data);
+          	filterLocations(data.data);
         });
     });
 
