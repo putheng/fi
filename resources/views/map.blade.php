@@ -62,32 +62,41 @@
 		<div class="innerHTML">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 pull-right">
-						<div class="form-filter">
-							<div class="form-group">
-								<label class="control-label">Locations</label>
-								<select class="form-control">
-									<option>My current location</option>
-									<option>Phnom Penh</option>
-									<option>Province</option>
-								</select>
-							</div>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="row">
+							<div class="col-md-4 pull-right">
+								<div class="form-filter">
+									<p id="location-search-alert"></p>
+									<div class="form-group">
+										<label class="control-label">Locations</label>
+										<select id="userAddress" class="form-control">
+											<option>My current location</option>
+											<option>Phnom Penh</option>
+											<option>Province</option>
+										</select>
+									</div>
 
-							<div class="form-group">
-								<label class="control-label">Type</label>
-								<select class="form-control">
-									<option>Private</option>
-									<option>Public</option>
-									<option>NGO</option>
-								</select>
-							</div>
+									<div class="form-group">
+										<label class="control-label">Type</label>
+										<select class="form-control">
+											<option>Private</option>
+											<option>Public</option>
+											<option>NGO</option>
+										</select>
+									</div>
 
-							<div class="form-group">
-								<label>
-									Kilometer from you
-									<strong id="currentMatter">1</strong>km
-								</label>
-								<input type="range" id="matterRange" value="1">
+									<div class="form-group">
+										<label class="control-label">
+											Kilometer from you
+											<strong id="currentMatter">10</strong>km
+										</label>
+										<input type="range" id="matterRange" value="10">
+									</div>
+									<br>
+									<div class="form-group">
+										<button id="submitLocationSearch" class="btn btn-primary btn-block">Filter Now</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -95,22 +104,30 @@
 			</div>
 		</div>
 		<div class="container-fluit" id="locations-near-you-map"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div id="locations-near-you"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{ env('GOOGLE_MAP') }}&callbackx=createSearchableMap"></script>
+<script src="/js/createSearchableMap.js?v=2"></script>
 <script>
-function formatNumber(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-}
-$('#matterRange').on('change', function(){
-	var currentMatter = $(this).val();
-	var formated = formatNumber(currentMatter);
+	function formatNumber(num) {
+	  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+	}
+	$('#matterRange').on('change', function(){
+		var currentMatter = $(this).val();
+		var formated = formatNumber(currentMatter);
 
-	$('#currentMatter').text(currentMatter);
-});
+		$('#currentMatter').text(currentMatter);
+	});
       $(document).ready(function(){
           $.get('/data', {}, function(data){
             createSearchableMap(data.data);
@@ -140,7 +157,6 @@ function showPosition(position) {
   "<br>Longitude: " + position.coords.longitude;
 }
     </script>
-      <script src="/js/createSearchableMap.js"></script>
     
   </body>
 </body>

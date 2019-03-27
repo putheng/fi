@@ -52,7 +52,8 @@ function filterLocations(allLocations) {
   var userLatLng;
   var geocoder = new google.maps.Geocoder();
   var userAddress = document.getElementById('userAddress').value.replace(/[^a-z0-9\s]/gi, '');
-  var maxRadius = parseInt(document.getElementById('maxRadius').value, 10);
+  var kilomatter = ($('#matterRange').val() * 1000);
+  var maxRadius = parseInt(kilomatter, 10);
   
   if (userAddress && maxRadius) {
     userLatLng = getLatLngViaHttpRequest(allLocations, userAddress);
@@ -83,11 +84,11 @@ function filterLocations(allLocations) {
       if (filteredLocations.length > 0) {
         createSearchableMap(filteredLocations);
         createListOfLocations(filteredLocations);
-        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + maxRadius + ' meters of ' + userAddress + ':';
+        searchResultsAlert.innerHTML = 'Chipotle Locations within ' + maxRadius + ' km of ' + userAddress + ':';
       } else {
-        console.log("nothing found!");
+        searchResultsAlert.innerHTML = 'Nothing found!';
         document.getElementById('locations-near-you').innerHTML = '';
-        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ maxRadius + ' meters of ' + userAddress + '.';
+        searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ maxRadius + ' km of ' + userAddress + '.';
       }
 
       function isWithinRadius(location) {
@@ -114,8 +115,8 @@ function createListOfLocations(locations) {
   locations.forEach( function(location) {
     var specificLocation = document.createElement('div');
     var locationInfo = "<h4>" + location.name + "</h4><p>" + location.address + "</p>" +
-                       "<p>"  + location.city + ", " + location.state + " " + location.zip + "</p><p>" + location.phone + "</p>";
-    specificLocation.setAttribute("class", 'location-near-you-box');
+                       "<p>"  + location.city + ", " + location.state + " " + location.zip + "</p><p>" + location.phone + "</p><hr>";
+    specificLocation.setAttribute("class", 'location-near-you-box font-sr');
     specificLocation.innerHTML = locationInfo;
     locationsList.appendChild(specificLocation);
   });
