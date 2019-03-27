@@ -10,7 +10,7 @@ function createSearchableMap(locations) {
   locations.forEach(function(location) {
     markers.push([location.name, location.lat, location.lng]);
     
-    infoWindowContent.push(['<div class="infoWindow"><h3>' + location.name + 
+    infoWindowContent.push(['<div class="infoWindow"><h3 class="font-sr">' + location.name + 
                             '</h3><p>' + location.address + '<br />' + location.city + 
                             ', ' + location.state + ' ' + location.zip + '</p><p>Phone ' + 
                             location.phone + '</p></div>']);
