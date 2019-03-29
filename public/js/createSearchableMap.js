@@ -169,7 +169,7 @@ function createListOfLocations(locations) {
   locations.forEach( function(location) {
     var specificLocation = document.createElement('div');
     var locationInfo = "<div class='row'><div class='col-md-9'><h4>" + location.name + "</h4><p>" + location.address + "</p>" +
-                       "<p>"  + location.city + "</p><p>" + location.phone + " "+ location.email +"</p></div><div class='col-md-3'><a class='btn btn-info' href='#'>Book Appointment</a></div></div><hr>";
+                       "<p>"  + location.city + "</p><p>" + location.phone + " "+ location.email +"</p></div><div class='col-md-3'><a class='btn booking text-white' href='#'>Book Appointment</a></div></div><hr>";
     specificLocation.setAttribute("class", 'location-near-you-box font-sr');
     specificLocation.innerHTML = locationInfo;
     locationsList.appendChild(specificLocation);
