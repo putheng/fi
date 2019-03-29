@@ -4,10 +4,6 @@ Route::get('/template', 'HomeController@template');
 
 Route::get('/data', 'HomeController@data');
 
-Route::get('/test', function(){
-    return "Hello world.";
-});
-
 Route::model('users', 'App\Models\User');
 
 Route::get('/', 'HomeController@index');
