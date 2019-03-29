@@ -59,44 +59,46 @@
 <br>
 	<div class="map-wrapper">
 		<div class="innerHTML">
-<div class="form-filter">
-	<p id="location-search-alert"></p>
-	<div class="form-group">
-		<label class="control-label">Locations</label>
-		<select id="userAddress" class="form-control">
-			<option value="Your Location">My current location</option>
-			<option value="Wat Phnom">Wat Phnom</option>
-			<option value="Province">Province</option>
-		</select>
-	</div>
+			<div class="form-filter">
+				<p id="location-search-alert"></p>
+				<div class="form-group">
+					<label class="control-label">Locations</label>
+					<select id="userAddress" class="form-control">
+						<option value="Your Location">My current location</option>
+						<option value="Wat Phnom">Wat Phnom</option>
+						<option value="Province">Province</option>
+					</select>
+				</div>
 
-	<div class="form-group">
-		<label class="control-label">Type</label>
-		<select id="type" class="form-control">
-			<option value="">All</option>
-			<option value="Private">Private</option>
-			<option value="Public">Public</option>
-			<option value="NGO">NGO</option>
-		</select>
-	</div>
+				<div class="form-group">
+					<label class="control-label">Type</label>
+					<select id="type" class="form-control">
+						<option value="">All</option>
+						<option value="Private">Private</option>
+						<option value="Public">Public</option>
+						<option value="NGO">NGO</option>
+					</select>
+				</div>
 
-	<div class="form-group">
-		<label class="control-label">
-			Kilometer from you
-			<strong id="currentMatter">10</strong>km
-		</label>
-		<input type="range" id="matterRange" value="10">
-	</div>
-	<br>
-	<div class="form-group">
-		<button id="submitLocationSearch" class="btn btn-primary btn-block">Filter Now</button>
-	</div>
-</div>
+				<div class="form-group">
+					<label class="control-label">
+						Filter within kilometer:
+						<strong id="currentMatter">10</strong>km
+					</label>
+					<input type="range" id="matterRange" value="10">
+				</div>
+				<br>
+				<div class="form-group">
+					<button id="submitLocationSearch" class="btn btn-primary btn-block">Filter Now</button>
+				</div>
+			</div>
 		</div>
 		<div class="container-fluit" id="locations-near-you-map"></div>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
+					<h3 id="resultsLength"></h3>
 					<div id="locations-near-you"></div>
 				</div>
 			</div>

@@ -160,6 +160,7 @@ function convertMetersToMiles(meters) {
 }
 
 function createListOfLocations(locations) {
+  $('#resultsLength').html('About: '+ locations.length +' results<hr>');
   var locationsList = document.getElementById('locations-near-you');
   
   // Clear any existing locations from the previous search first
