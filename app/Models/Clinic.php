@@ -29,7 +29,8 @@ class Clinic extends Model
         'res_options', 'res_options_text', 'res_options_text_lang2',
         'days_visible',
         'created_at', 'updated_at', 'deleted_at',
-        'name_lang2', 'location_desc_lang2', 'address_desc_lang2', 'directions_desc_lang2', 'res_notes_lang2', 'gps_lat', 'gps_long'];
+        'name_lang2', 'location_desc_lang2', 'address_desc_lang2',
+        'directions_desc_lang2', 'res_notes_lang2', 'gps_lat', 'gps_long'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

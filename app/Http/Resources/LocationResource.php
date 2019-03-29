@@ -22,7 +22,7 @@ class LocationResource extends Resource
             'city' => $this->location_desc,
             'state' => 'PP',
             'zip' => '12855',
-            'phone' => '(555) 555-5555',
+            'phone' => $this->phone_num,
             'type' => $this->type
         ];
     }

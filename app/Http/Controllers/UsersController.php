@@ -84,6 +84,7 @@ class UsersController extends BaseController
         //Load additional data for select boxes
         $groups = Sentinel::getRoleRepository()->pluck('name', 'id')->all();
         $clinics = Clinic::getEnabled()->pluck('name', 'id')->all();
+
         $sites = Site::getEnabled()->pluck('name', 'id')->all();
 
         // Show the page

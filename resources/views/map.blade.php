@@ -6,7 +6,6 @@
 	<title>Stepper</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://www.jqueryscript.net/demo/Highly-Customizable-Range-Slider-Plugin-For-Bootstrap-Bootstrap-Slider/dist/css/bootstrap-slider.css" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]>
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -60,49 +59,39 @@
 <br>
 	<div class="map-wrapper">
 		<div class="innerHTML">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<div class="row">
-							<div class="col-md-4 pull-right">
-								<div class="form-filter">
-									<p id="location-search-alert"></p>
-									<div class="form-group">
-										<label class="control-label">Locations</label>
-										<select id="userAddress" class="form-control">
-											<option value="My current location">My current location</option>
-											<option value="Phnom Penh">Phnom Penh</option>
-											<option value="Province">Province</option>
-										</select>
-									</div>
+<div class="form-filter">
+	<p id="location-search-alert"></p>
+	<div class="form-group">
+		<label class="control-label">Locations</label>
+		<select id="userAddress" class="form-control">
+			<option value="Your Location">My current location</option>
+			<option value="Wat Phnom">Wat Phnom</option>
+			<option value="Province">Province</option>
+		</select>
+	</div>
 
-									<div class="form-group">
-										<label class="control-label">Type</label>
-										<select id="type" class="form-control">
-											<option value="">All</option>
-											<option value="Private">Private</option>
-											<option value="Public">Public</option>
-											<option value="NGO3">NGO</option>
-										</select>
-									</div>
+	<div class="form-group">
+		<label class="control-label">Type</label>
+		<select id="type" class="form-control">
+			<option value="">All</option>
+			<option value="Private">Private</option>
+			<option value="Public">Public</option>
+			<option value="NGO">NGO</option>
+		</select>
+	</div>
 
-									<div class="form-group">
-										<label class="control-label">
-											Kilometer from you
-											<strong id="currentMatter">10</strong>km
-										</label>
-										<input type="range" id="matterRange" value="10">
-									</div>
-									<br>
-									<div class="form-group">
-										<button id="submitLocationSearch" class="btn btn-primary btn-block">Filter Now</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	<div class="form-group">
+		<label class="control-label">
+			Kilometer from you
+			<strong id="currentMatter">10</strong>km
+		</label>
+		<input type="range" id="matterRange" value="10">
+	</div>
+	<br>
+	<div class="form-group">
+		<button id="submitLocationSearch" class="btn btn-primary btn-block">Filter Now</button>
+	</div>
+</div>
 		</div>
 		<div class="container-fluit" id="locations-near-you-map"></div>
 		<div class="container">
@@ -118,7 +107,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{ env('GOOGLE_MAP') }}&callbackx=createSearchableMap"></script>
-<script src="/js/createSearchableMap.js?v=2"></script>
+<script src="/js/createSearchableMap.js?v={{ time() }}"></script>
 <script>
 	function formatNumber(num) {
 		return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')

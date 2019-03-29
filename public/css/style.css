@@ -423,9 +423,11 @@ label.list-group-item.font-sr {
 }
 
 .innerHTML {
-    position: absolute;
-    z-index: 111;
-    width: 100%;
+  position: absolute;
+  z-index: 111;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 30px;
 }
 
 .form-filter {
