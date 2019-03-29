@@ -82,8 +82,8 @@
 
 				<div class="form-group">
 					<label class="control-label">
-						Filter within kilometer:
-						<strong id="currentMatter">10</strong>km
+						Filter within <strong id="currentMatter">10</strong>km kilometers
+						
 					</label>
 					<input type="range" id="matterRange" value="10">
 				</div>
