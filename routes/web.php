@@ -1,9 +1,7 @@
 <?php
 
 Route::get('/template', 'HomeController@template');
-Route::get('/test', function(){
-    return 'test';
-});
+
 Route::get('/data', 'HomeController@data');
 
 Route::model('users', 'App\Models\User');
