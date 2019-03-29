@@ -526,3 +526,13 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #ac51b5;
 }
+
+/*botton booking style*/
+.booking{
+  background: #bb17a7;
+  color:#fff;
+}
+.booking:hover{
+  background: #a94442;
+  color:#fff;
+}
