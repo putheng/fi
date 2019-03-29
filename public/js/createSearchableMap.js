@@ -12,7 +12,7 @@ function createSearchableMap(locations) {
     
     infoWindowContent.push(['<div class="infoWindow"><h3 class="font-sr">' + location.name + 
                             '</h3><p>' + location.address + '<br />' + location.city + 
-                            ', ' + location.state + '</p><p>Phone ' + 
+                            '</p><p>Phone ' + 
                             location.phone + '</p></div>']);
   });	    
 
@@ -169,7 +169,7 @@ function createListOfLocations(locations) {
   locations.forEach( function(location) {
     var specificLocation = document.createElement('div');
     var locationInfo = "<h4>" + location.name + "</h4><p>" + location.address + "</p>" +
-                       "<p>"  + location.city + ", " + location.state + "</p><p>" + location.phone + "</p><hr>";
+                       "<p>"  + location.city + "</p><p>" + location.phone + " "+ location.email +"</p><hr>";
     specificLocation.setAttribute("class", 'location-near-you-box font-sr');
     specificLocation.innerHTML = locationInfo;
     locationsList.appendChild(specificLocation);
