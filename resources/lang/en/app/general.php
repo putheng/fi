@@ -3,7 +3,7 @@
 return array(
 
     'lang1'                 => 'English',
-    'lang2'                 => 'Hindi',
+    'lang2'                 => 'Khmer',
 
 	'site_name' 			=> 'ORA',
 	'home' 					=> 'Home',
