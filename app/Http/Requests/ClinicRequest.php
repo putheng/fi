@@ -67,7 +67,7 @@ class ClinicRequest extends Request
                     'email' => 'max:500',
                     'phone_num' => 'max:50',
                     // 'website_url' => 'url|max:255',
-                    'video_url' => 'url|max:1000',
+                    // 'video_url' => 'url|max:1000',
                     'logo_url' => 'image',
                     // 'forward_url' => 'url|max:1000',
                     'res_notes' => 'max:4000',

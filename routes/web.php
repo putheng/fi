@@ -3,7 +3,7 @@
 Route::get('/template', 'HomeController@template');
 
 Route::get('/data', 'HomeController@data');
-Route::get('/reservation', 'ReservationController@index');
+Route::get('/reservation/{clinic}', 'ReservationController@index');
 
 Route::model('users', 'App\Models\User');
 

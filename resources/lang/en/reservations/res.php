@@ -13,6 +13,7 @@ return [
     'date_no_reservations' => 'No appointments on this date',
 
     'export'        => 'Export data',
+    'date'        => 'Data',
 
     'reservation'   => 'Reservation',
     'name'          => 'Name',
