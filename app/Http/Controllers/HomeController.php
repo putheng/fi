@@ -6,6 +6,7 @@ use App\Http\Resources\LocationResource;
 use App\Models\Clinic;
 use App\Models\Question;
 use App\Models\Result;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use MongoClient;
 
@@ -44,6 +45,8 @@ class HomeController extends Controller
 
     public function map()
     {
-        return view('map');
+        $sites = Site::get();
+
+        return view('map', compact('sites'));
     }
 }

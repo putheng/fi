@@ -536,3 +536,10 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a94442;
   color:#fff;
 }
+
+.badge{
+  background-color: #ff8989;
+  margin-left: 10px;
+  border-radius: 5px;
+
+}
