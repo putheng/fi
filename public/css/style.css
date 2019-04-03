@@ -536,3 +536,6 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a94442;
   color:#fff;
 }
+p.title{
+  font-style: italic;
+}
