@@ -536,15 +536,22 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a94442;
   color:#fff;
 }
-/* title fonst style */
 p.title{
   font-style: italic;
 }
 .answer {
     font-size: 18px;
     font-family: siemreap;
+<<<<<<< HEAD
     font-weight: 200;
 }
 .breadcrumb li a{
   font-size: 18px;
+=======
+}
+.badge{
+  background-color: #ff8989;
+  margin-left: 10px;
+  border-radius: 5px;
+>>>>>>> 5f3e1f02dff2565fb8262836a94c29825981ce39
 }

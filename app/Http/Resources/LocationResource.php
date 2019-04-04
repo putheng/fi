@@ -22,7 +22,8 @@ class LocationResource extends Resource
             'city' => $this->location_desc,
             'phone' => $this->validPhone($this->phone_num),
             'email' => $this->validEmail($this->email),
-            'type' => $this->type
+            'type' => $this->type,
+            'enable' => $this->is_enabled,
         ];
     }
 

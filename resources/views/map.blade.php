@@ -65,8 +65,12 @@
 					<label class="control-label">Locations</label>
 					<select id="userAddress" class="form-control">
 						<option value="Your Location">My current location</option>
-						<option value="Wat Phnom">Wat Phnom</option>
-						<option value="Province">Province</option>
+						
+						@foreach($sites as $key => $site)
+							<option value="{{ $site->name }}">
+								{{ $site->name }}
+							</option>
+						@endforeach
 					</select>
 				</div>
 
@@ -107,9 +111,18 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-12">
 					<h3 id="resultsLength"></h3>
-					<div id="locations-near-you"></div>
+					<div class="row">
+						<div class="col-md-7">
+							<h4>Recommended</h4>
+							<div id="locations-near-enable"></div>
+						</div>
+						<div class="col-md-4 pull-right">
+							<h4>Not Recommended</h4>
+							<div id="locations-near-disable"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -145,21 +158,6 @@
           	filterLocations(data.data);
         });
     });
-
-var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
     </script>
     
   </body>
