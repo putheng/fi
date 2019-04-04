@@ -541,6 +541,10 @@ p.title{
   font-style: italic;
 }
 .answer {
-    font-size: 20px;
+    font-size: 18px;
     font-family: siemreap;
+    font-weight: 200;
+}
+.breadcrumb li a{
+  font-size: 18px;
 }

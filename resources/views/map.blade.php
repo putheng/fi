@@ -81,6 +81,16 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label">Service Type</label>
+					<select id="type" class="form-control">
+						<option value="">All</option>
+						<option value="HIV Test">HIV Test</option>
+						<option value="Other Test">Other Test</option>
+						<option value="Sth Test">Sth Test</option>
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label class="control-label">
 						Filter within <strong id="currentMatter">10</strong>km kilometers
 						
