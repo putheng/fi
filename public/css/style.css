@@ -540,3 +540,7 @@ input[type=range]:focus::-ms-fill-upper {
 p.title{
   font-style: italic;
 }
+.answer {
+    font-size: 20px;
+    font-family: siemreap;
+}
