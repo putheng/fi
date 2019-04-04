@@ -138,6 +138,7 @@ function getLocation() {
           createListOfLocations(filteredLocations);
           searchResultsAlert.innerHTML = 'Chipotle Locations within ' + killomatter + ' km of ' + address + '';
         } else {
+          $('#resultsLength').html('No results found<hr>');
           searchResultsAlert.innerHTML = 'Nothing found!';
           document.getElementById('locations-near-you').innerHTML = '';
           searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ killomatter + ' km of ' + address + '.';
@@ -161,17 +162,50 @@ function convertMetersToMiles(meters) {
 
 function createListOfLocations(locations) {
   $('#resultsLength').html('About: '+ locations.length +' results<hr>');
-  var locationsList = document.getElementById('locations-near-you');
+  var locationsListEnable = document.getElementById('locations-near-enable');
+  var locationsListDisable = document.getElementById('locations-near-disable');
   
   // Clear any existing locations from the previous search first
-  locationsList.innerHTML = '';
+  locationsListEnable.innerHTML = '';
+  locationsListDisable.innerHTML = '';
   
-  locations.forEach( function(location) {
+  locations.forEach(function(location) {
     var specificLocation = document.createElement('div');
-    var locationInfo = "<div class='row'><div class='col-md-9'><h4>" + location.name + "</h4><p>" + location.address + "</p>" +
-                       "<p>"  + location.city + "</p><p>" + location.phone + " "+ location.email +"</p></div><div class='col-md-3'><a class='btn booking text-white' href='#'>Book Appointment</a></div></div><hr>";
-    specificLocation.setAttribute("class", 'location-near-you-box font-sr');
-    specificLocation.innerHTML = locationInfo;
-    locationsList.appendChild(specificLocation);
+
+    if(location.enable == 1){
+      var locationInfo = `\
+        <div class="row">
+          <div class='col-md-9'>
+            <h4>${location.name} <span class="badge">${location.type}</span></h4>
+            <p>${location.address}</p>
+            <p>${location.city}</p>
+            <p>${location.phone} ${location.email}</p>
+          </div>
+          <div class="col-md-3">
+            <a class='btn booking text-white' href='#'>Book Appointment</a>
+          </div>
+        </div><hr/>
+      `;
+      specificLocation.setAttribute("class", 'location-near-you-box font-sr');
+
+      specificLocation.innerHTML = locationInfo;
+      locationsListEnable.appendChild(specificLocation);
+    }else{
+      var locationInfo = `\
+        <div class="row">
+          <div class='col-md-12'>
+            <h4>${location.name} <span class="badge">${location.type}</span></h4>
+            <p>${location.address}</p>
+            <p>${location.city}</p>
+            <p>${location.phone} ${location.email}</p>
+          </div>
+        </div><hr>
+      `;
+      specificLocation.setAttribute("class", 'location-near-you-box font-sr');
+
+      specificLocation.innerHTML = locationInfo;
+      locationsListDisable.appendChild(specificLocation);
+    }
+
   });
 }

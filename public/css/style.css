@@ -536,11 +536,15 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a94442;
   color:#fff;
 }
-/* title fonst style */
 p.title{
   font-style: italic;
 }
 .answer {
     font-size: 20px;
     font-family: siemreap;
+}
+.badge{
+  background-color: #ff8989;
+  margin-left: 10px;
+  border-radius: 5px;
 }
