@@ -216,6 +216,7 @@
 							<br>
 							<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
 							<br>
+							<p class="font-sr">{{ answer.<?php echo __('page.description'); ?> }}</p>
 						</div>
 					</div>
 				</div>

@@ -28,5 +28,7 @@ return [
     'result_en' => 'Result EN',
     'header' => 'Header EN',
     'header_kh' => 'Header KH',
+    'description' => 'Description KH',
+    'description_en' => 'Description EN',
 
 ];

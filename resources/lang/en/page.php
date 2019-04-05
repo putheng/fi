@@ -12,5 +12,6 @@ return [
     'kh' => 'ភាសាខ្មែរ',
 
     'sub_question' => 'subtitleEn',
+    'description' => 'description_en',
 
 ];

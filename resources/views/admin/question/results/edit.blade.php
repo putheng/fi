@@ -107,6 +107,26 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+        <label for="description" class="col-md-2 control-label">{{ __('questions.description') }}</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="description" id="description">{{ $result->description }}</textarea>
+            @if($errors->has('description'))
+                <span class="help-block">{{ $errors->first('description') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('description_en') ? ' has-error' : '' }}">
+        <label for="description_en" class="col-md-2 control-label">{{ __('questions.description_en') }}</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="description_en" id="description_en">{{ $result->description_en }}</textarea>
+            @if($errors->has('description_en'))
+                <span class="help-block">{{ $errors->first('descriptdescription_enidescription_enon') }}</span>
+            @endif
+        </div>
+    </div>
+
     <div id="image-upload">
         @if($result->image)
             <div class="form-group ">

@@ -11,6 +11,8 @@ class Result extends Model
     	'title',
     	'titleEn',
     	'from',
+        'description_en',
+        'description',
     	'to'
     ];
 
