@@ -58,15 +58,7 @@
 	</nav>
 <br>
 <div class="container">
-		<div class="row">
-			<!--add Title of question to page-->
-			<div class="col-md-10 col-md-offset-1">
-			<h3>
-				<?php 
-					echo "ចំណងជើងសំណួរ";
-				?>		
-			</h3>
-		</div>
+	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<template v-if="step == 0">
 				<h3 class="text-center">Welcome</h3>
