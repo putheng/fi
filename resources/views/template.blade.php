@@ -59,9 +59,12 @@
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-12">
 			<template v-if="step == 0">
 				<h3 class="text-center">Welcome</h3>
+			</template>
+			<template v-if="step == getRecommenStep">
+				<h3 class="text-center">Recommended</h3>
 			</template>
 			<template v-for="(question, index) in questions">
 				<h3 class="text-center" v-if="step == (index + 1)">@{{ question.header }}</h3>
@@ -71,7 +74,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-12">
 			<ul class="breadcrumb">
 				<template>
 					<li :class="welcomeClass">
@@ -83,6 +86,11 @@
 						<a @click.prevent="currentStep(index)" href="#" class="font-sr">
 							{{ question.<?php echo __('page.sub_question') ?> }}
 						</a>
+					</li>
+				</template>
+				<template>
+					<li :class="recommendationClass">
+						<a href="#" class="font-sr">Recommended</a>
 					</li>
 				</template>
 				<li :class="resultCompletedClass" class="alway-show">
@@ -166,7 +174,7 @@
 										</label>
 									@endforeach
 									<br>
-									<a href="#" @click="nextContinue" class="btn btn-primary font-sr pull-right">
+									<a href="#" @click.prevent="nextContinue" class="btn btn-primary font-sr pull-right">
 										{{ __('page.next') }}
 									</a>
 								@endif
@@ -179,7 +187,26 @@
 			</transition>
 		<?php endforeach; ?>
 		<transition name="slide" >
-			<template v-if="step == 6">
+			<template v-if="step == getRecommenStep">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+							<img src="/images/step-6.png" class="img-responsive">
+						</div>
+						<div class="col-sm-7 col-xs-6">
+							<br>
+							<p class="font-sr title">Recommanded page</p>
+							<br>
+							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
+								{{ __('page.next') }}
+							</a>
+						</div>
+					</div>
+				</div>
+			</template>
+		</transition>
+		<transition name="slide" >
+			<template v-if="step == getResultStep">
 				<div class="main container">
 					<div class="row">
 						<div class="col-sm-3 col-xs-6 col-md-offset-1">
@@ -229,13 +256,14 @@ question{{ $keys + 1 }}: [],
 	  	},
 	  	nextStep(){
 	  		this.step++
-	  		this.$http.post('{{ route('ass.save') }}').then(response => {
+	  		
+	  		// 	this.$http.post('{{ route('ass.save') }}').then(response => {
 
-			    this.someData = response.body;
+			//     this.someData = response.body;
 
-			  }, response => {
+			// 	}, response => {
 
-			  })
+			// })
 	  	},
 	  	next(){
 
@@ -245,17 +273,23 @@ question{{ $keys + 1 }}: [],
 				}, 300)
 	  		}
 
-	  //   	let values = Object.values(this.registration).filter((key) => {
-	  //   		return key !== null
-	  //   	})
+	  	},
+	  	completeRecommanded(){
+	  		this.step = this.getResultStep
 
-			// var total = [].concat
-	  //   			.apply([], values)
-	  //   			.reduce(function(a, b) { return +a + +b })
+	    	let values = Object.values(this.registration).filter((key) => {
+	    		return key !== null
+	    	})
 
-	  //   	this.answer = this.answers.filter((key, item) => {
-	  //   		return total >= key.from && total <= key.to
-	  //   	})[0]
+			var total = [].concat
+	    			.apply([], values)
+	    			.reduce(function(a, b) { return +a + +b });
+
+	    	this.answer = this.answers.filter((key, item) => {
+	    		return total >= key.from && total <= key.to
+	    	})[0]
+
+	    	console.log(this.step)
 	  	},
 	  	nextContinue(){
 
@@ -273,17 +307,6 @@ question{{ $keys + 1 }}: [],
 	  			//save
 	  		}
 
-	    	let values = Object.values(this.registration).filter((key) => {
-	    		return key !== null
-	    	})
-
-			var total = [].concat
-	    			.apply([], values)
-	    			.reduce(function(a, b) { return +a + +b });
-
-	    	this.answer = this.answers.filter((key, item) => {
-	    		return total >= key.from && total <= key.to
-	    	})[0]
 	  	},
 	  	previous(){
 	  		if(this.step >= 1){
@@ -341,6 +364,19 @@ question{{ $keys + 1 }}: [],
 
 	  },
 	  computed: {
+	  	getResultStep(){
+	  		return this.questions.length + 2
+	  	},
+	  	getRecommenStep(){
+	  		return this.questions.length + 1
+	  	},
+	  	recommendationClass(){
+	  		if(this.step == this.getRecommenStep){
+	  			return 'active'
+	  		}else if(this.step > this.getRecommenStep){
+	  			return 'completed'
+	  		}
+	  	},
 	  	welcomeClass(){
 	  		if(this.step == 0){
 	  			return 'active'
@@ -355,9 +391,7 @@ question{{ $keys + 1 }}: [],
 	  		return this.questions.length
 	  	},
 	  	resultCompletedClass(){
-	  		let length = this.questions.length + 1
-
-	  		if(this.step == length){
+	  		if(this.step == this.getResultStep){
 	  			return 'completed'
 	  		}
 	  	}
