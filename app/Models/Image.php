@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Question;
+use App\Models\Recommend;
 use App\Models\Result;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +12,11 @@ class Image extends Model
     protected $fillable = [
     	'path', 'question_id', 'result_id'
     ];
+
+    public function recommend()
+    {
+        return $this->belongsTo(Recommend::class);
+    }
 
     public function question()
     {

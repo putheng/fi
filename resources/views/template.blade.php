@@ -90,7 +90,7 @@
 				</template>
 				<template>
 					<li :class="recommendationClass">
-						<a href="#" class="font-sr">Recommended</a>
+						<a href="#" class="font-sr">{{ $recommend->getTitle() }}</a>
 					</li>
 				</template>
 				<li :class="resultCompletedClass" class="alway-show">

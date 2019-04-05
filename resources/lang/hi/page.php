@@ -13,5 +13,8 @@ return [
 
     'sub_question' => 'subtitle',
     'description' => 'description',
+    'recommend' => 'Recommend',
+    'recommend_lang' => 'title',
+    'recommend_kh' => 'Recommend KH',
 
 ];

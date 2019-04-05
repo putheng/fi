@@ -50,6 +50,8 @@
         @include('admin.question.partials._index')
         <!--row end-->
         @include('admin.question.partials._results')
+
+        @include('admin.question.partials._recommend')
     </section>
 @stop
 

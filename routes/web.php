@@ -185,6 +185,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::get('job', ['as' => 'sms.job', 'uses' => 'SMSJobController@runManual']);
     });
 
+    Route::group(['prefix' => 'recommend', 'as' => 're.'], function(){
+        Route::get('/create', 'RecommendController@create')->name('create');
+        Route::post('/create', 'RecommendController@store');
+        Route::get('/create/{recommend}', 'RecommendController@edit')->name('update');
+        Route::post('/create/{recommend}', 'RecommendController@update');
+    });
+
     # REMINDER Job testing
     Route::group(array('prefix' => 'reminder'), function () {
         Route::get('job', ['as' => 'reminder.job', 'uses' => 'ReminderJobController@runManual']);

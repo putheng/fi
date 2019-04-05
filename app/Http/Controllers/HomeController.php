@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\LocationResource;
 use App\Models\Clinic;
 use App\Models\Question;
+use App\Models\Recommend;
 use App\Models\Result;
 use App\Models\Site;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class HomeController extends Controller
     {
     	$questions = Question::with('answers')->get();
     	$results = Result::with('image')->get();
+        $recommend = Recommend::get()->first();
 
-    	return view('template', compact('questions', 'results'));
+    	return view('template', compact('questions', 'results', 'recommend'));
     }
 
     public function show()
