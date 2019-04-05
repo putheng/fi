@@ -28,7 +28,9 @@
 		    <div class="hidden-md-up w-100"></div>
 	    </div>
 	</nav>
+
 <?php foreach($questions as $key => $question): ?>
+	
 <transition name="slide" >
 	<template v-if="step === <?php echo ($key+1) ?>">
 		<div class="app-modelx">
