@@ -10,6 +10,8 @@ Route::model('users', 'App\Models\User');
 Route::get('/', 'HomeController@index');
 Route::get('/map', 'HomeController@map');
 
+Route::post('/assessment/save', 'AssessmentController@reservation')->name('ass.save');
+
 Route::group(array('prefix' => 'admin'), function () {
 
     # Error pages should be shown without requiring login

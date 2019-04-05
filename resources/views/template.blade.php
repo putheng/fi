@@ -60,7 +60,24 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
+			<template v-if="step == 0">
+				<h3 class="text-center">Welcome</h3>
+			</template>
+			<template v-for="(question, index) in questions">
+				<h3 class="text-center" v-if="step == (index + 1)">@{{ question.header }}</h3>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
 			<ul class="breadcrumb">
+				<template>
+					<li :class="welcomeClass">
+						<a href="#" class="font-sr">Welcome</a>
+					</li>
+				</template>
 				<template v-for="(question, index) in questions">
 					<li :class="getStep(index)">
 						<a @click.prevent="currentStep(index)" href="#" class="font-sr">
@@ -75,7 +92,37 @@
 		</div>
 	</div>
 </div>
-
+	<transition name="slide" >
+		<template v-if="step === 0">
+			<div class="main container">
+				<div class="row">
+					<div class="col-sm-3 col-xs-6 col-md-offset-1">
+						<img src="/images/step-6.png" class="img-responsive hide-mobile">
+					</div>
+					<div class="col-sm-7 col-xs-6">
+						<h4>Welcome</h4>
+						<p class="font-sr">
+							Hi there! Meet your virtual counselor.
+							You can speak to Doctor Rajesh who can help you assess your sexual health needs.
+							Would you like to take this assessment?
+						</p>
+						<br>
+						<p>
+							<input id="term" type="checkbox" v-model="term">
+							<label for="term"> I understand the privacy and data use policy as described below.</label>
+						</p>
+						<p>
+							<input @click="acceptTerm" type="button" value="OK, LET'S START" class="btn btn-primary">
+						</p>
+						<p><br>
+							<i>* Note: The data collected in this app is for program purposes and will not be used to determine your identity. When this app requests your location data, risk data, or testing data, it will only be used to guide our recommendations for you, to give you the best possible clinic options and to understand overall reach of this system online. We will ensure confidentiality and anonymity of your data.</i>
+						</p>
+						<br>
+					</div>
+				</div>
+			</div>
+		</template>
+	</transition>
 		@foreach($questions as $key => $question)
 			<transition name="slide" >
 				<template v-if="step === {{ ($key+1) }}">
@@ -132,7 +179,7 @@
 			</transition>
 		<?php endforeach; ?>
 		<transition name="slide" >
-			<template v-if="step === 6">
+			<template v-if="step == 6">
 				<div class="main container">
 					<div class="row">
 						<div class="col-sm-3 col-xs-6 col-md-offset-1">
@@ -150,6 +197,7 @@
 </div>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -157,7 +205,8 @@
 	new Vue({
 	  el: '#wrap',
 	  data: () => ({
-	      step: 1,
+	      step: 0,
+	      term: false,
 	      isActive: false,
 	      questions: [],
 	      answers: [],
@@ -173,36 +222,55 @@ question{{ $keys + 1 }}: [],
 	}
 	  }),
 	  methods:{
+	  	acceptTerm(){
+	  		if(this.term){
+	  			this.step++
+	  		}
+	  	},
+	  	nextStep(){
+	  		this.step++
+	  		this.$http.post('{{ route('ass.save') }}').then(response => {
+
+			    this.someData = response.body;
+
+			  }, response => {
+
+			  })
+	  	},
 	  	next(){
 
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
-				   this.step++
+				   this.nextStep()
 				}, 300)
 	  		}
 
-	    	let values = Object.values(this.registration).filter((key) => {
-	    		return key !== null
-	    	})
+	  //   	let values = Object.values(this.registration).filter((key) => {
+	  //   		return key !== null
+	  //   	})
 
-			var total = [].concat
-	    			.apply([], values)
-	    			.reduce(function(a, b) { return +a + +b })
+			// var total = [].concat
+	  //   			.apply([], values)
+	  //   			.reduce(function(a, b) { return +a + +b })
 
-	    	this.answer = this.answers.filter((key, item) => {
-	    		return total >= key.from && total <= key.to
-	    	})[0]
+	  //   	this.answer = this.answers.filter((key, item) => {
+	  //   		return total >= key.from && total <= key.to
+	  //   	})[0]
 	  	},
 	  	nextContinue(){
-	  		console.log(this.registration["question"+ this.step].length)
+
 	  		if(this.registration["question"+ this.step].length == 0){
 	  			return
 	  		}
 
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
-				   this.step++
+				    this.nextStep()
 				}, 300)
+	  		}
+
+	  		if(this.step == this.questionLength){
+	  			//save
 	  		}
 
 	    	let values = Object.values(this.registration).filter((key) => {
@@ -226,8 +294,6 @@ question{{ $keys + 1 }}: [],
 	    	let values = Object.values(this.registration).filter((key) => {
 	    		return key !== null
 	    	})
-
-	    	console.log(values)
 
 	    	var total = [].concat
 	    			.apply([], values)
@@ -275,6 +341,13 @@ question{{ $keys + 1 }}: [],
 
 	  },
 	  computed: {
+	  	welcomeClass(){
+	  		if(this.step == 0){
+	  			return 'active'
+	  		}else{
+	  			return 'completed'
+	  		}
+	  	},
 	  	stepLength(){
 	  		return this.step <= this.questions.length ? this.step : this.questions.length
 	  	},
