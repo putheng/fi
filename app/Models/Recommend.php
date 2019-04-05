@@ -24,4 +24,11 @@ class Recommend extends Model
 
     	return $this->{$language};
     }
+
+    public function getDescription()
+    {
+    	$language = \Lang::get('page.recommend_description');
+
+    	return $this->{$language};
+    }
 }

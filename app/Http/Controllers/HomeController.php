@@ -18,7 +18,7 @@ class HomeController extends Controller
     	$questions = Question::with('answers')->get();
     	$results = Result::with('image')->get();
         $recommend = Recommend::get()->first();
-
+        
     	return view('template', compact('questions', 'results', 'recommend'));
     }
 

@@ -195,7 +195,7 @@
 						</div>
 						<div class="col-sm-7 col-xs-6">
 							<br>
-							<p class="font-sr title">Recommanded page</p>
+							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
 							<br>
 							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
 								{{ __('page.next') }}
