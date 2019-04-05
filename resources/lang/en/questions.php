@@ -12,6 +12,7 @@ return [
     'save'  => 'Save',
     'submit'  => 'Submit',
     'cancel'  => 'Cancel',
+    'back'  => 'Back',
     'create'  => 'Create',
     'add_answer'  => 'Add answer',
     'next'  => 'Next',
@@ -25,5 +26,7 @@ return [
     'edit' => 'Edit',
     'result_kh' => 'Result KH',
     'result_en' => 'Result EN',
+    'header' => 'Header EN',
+    'header_kh' => 'Header KH',
 
 ];

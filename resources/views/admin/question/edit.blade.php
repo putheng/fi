@@ -104,6 +104,30 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('header') ? ' has-error' : '' }}">
+        <label for="header" class="col-md-2 control-label">
+            {{ __('questions.header_kh') }}
+        </label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $question->header }}" name="header" type="text" id="header">
+            @if($errors->has('header'))
+                <span class="help-block">{{ $errors->first('header') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('header_en') ? ' has-error' : '' }}">
+        <label for="header_en" class="col-md-2 control-label">
+            {{ __('questions.header') }}
+        </label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $question->header_en }}" name="header_en" type="text">
+            @if($errors->has('header_en'))
+                <span class="help-block">{{ $errors->first('header_en') }}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="form-group">
         <label for="titleEn" class="col-md-2 control-label">
             {{ __('questions.can_be') }}
@@ -141,7 +165,7 @@
         <div class="col-md-offset-2 col-md-10">
             
             <input class="btn btn-success" style="width: 160px;" type="submit" value="{{ __('questions.save') }}">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.cancel') }}</a>
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.back') }}</a>
         </div>
     </div>
 </form>
@@ -162,28 +186,28 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/page/users.js') }}"></script>
-           <script type="text/javascript">
-                $(document).ready(function (e) {
-                    $('#file').on('change', function () {
-                        var file_data = $('#file').prop('files')[0];
-                        var _token = $("input[name='_token']").val();
+   <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('#file').on('change', function () {
+                var file_data = $('#file').prop('files')[0];
+                var _token = $("input[name='_token']").val();
 
-                        var form_data = new FormData();
-                        form_data.append('file', file_data);
-                        form_data.append('_token', _token);
+                var form_data = new FormData();
+                form_data.append('file', file_data);
+                form_data.append('_token', _token);
 
-                        $.ajax({
-                            url: '{{ route('admin.question.file', $question) }}', // point to server-side controller method
-                            dataType: 'text', // what to expect back from the server
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: form_data,
-                            type: 'post',
-                            success: function (response) {
-                                var data = JSON.parse(response);
+                $.ajax({
+                    url: '{{ route('admin.question.file', $question) }}', // point to server-side controller method
+                    dataType: 'text', // what to expect back from the server
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function (response) {
+                        var data = JSON.parse(response);
 
-                                $('#image-upload').html(`
+                        $('#image-upload').html(`
 <div class="form-group">
     <div class="col-md-4 col-md-offset-2">
         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -193,13 +217,13 @@
         </div>
     </div>
 </div>
-                                `);
-                            },
-                            error: function (response) {
-                                $('#msg').html(response); // display error response from the server
-                            }
-                        });
-                    });
+                        `);
+                    },
+                    error: function (response) {
+                        $('#msg').html(response); // display error response from the server
+                    }
                 });
-            </script>
+            });
+        });
+    </script>
 @stop

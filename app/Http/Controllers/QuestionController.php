@@ -30,9 +30,11 @@ class QuestionController extends Controller
             'titleEn' => 'required|unique:questions',
             'subtitle' => 'required|unique:questions',
     		'subtitleEn' => 'required|unique:questions',
+            'header_en' => 'required',
+            'header' => 'required',
     	]);
 
-    	$question = Question::create($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
+    	$question = Question::create($request->only('header_en', 'header', 'titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         if(!empty($request->image)){
             $image = Image::find($request->image);
@@ -55,9 +57,11 @@ class QuestionController extends Controller
             'titleEn' => 'required',
             'subtitle' => 'required',
             'subtitleEn' => 'required',
+            'header_en' => 'required',
+            'header' => 'required',
         ]);
 
-        $question->update($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
+        $question->update($request->only('header_en', 'header', 'titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         return back();
     }

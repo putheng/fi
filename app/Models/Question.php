@@ -13,7 +13,10 @@ class Question extends Model
     	'titleEn',
     	'type',
         'shortEn',
-        ''
+        'header',
+        'header_en',
+        'subtitle',
+        'subtitleEn',
     ];
 
     public function answers()
