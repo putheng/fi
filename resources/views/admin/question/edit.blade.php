@@ -165,7 +165,7 @@
         <div class="col-md-offset-2 col-md-10">
             
             <input class="btn btn-success" style="width: 160px;" type="submit" value="{{ __('questions.save') }}">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.back') }}</a>
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
         </div>
     </div>
 </form>
