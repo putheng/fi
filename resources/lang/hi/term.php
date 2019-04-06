@@ -7,4 +7,5 @@ return [
 	'subtitle' => 'subtitle',
 	'note' => 'note',
 	'term' => 'term',
+	'botton' => 'យលព្រម'
 ];

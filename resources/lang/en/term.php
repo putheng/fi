@@ -7,4 +7,5 @@ return [
 	'subtitle' => 'subtitle_en',
 	'note' => 'note_en',
 	'term' => 'term_en',
+	'botton' => 'OK, LET\'S START' 
 ];

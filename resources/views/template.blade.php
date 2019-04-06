@@ -61,7 +61,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<template v-if="step == 0">
-				<h3 class="text-center">{{ $term->getHeading() }}</h3>
+				<h3 class="text-center font-sr">{{ $term->getHeading() }}</h3>
 			</template>
 			<template v-if="step == getRecommenStep">
 				<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
@@ -108,20 +108,20 @@
 						<img src="/images/step-6.png" class="img-responsive hide-mobile">
 					</div>
 					<div class="col-sm-7 col-xs-6">
-						<h4>{{ $term->getTitle() }}</h4>
+						<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
 						<p class="font-sr">
 							{{ $term->getSubtitle() }}
 						</p>
 						<br>
 						<p>
 							<input id="term" type="checkbox" v-model="term">
-							<label for="term"> {{ $term->getTerm() }}</label>
+							<label for="term" class="font-sr"> {{ $term->getTerm() }}</label>
 						</p>
 						<p>
-							<input @click="acceptTerm" type="button" value="OK, LET'S START" class="btn btn-primary">
+							<input @click="acceptTerm" type="button" value="{{ __('term.botton') }}" class="btn btn-primary font-sr">
 						</p>
 						<p><br>
-							<i>{{ $term->getNote() }}</i>
+							<i class=" font-sr">{{ $term->getNote() }}</i>
 						</p>
 						<br>
 					</div>
