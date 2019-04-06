@@ -89,7 +89,7 @@
     <div class="form-group {{ $errors->has('subtitle') ? ' has-error' : '' }}">
         <label for="subtitle" class="col-md-2 control-label">Subtitle KH</label>
         <div class="col-md-4">
-            <input class="form-control font-sr" value="{{ $term->subtitle }}" name="subtitle" type="text" id="subtitle">
+            <textarea class="form-control" name="subtitle" id="subtitle">{{ $term->subtitle }}</textarea>
             @if($errors->has('subtitle'))
                 <span class="help-block">{{ $errors->first('subtitle') }}</span>
             @endif
@@ -99,7 +99,7 @@
     <div class="form-group {{ $errors->has('subtitle_en') ? ' has-error' : '' }}">
         <label for="subtitle_en" class="col-md-2 control-label">Subtitle EN</label>
         <div class="col-md-4">
-            <input class="form-control font-sr" value="{{ $term->subtitle_en }}" name="subtitle_en" type="text" id="subtitle_en">
+            <textarea class="form-control" name="subtitle_en" id="subtitle_en">{{ $term->subtitle_en }}</textarea>
             @if($errors->has('subtitle_en'))
                 <span class="help-block">{{ $errors->first('subtitle_en') }}</span>
             @endif
@@ -213,7 +213,7 @@
         <div class="col-md-offset-2 col-md-10">
             
             <input class="btn btn-success" style="width: 160px;" type="submit" value="{{ __('questions.save') }}">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('questions.back') }}</a>
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
         </div>
     </div>
 </form>
