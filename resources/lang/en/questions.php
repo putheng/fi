@@ -30,5 +30,6 @@ return [
     'header_kh' => 'Header KH',
     'description' => 'Description KH',
     'description_en' => 'Description EN',
+    'welcome' => 'Term & Condition',
 
 ];

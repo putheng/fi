@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Question;
 use App\Models\Recommend;
 use App\Models\Result;
+use App\Models\Term;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,8 +17,9 @@ class QuestionController extends Controller
         $questions = Question::get();
         $results = Result::get();
         $recommends = Recommend::get();
+        $term = Term::first();
 
-    	return view('admin.question.index', compact('questions', 'results', 'recommends'));
+    	return view('admin.question.index', compact('questions', 'results', 'recommends', 'term'));
     }
 
     public function create()

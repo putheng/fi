@@ -52,6 +52,8 @@
         @include('admin.question.partials._results')
 
         @include('admin.question.partials._recommend')
+
+        @include('admin.question.partials._welcome')
     </section>
 @stop
 

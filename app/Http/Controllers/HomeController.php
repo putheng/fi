@@ -8,6 +8,7 @@ use App\Models\Question;
 use App\Models\Recommend;
 use App\Models\Result;
 use App\Models\Site;
+use App\Models\Term;
 use Illuminate\Http\Request;
 use MongoClient;
 
@@ -18,8 +19,9 @@ class HomeController extends Controller
     	$questions = Question::with('answers')->get();
     	$results = Result::with('image')->get();
         $recommend = Recommend::get()->first();
+        $term = Term::find(1);
         
-    	return view('template', compact('questions', 'results', 'recommend'));
+    	return view('template', compact('questions', 'results', 'recommend', 'term'));
     }
 
     public function show()

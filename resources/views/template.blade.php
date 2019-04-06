@@ -61,7 +61,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<template v-if="step == 0">
-				<h3 class="text-center">Welcome</h3>
+				<h3 class="text-center">{{ $term->getHeading() }}</h3>
 			</template>
 			<template v-if="step == getRecommenStep">
 				<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
@@ -78,7 +78,7 @@
 			<ul class="breadcrumb">
 				<template>
 					<li :class="welcomeClass">
-						<a @click.prevent="getWelcome" href="#" class="font-sr">Welcome</a>
+						<a @click.prevent="getWelcome" href="#" class="font-sr">{{ $term->getBradcume() }}</a>
 					</li>
 				</template>
 				<template v-for="(question, index) in questions">
@@ -108,22 +108,20 @@
 						<img src="/images/step-6.png" class="img-responsive hide-mobile">
 					</div>
 					<div class="col-sm-7 col-xs-6">
-						<h4>Welcome</h4>
+						<h4>{{ $term->getTitle() }}</h4>
 						<p class="font-sr">
-							Hi there! Meet your virtual counselor.
-							You can speak to Doctor Rajesh who can help you assess your sexual health needs.
-							Would you like to take this assessment?
+							{{ $term->getSubtitle() }}
 						</p>
 						<br>
 						<p>
 							<input id="term" type="checkbox" v-model="term">
-							<label for="term"> I understand the privacy and data use policy as described below.</label>
+							<label for="term"> {{ $term->getTerm() }}</label>
 						</p>
 						<p>
 							<input @click="acceptTerm" type="button" value="OK, LET'S START" class="btn btn-primary">
 						</p>
 						<p><br>
-							<i>* Note: The data collected in this app is for program purposes and will not be used to determine your identity. When this app requests your location data, risk data, or testing data, it will only be used to guide our recommendations for you, to give you the best possible clinic options and to understand overall reach of this system online. We will ensure confidentiality and anonymity of your data.</i>
+							<i>{{ $term->getNote() }}</i>
 						</p>
 						<br>
 					</div>
