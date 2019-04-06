@@ -6,5 +6,8 @@ return [
 	'description' => 'Description EN',
 	'description_en' => 'Description EN',
 	'description_lang' => 'description_en',
+	'heading' => 'Heading EN',
+	'heading_en' => 'Heading EN',
+	'heading_lang' => 'heading_en',
 
 ];

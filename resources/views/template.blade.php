@@ -64,7 +64,7 @@
 				<h3 class="text-center">Welcome</h3>
 			</template>
 			<template v-if="step == getRecommenStep">
-				<h3 class="text-center">Recommended</h3>
+				<h3 class="text-center font-sr">{{ $recommend->getHeading() }}</h3>
 			</template>
 			<template v-for="(question, index) in questions">
 				<h3 class="text-center font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>

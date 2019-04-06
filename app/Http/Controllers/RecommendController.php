@@ -43,13 +43,19 @@ class RecommendController extends Controller
     		'titleKh' => 'required',
     		'titleEn' => 'required',
     		'description_en' => 'required',
-    		'description' => 'required',
+            'description' => 'required',
+            'heading' => 'required',
+    		'heading_en' => 'required',
     	]);
 
     	$recommend->title = $request->titleKh;
     	$recommend->title_en = $request->titleEn;
+        
     	$recommend->description_en = $request->description_en;
-    	$recommend->description = $request->description;
+        $recommend->description = $request->description;
+
+        $recommend->heading = $request->heading;
+    	$recommend->heading_en = $request->heading_en;
 
     	if(!empty($request->image)){
     		$recommend->image_id = $request->image;

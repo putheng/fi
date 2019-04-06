@@ -69,6 +69,27 @@
                                 
 <form action="{{ route('admin.re.update', $recommend) }}" method="post" accept-charset="UTF-8" class="form-horizontal">
     {{ csrf_field() }}
+
+    <div class="form-group {{ $errors->has('heading') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('recommend.heading') }}</label>
+        <div class="col-md-4">
+            <input class="form-control font-sr" value="{{ $recommend->heading }}" name="heading" type="text" id="heading">
+            @if($errors->has('heading'))
+                <span class="help-block font-sr">{{ $errors->first('heading') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('heading_en') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('recommend.heading_en') }}</label>
+        <div class="col-md-4">
+            <input class="form-control font-sr" value="{{ $recommend->heading_en }}" name="heading_en" type="text" id="heading_en">
+            @if($errors->has('heading_en'))
+                <span class="help-block font-sr">{{ $errors->first('heading_en') }}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
         <label for="titleKh" class="col-md-2 control-label">{{ __('page.recommend') }}</label>
         <div class="col-md-4">
@@ -92,7 +113,7 @@
     <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
         <label for="description" class="col-md-2 control-label">{{ __('recommend.description') }}</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ $recommend->description }}" name="description" type="text" id="description">
+            <textarea id="description" class="form-control" name="description">{{ $recommend->description }}</textarea>
             @if($errors->has('description'))
                 <span class="help-block">{{ $errors->first('description') }}</span>
             @endif
@@ -102,7 +123,7 @@
     <div class="form-group {{ $errors->has('description_en') ? ' has-error' : '' }}">
         <label for="description_en" class="col-md-2 control-label">{{ __('recommend.description_en') }}</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ $recommend->description_en }}" name="description_en" type="text" id="description_en">
+            <textarea id="description_en" class="form-control" name="description_en">{{ $recommend->description_en }}</textarea>
             @if($errors->has('description_en'))
                 <span class="help-block">{{ $errors->first('description_en') }}</span>
             @endif
