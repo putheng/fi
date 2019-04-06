@@ -20,7 +20,6 @@
                                     <li class="list-group-item">
                                         <span class="pull-right">
                                             <a href="{{ route('admin.re.update', $recommend) }}" class="badge">{{ __('questions.edit') }}</a>
-                                            <a href="#" class="badge">{{ __('questions.delete') }}</a>
                                         </span>
                                         <span class="font-sr">{{ $recommend->title }}</span>
                                         <br>
