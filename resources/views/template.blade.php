@@ -78,7 +78,7 @@
 			<ul class="breadcrumb">
 				<template>
 					<li :class="welcomeClass">
-						<a href="#" class="font-sr">Welcome</a>
+						<a @click.prevent="getWelcome" href="#" class="font-sr">Welcome</a>
 					</li>
 				</template>
 				<template v-for="(question, index) in questions">
@@ -250,14 +250,19 @@ question{{ $keys + 1 }}: [],
 	}
 	  }),
 	  methods:{
+	  	getWelcome(){
+	  		this.step = 0
+	  	},
 	  	acceptTerm(){
 	  		if(this.term){
 	  			this.step++
 	  		}
 	  	},
 	  	nextStep(){
+	  		if(!this.term){
+	  			return
+	  		}
 	  		this.step++
-	  		
 	  		// 	this.$http.post('{{ route('ass.save') }}').then(response => {
 
 			//     this.someData = response.body;
@@ -339,6 +344,9 @@ question{{ $keys + 1 }}: [],
 	    	}
 	    },
 	    currentStep(index){
+	    	if(!this.term){
+	    		return
+	    	}
 
 	    	const id = index + 1
 
