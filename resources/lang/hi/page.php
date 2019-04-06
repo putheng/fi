@@ -15,7 +15,8 @@ return [
     'description' => 'description',
     'recommend' => 'Recommend',
     'recommend_lang' => 'title',
-    'recommend_description' => 'description',
+    'close' => 'Close',
+    'recommend_description' => 'Description KH',
     'recommend_kh' => 'Recommend KH',
 
 ];

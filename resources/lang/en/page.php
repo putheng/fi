@@ -5,6 +5,7 @@ return [
     'next' => 'Next',
     'back' => 'Back',
     'title' => 'titleEn',
+    'close' => 'Close',
     'result' => 'titleEn',
     'results' => 'Result',
     'answer' => 'Answered',

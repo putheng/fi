@@ -20,14 +20,14 @@ class Recommend extends Model
 
     public function getTitle()
     {
-    	$language = \Lang::get('page.recommend_lang');
+    	$language = \Lang::get('recommend.title_lang');
 
     	return $this->{$language};
     }
 
     public function getDescription()
     {
-    	$language = \Lang::get('page.recommend_description');
+    	$language = \Lang::get('recommend.description_lang');
 
     	return $this->{$language};
     }

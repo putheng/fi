@@ -42,16 +42,21 @@ class RecommendController extends Controller
     	$this->validate($request, [
     		'titleKh' => 'required',
     		'titleEn' => 'required',
+    		'description_en' => 'required',
+    		'description' => 'required',
     	]);
 
     	$recommend->title = $request->titleKh;
     	$recommend->title_en = $request->titleEn;
+    	$recommend->description_en = $request->description_en;
+    	$recommend->description = $request->description;
+
     	if(!empty($request->image)){
     		$recommend->image_id = $request->image;
     	}
     	
     	$recommend->save();
-
+    	
     	return redirect()->route('admin.question.index')->withSuccess('Successfuly created');
     }
 }

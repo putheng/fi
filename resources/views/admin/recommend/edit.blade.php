@@ -89,6 +89,26 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+        <label for="description" class="col-md-2 control-label">{{ __('recommend.description') }}</label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $recommend->description }}" name="description" type="text" id="description">
+            @if($errors->has('description'))
+                <span class="help-block">{{ $errors->first('description') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('description_en') ? ' has-error' : '' }}">
+        <label for="description_en" class="col-md-2 control-label">{{ __('recommend.description_en') }}</label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $recommend->description_en }}" name="description_en" type="text" id="description_en">
+            @if($errors->has('description_en'))
+                <span class="help-block">{{ $errors->first('description_en') }}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-4">
             @if($errors->has('image'))
@@ -120,7 +140,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">Cancel</a>
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
         </div>
     </div>
 </form>
