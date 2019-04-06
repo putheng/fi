@@ -414,7 +414,7 @@ label.list-group-item.font-sr {
 }
 
 #locations-near-you-map{
-    height: 450px;
+    height: 500px;
     margin-top: 30px;
 }
 
@@ -542,16 +542,13 @@ p.title{
 .answer {
     font-size: 18px;
     font-family: siemreap;
-<<<<<<< HEAD
     font-weight: 200;
 }
 .breadcrumb li a{
   font-size: 18px;
-=======
 }
 .badge{
   background-color: #ff8989;
   margin-left: 10px;
   border-radius: 5px;
->>>>>>> 5f3e1f02dff2565fb8262836a94c29825981ce39
 }

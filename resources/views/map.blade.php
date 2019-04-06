@@ -116,11 +116,36 @@
 					<div class="row">
 						<div class="col-md-7">
 							<h4>Recommended</h4>
-							<div id="locations-near-enable"></div>
+							<div id="locations-near-enable">
+@foreach($recommendeds as $recommended)
+    <div class="row">
+      <div class='col-md-9'>
+        <h4>{{ $recommended->name }} <span class="badge">{{ $recommended->type }}</span></h4>
+        <p>{{ $recommended->address_desc }}</p>
+        <p>{{ $recommended->location_desc }}</p>
+        <p>{{ $recommended->phone_num }} {{ $recommended->email }}</p>
+      </div>
+      <div class="col-md-3">
+        <a class='btn booking text-white' href='#'>Book Appointment</a>
+      </div>
+    </div><hr/>
+@endforeach
+							</div>
 						</div>
 						<div class="col-md-4 pull-right">
 							<h4>Not Recommended</h4>
-							<div id="locations-near-disable"></div>
+							<div id="locations-near-disable">
+@foreach($notrecommendeds as $notrecommended)
+    <div class="row">
+      <div class='ol-md-12'>
+        <h4>{{ $recommended->name }} <span class="badge">{{ $recommended->type }}</span></h4>
+        <p>{{ $recommended->address_desc }}</p>
+        <p>{{ $recommended->location_desc }}</p>
+        <p>{{ $recommended->phone_num }} {{ $recommended->email }}</p>
+      </div>
+    </div><hr/>
+@endforeach
+							</div>
 						</div>
 					</div>
 				</div>
