@@ -115,7 +115,6 @@
 					<h3 id="resultsLength"></h3>
 					<div class="row">
 						<div class="col-md-7">
-							<h4>Recommended</h4>
 							<div id="locations-near-enable">
 @foreach($recommendeds as $recommended)
     <div class="row">
@@ -133,7 +132,6 @@
 							</div>
 						</div>
 						<div class="col-md-4 pull-right">
-							<h4>Not Recommended</h4>
 							<div id="locations-near-disable">
 @foreach($notrecommendeds as $notrecommended)
     <div class="row">
