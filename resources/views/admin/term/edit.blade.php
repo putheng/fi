@@ -55,12 +55,8 @@
                     <h4 class="panel-title pull-left">
                         <i class="livicon" data-name="list" data-size="16"
                            data-loop="true" data-c="#fff" data-hc="white"></i>
-                            @lang('questions.question_title')
+                            Term & Condition
                     </h4>
-
-                    <div class="pull-right">
-                        <a href="{{ route('admin.question.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Create</a>
-                    </div>
                 </div>
                     <div class="panel-body">
                         <!--main content-->
@@ -68,85 +64,137 @@
                             <div class="col-md-12">
                                 <!--main content-->
                                 
-<form action="{{ route('admin.question.edit', $question) }}" method="post" class="form-horizontal">
+<form action="{{ route('admin.term.edit') }}" method="post" class="form-horizontal">
     {{ csrf_field() }}
-    <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
-        <label for="titleKh" class="col-md-2 control-label">{{ __('questions.title_kn') }}</label>
+    <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
+        <label for="title" class="col-md-2 control-label">Title KH</label>
         <div class="col-md-4">
-            <input class="form-control font-sr" value="{{ $question->titleKh }}" name="titleKh" type="text" id="titleKh">
-            @if($errors->has('titleKh'))
-                <span class="help-block">{{ $errors->first('titleKh') }}</span>
+            <input class="form-control font-sr" value="{{ $term->title }}" name="title" type="text" id="title">
+            @if($errors->has('title'))
+                <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
         </div>
+    </div>
 
-        <div class="col-md-2">
-            <input class="form-control font-sr" value="{{ $question->subtitle }}" name="subtitle" type="text" id="subtitle" placeholder="Sub title">
+    <div class="form-group {{ $errors->has('title_en') ? ' has-error' : '' }}">
+        <label for="title_en" class="col-md-2 control-label">Title EN</label>
+        <div class="col-md-4">
+            <input class="form-control font-sr" value="{{ $term->title_en }}" name="title_en" type="text" id="title_en">
+            @if($errors->has('title_en'))
+                <span class="help-block">{{ $errors->first('title_en') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('subtitle') ? ' has-error' : '' }}">
+        <label for="subtitle" class="col-md-2 control-label">Subtitle KH</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="subtitle" id="subtitle">{{ $term->subtitle }}</textarea>
             @if($errors->has('subtitle'))
-                <span class="help-block font-sr">{{ $errors->first('subtitle') }}</span>
+                <span class="help-block">{{ $errors->first('subtitle') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('titleEn') ? ' has-error' : '' }}">
-        <label for="titleEn" class="col-md-2 control-label">{{ __('questions.title_en') }}</label>
+    <div class="form-group {{ $errors->has('subtitle_en') ? ' has-error' : '' }}">
+        <label for="subtitle_en" class="col-md-2 control-label">Subtitle EN</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ $question->titleEn }}" name="titleEn" type="text" id="titleEn">
-            @if($errors->has('titleEn'))
-                <span class="help-block">{{ $errors->first('titleEn') }}</span>
-            @endif
-        </div>
-
-        <div class="col-md-2">
-            <input class="form-control" value="{{ $question->subtitleEn }}" name="subtitleEn" type="text" id="subtitleEn" placeholder="Sub title">
-            @if($errors->has('subtitleEn'))
-                <span class="help-block">{{ $errors->first('subtitleEn') }}</span>
+            <textarea class="form-control" name="subtitle_en" id="subtitle_en">{{ $term->subtitle_en }}</textarea>
+            @if($errors->has('subtitle_en'))
+                <span class="help-block">{{ $errors->first('subtitle_en') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('header') ? ' has-error' : '' }}">
-        <label for="header" class="col-md-2 control-label">
-            {{ __('questions.header_kh') }}
-        </label>
+    <div class="form-group {{ $errors->has('bradcume') ? ' has-error' : '' }}">
+        <label for="bradcume" class="col-md-2 control-label">Breadcrumb KH</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ $question->header }}" name="header" type="text" id="header">
-            @if($errors->has('header'))
-                <span class="help-block">{{ $errors->first('header') }}</span>
+            <input class="form-control font-sr" value="{{ $term->bradcume }}" name="bradcume" type="text" id="bradcume">
+            @if($errors->has('bradcume'))
+                <span class="help-block">{{ $errors->first('bradcume') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('header_en') ? ' has-error' : '' }}">
-        <label for="header_en" class="col-md-2 control-label">
-            {{ __('questions.header') }}
-        </label>
+    <div class="form-group {{ $errors->has('bradcume_en') ? ' has-error' : '' }}">
+        <label for="bradcume_en" class="col-md-2 control-label">Breadcrumb EN</label>
         <div class="col-md-4">
-            <input class="form-control" value="{{ $question->header_en }}" name="header_en" type="text">
-            @if($errors->has('header_en'))
-                <span class="help-block">{{ $errors->first('header_en') }}</span>
+            <input class="form-control font-sr" value="{{ $term->bradcume_en }}" name="bradcume_en" type="text" id="bradcume_en">
+            @if($errors->has('bradcume_en'))
+                <span class="help-block">{{ $errors->first('bradcume_en') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="titleEn" class="col-md-2 control-label">
-            {{ __('questions.can_be') }}
-        </label>
+    <div class="form-group {{ $errors->has('heading') ? ' has-error' : '' }}">
+        <label for="heading" class="col-md-2 control-label">Heading KH</label>
         <div class="col-md-4">
-            <select class="form-control" name="type">
-                <option {{ $question->type == '1' ? 'selected' : '' }} value="1">{{ __('questions.one_answer') }}</option>
-                <option {{ $question->type == '2' ? 'selected' : '' }} value="2">{{ __('questions.multiple_answer') }}</option>
-            </select>
+            <input class="form-control font-sr" value="{{ $term->heading }}" name="heading" type="text" id="heading">
+            @if($errors->has('heading'))
+                <span class="help-block">{{ $errors->first('heading') }}</span>
+            @endif
         </div>
     </div>
+
+    <div class="form-group {{ $errors->has('heading_en') ? ' has-error' : '' }}">
+        <label for="heading_en" class="col-md-2 control-label">Heading EN</label>
+        <div class="col-md-4">
+            <input class="form-control font-sr" value="{{ $term->heading_en }}" name="heading_en" type="text" id="heading_en">
+            @if($errors->has('heading_en'))
+                <span class="help-block">{{ $errors->first('heading_en') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('term') ? ' has-error' : '' }}">
+        <label for="term" class="col-md-2 control-label">Term KH</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="term" id="term">{{ $term->term }}</textarea>
+            @if($errors->has('term'))
+                <span class="help-block">{{ $errors->first('term') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('term_en') ? ' has-error' : '' }}">
+        <label for="term_en" class="col-md-2 control-label">Term EN</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="term_en" id="term_en">{{ $term->term_en }}</textarea>
+            @if($errors->has('term_en'))
+                <span class="help-block">{{ $errors->first('term_en') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('note') ? ' has-error' : '' }}">
+        <label for="note" class="col-md-2 control-label">Note KH</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="note" id="note">{{ $term->note }}</textarea>
+            @if($errors->has('note'))
+                <span class="help-block">{{ $errors->first('note') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('note_en') ? ' has-error' : '' }}">
+        <label for="note_en" class="col-md-2 control-label">Note EN</label>
+        <div class="col-md-4">
+            <textarea class="form-control" name="note_en" id="note_en">{{ $term->note_en }}</textarea>
+            @if($errors->has('note_en'))
+                <span class="help-block">{{ $errors->first('note_en') }}</span>
+            @endif
+        </div>
+    </div>
+
+
 
     <div id="image-upload">
-        @if($question->image)
+        @if($term->image)
             <div class="form-group ">
                 <div class="col-md-4 col-md-offset-2">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                            <img class="clinic-img" src="{{ $question->image->path() }}" alt="Logo URL">
+                            <img class="clinic-img" src="{{ $term->image->path() }}" alt="Logo URL">
                         </div>
                     </div>
                 </div>
@@ -197,7 +245,7 @@
                 form_data.append('_token', _token);
 
                 $.ajax({
-                    url: '{{ route('admin.question.file', $question) }}', // point to server-side controller method
+                    url: '{{ route('admin.question.upload') }}', // point to server-side controller method
                     dataType: 'text', // what to expect back from the server
                     cache: false,
                     contentType: false,
@@ -206,13 +254,14 @@
                     type: 'post',
                     success: function (response) {
                         var data = JSON.parse(response);
-
+                        console.log(data)
                         $('#image-upload').html(`
 <div class="form-group">
     <div class="col-md-4 col-md-offset-2">
         <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail">
                 <img class="clinic-img" src="${data.path}" alt="Logo URL">
+                <input type="hidden" name="image_id" value="${data.id}">
             </div>
         </div>
     </div>

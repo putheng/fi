@@ -103,6 +103,30 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('header') ? ' has-error' : '' }}">
+        <label for="header" class="col-md-2 control-label">
+            {{ __('questions.header_kh') }}
+        </label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ old('header') }}" name="header" type="text" id="header">
+            @if($errors->has('header'))
+                <span class="help-block">{{ $errors->first('header') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('header_en') ? ' has-error' : '' }}">
+        <label for="header_en" class="col-md-2 control-label">
+            {{ __('questions.header') }}
+        </label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ old('header_en') }}" name="header_en" type="text" id="header_en">
+            @if($errors->has('header_en'))
+                <span class="help-block">{{ $errors->first('header_en') }}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="form-group">
         <label for="titleEn" class="col-md-2 control-label">
             {{ __('questions.can_be') }}
@@ -130,7 +154,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">Cancel</a>
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
         </div>
     </div>
 </form>

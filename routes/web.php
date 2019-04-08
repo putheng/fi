@@ -10,6 +10,8 @@ Route::model('users', 'App\Models\User');
 Route::get('/', 'HomeController@index');
 Route::get('/map', 'HomeController@map');
 
+Route::post('/assessment/save', 'AssessmentController@reservation')->name('ass.save');
+
 Route::group(array('prefix' => 'admin'), function () {
 
     # Error pages should be shown without requiring login
@@ -181,6 +183,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     # SMS Job testing
     Route::group(array('prefix' => 'sms'), function () {
         Route::get('job', ['as' => 'sms.job', 'uses' => 'SMSJobController@runManual']);
+    });
+
+    # Recommend
+    Route::group(['prefix' => 'recommend', 'as' => 're.'], function(){
+        Route::get('/create', 'RecommendController@create')->name('create');
+        Route::post('/create', 'RecommendController@store');
+        Route::get('/create/{recommend}', 'RecommendController@edit')->name('update');
+        Route::post('/create/{recommend}', 'RecommendController@update');
+    });
+
+    Route::group(['prefix' => 'term', 'as' => 'term.'], function(){
+       Route::get('/term', 'TermController@edit')->name('edit');
+       Route::post('/term', 'TermController@store');
     });
 
     # REMINDER Job testing

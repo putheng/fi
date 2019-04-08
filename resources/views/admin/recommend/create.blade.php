@@ -67,48 +67,37 @@
                             <div class="col-md-12">
                                 <!--main content-->
                                 
-<form action="{{ route('admin.question.result') }}" method="post" accept-charset="UTF-8" class="form-horizontal">
+<form action="{{ route('admin.re.create') }}" method="post" accept-charset="UTF-8" class="form-horizontal">
     {{ csrf_field() }}
-    <div class="form-group {{ $errors->has('resultKh') ? ' has-error' : '' }}">
-        <label for="resultKh" class="col-md-2 control-label">{{ __('questions.result_kh') }}</label>
+    <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('page.recommend') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="resultKh" type="text" id="resultKh">
-            @if($errors->has('resultKh'))
-                <span class="help-block">{{ $errors->first('resultKh') }}</span>
+            <input class="form-control font-sr" value="{{ old('titleKh') }}" name="titleKh" type="text" id="titleKh">
+            @if($errors->has('titleKh'))
+                <span class="help-block font-sr">{{ $errors->first('titleKh') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('resultEn') ? ' has-error' : '' }}">
-        <label for="resultEn" class="col-md-2 control-label">{{ __('questions.result_en') }}</label>
+    <div class="form-group {{ $errors->has('titleEn') ? ' has-error' : '' }}">
+        <label for="titleEn" class="col-md-2 control-label">{{ __('page.recommend_en') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="resultEn" type="text" id="resultEn">
-            @if($errors->has('resultEn'))
-                <span class="help-block">{{ $errors->first('resultEn') }}</span>
+            <input class="form-control" value="{{ old('titleEn') }}" name="titleEn" type="text" id="titleEn">
+            @if($errors->has('titleEn'))
+                <span class="help-block">{{ $errors->first('titleEn') }}</span>
             @endif
         </div>
     </div>
 
     <div class="form-group">
-        <label for="titleEn" class="col-md-2 control-label">
-            {{ __('questions.point_range') }}
-        </label>
-        <div class="col-md-2">
-            <input type="text" value="0" name="from" class="form-control" placeholder="From">
-            @if($errors->has('point_from'))
-                <span class="help-block">{{ $errors->first('from') }}</span>
-            @endif
-        </div>
-        <div class="col-md-2">
-            <input type="text" value="0" name="to" class="form-control" placeholder="To">
-            @if($errors->has('to'))
-                <span class="help-block">{{ $errors->first('point_to') }}</span>
+        <div class="col-md-4">
+            @if($errors->has('image'))
+                <span class="help-block">{{ $errors->first('image') }}</span>
             @endif
         </div>
     </div>
-    <div id="image-upload">
 
-    </div>
+    <div id="image-upload"></div>
     <div class="form-group">
         <label for="titleEn" class="col-md-2 control-label">
             {{ __('questions.photo') }}
@@ -120,8 +109,8 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input class="btn btn-success" style="width: 160px;" type="submit" value="{{__('questions.submit')}}">
-            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
+            <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
+            <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">Cancel</a>
         </div>
     </div>
 </form>
@@ -142,6 +131,7 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/page/users.js') }}"></script>
+
            <script type="text/javascript">
                 $(document).ready(function (e) {
                     $('#file').on('change', function () {

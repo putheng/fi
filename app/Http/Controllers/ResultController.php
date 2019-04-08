@@ -47,14 +47,18 @@ class ResultController extends Controller
     {
     	$this->validate($request, [
     		'resultKh' => 'required',
-    		'resultEn' => 'required',
+            'resultEn' => 'required',
+            'description' => 'required',
+    		'description_en' => 'required',
     		'from' => 'required',
     		'to' => 'required',
     	]);
 
     	$result->update([
     		'title' => $request->resultKh,
-    		'titleEn' => $request->resultEn,
+            'titleEn' => $request->resultEn,
+            'description' => $request->description,
+    		'description_en' => $request->description_en,
     		'from' => $request->from,
     		'to' => $request->to,
     	]);

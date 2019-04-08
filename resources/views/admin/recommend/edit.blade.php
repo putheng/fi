@@ -67,47 +67,87 @@
                             <div class="col-md-12">
                                 <!--main content-->
                                 
-<form action="{{ route('admin.question.result') }}" method="post" accept-charset="UTF-8" class="form-horizontal">
+<form action="{{ route('admin.re.update', $recommend) }}" method="post" accept-charset="UTF-8" class="form-horizontal">
     {{ csrf_field() }}
-    <div class="form-group {{ $errors->has('resultKh') ? ' has-error' : '' }}">
-        <label for="resultKh" class="col-md-2 control-label">{{ __('questions.result_kh') }}</label>
+
+    <div class="form-group {{ $errors->has('heading') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('recommend.heading') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="resultKh" type="text" id="resultKh">
-            @if($errors->has('resultKh'))
-                <span class="help-block">{{ $errors->first('resultKh') }}</span>
+            <input class="form-control font-sr" value="{{ $recommend->heading }}" name="heading" type="text" id="heading">
+            @if($errors->has('heading'))
+                <span class="help-block font-sr">{{ $errors->first('heading') }}</span>
             @endif
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('resultEn') ? ' has-error' : '' }}">
-        <label for="resultEn" class="col-md-2 control-label">{{ __('questions.result_en') }}</label>
+    <div class="form-group {{ $errors->has('heading_en') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('recommend.heading_en') }}</label>
         <div class="col-md-4">
-            <input class="form-control required" name="resultEn" type="text" id="resultEn">
-            @if($errors->has('resultEn'))
-                <span class="help-block">{{ $errors->first('resultEn') }}</span>
+            <input class="form-control font-sr" value="{{ $recommend->heading_en }}" name="heading_en" type="text" id="heading_en">
+            @if($errors->has('heading_en'))
+                <span class="help-block font-sr">{{ $errors->first('heading_en') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('titleKh') ? ' has-error' : '' }}">
+        <label for="titleKh" class="col-md-2 control-label">{{ __('page.recommend') }}</label>
+        <div class="col-md-4">
+            <input class="form-control font-sr" value="{{ $recommend->title }}" name="titleKh" type="text" id="titleKh">
+            @if($errors->has('titleKh'))
+                <span class="help-block font-sr">{{ $errors->first('titleKh') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('titleEn') ? ' has-error' : '' }}">
+        <label for="titleEn" class="col-md-2 control-label">{{ __('page.recommend_en') }}</label>
+        <div class="col-md-4">
+            <input class="form-control" value="{{ $recommend->title_en }}" name="titleEn" type="text" id="titleEn">
+            @if($errors->has('titleEn'))
+                <span class="help-block">{{ $errors->first('titleEn') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+        <label for="description" class="col-md-2 control-label">{{ __('recommend.description') }}</label>
+        <div class="col-md-4">
+            <textarea id="description" class="form-control" name="description">{{ $recommend->description }}</textarea>
+            @if($errors->has('description'))
+                <span class="help-block">{{ $errors->first('description') }}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('description_en') ? ' has-error' : '' }}">
+        <label for="description_en" class="col-md-2 control-label">{{ __('recommend.description_en') }}</label>
+        <div class="col-md-4">
+            <textarea id="description_en" class="form-control" name="description_en">{{ $recommend->description_en }}</textarea>
+            @if($errors->has('description_en'))
+                <span class="help-block">{{ $errors->first('description_en') }}</span>
             @endif
         </div>
     </div>
 
     <div class="form-group">
-        <label for="titleEn" class="col-md-2 control-label">
-            {{ __('questions.point_range') }}
-        </label>
-        <div class="col-md-2">
-            <input type="text" value="0" name="from" class="form-control" placeholder="From">
-            @if($errors->has('point_from'))
-                <span class="help-block">{{ $errors->first('from') }}</span>
-            @endif
-        </div>
-        <div class="col-md-2">
-            <input type="text" value="0" name="to" class="form-control" placeholder="To">
-            @if($errors->has('to'))
-                <span class="help-block">{{ $errors->first('point_to') }}</span>
+        <div class="col-md-4">
+            @if($errors->has('image'))
+                <span class="help-block">{{ $errors->first('image') }}</span>
             @endif
         </div>
     </div>
-    <div id="image-upload">
 
+    <div id="image-upload">
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail">
+                        <img class="clinic-img" src="{{ $recommend->image->path() }}" alt="Logo URL">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="titleEn" class="col-md-2 control-label">
@@ -120,7 +160,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input class="btn btn-success" style="width: 160px;" type="submit" value="{{__('questions.submit')}}">
+            <input class="btn btn-success" style="width: 160px;" type="submit" value="Save">
             <a href="{{ route('admin.question.index') }}" class="btn btn-default" style="width: 140px; margin-left: 10px">{{ __('page.close') }}</a>
         </div>
     </div>
@@ -142,6 +182,7 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/page/users.js') }}"></script>
+
            <script type="text/javascript">
                 $(document).ready(function (e) {
                     $('#file').on('change', function () {

@@ -58,22 +58,39 @@
 	</nav>
 <br>
 <div class="container">
-		<div class="row">
-			<!--add Title of question to page-->
-			<div class="col-md-10 col-md-offset-1">
-			<h3>
-				<?php 
-					echo "ចំណងជើងសំណួរ";
-				?>		
-			</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<template v-if="step == 0">
+				<h3 class="text-center font-sr">{{ $term->getHeading() }}</h3>
+			</template>
+			<template v-if="step == getRecommenStep">
+				<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
+			</template>
+			<template v-for="(question, index) in questions">
+				<h3 class="text-center font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>
+			</template>
 		</div>
-		<div class="col-md-10 col-md-offset-1">
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
 			<ul class="breadcrumb">
+				<template>
+					<li :class="welcomeClass">
+						<a @click.prevent="getWelcome" href="#" class="font-sr">{{ $term->getBradcume() }}</a>
+					</li>
+				</template>
 				<template v-for="(question, index) in questions">
 					<li :class="getStep(index)">
 						<a @click.prevent="currentStep(index)" href="#" class="font-sr">
 							{{ question.<?php echo __('page.sub_question') ?> }}
 						</a>
+					</li>
+				</template>
+				<template>
+					<li :class="recommendationClass">
+						<a href="#" class="font-sr">{{ $recommend->getTitle() }}</a>
 					</li>
 				</template>
 				<li :class="resultCompletedClass" class="alway-show">
@@ -83,7 +100,35 @@
 		</div>
 	</div>
 </div>
-
+	<transition name="slide" >
+		<template v-if="step === 0">
+			<div class="main container">
+				<div class="row">
+					<div class="col-sm-3 col-xs-6 col-md-offset-1">
+						<img src="{{ $term->image->path() }}" class="img-responsive hide-mobile">
+					</div>
+					<div class="col-sm-7 col-xs-6">
+						<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
+						<p class="font-sr">
+							{{ $term->getSubtitle() }}
+						</p>
+						<br>
+						<p>
+							<input id="term" type="checkbox" v-model="term">
+							<label for="term" class="font-sr"> {{ $term->getTerm() }}</label>
+						</p>
+						<p>
+							<input @click="acceptTerm" type="button" value="{{ __('term.botton') }}" class="btn btn-primary font-sr">
+						</p>
+						<p><br>
+							<i class=" font-sr">{{ $term->getNote() }}</i>
+						</p>
+						<br>
+					</div>
+				</div>
+			</div>
+		</template>
+	</transition>
 		@foreach($questions as $key => $question)
 			<transition name="slide" >
 				<template v-if="step === {{ ($key+1) }}">
@@ -127,7 +172,7 @@
 										</label>
 									@endforeach
 									<br>
-									<a href="#" @click="nextContinue" class="btn btn-primary font-sr pull-right">
+									<a href="#" @click.prevent="nextContinue" class="btn btn-primary font-sr pull-right">
 										{{ __('page.next') }}
 									</a>
 								@endif
@@ -140,7 +185,26 @@
 			</transition>
 		<?php endforeach; ?>
 		<transition name="slide" >
-			<template v-if="step === 6">
+			<template v-if="step == getRecommenStep">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+							<img src="{{ $recommend->image->path() }}" class="img-responsive">
+						</div>
+						<div class="col-sm-7 col-xs-6">
+							<br>
+							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
+							<br>
+							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
+								{{ __('page.next') }}
+							</a>
+						</div>
+					</div>
+				</div>
+			</template>
+		</transition>
+		<transition name="slide" >
+			<template v-if="step == getResultStep">
 				<div class="main container">
 					<div class="row">
 						<div class="col-sm-3 col-xs-6 col-md-offset-1">
@@ -150,14 +214,30 @@
 							<br>
 							<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
 							<br>
+							<p class="font-sr">{{ answer.<?php echo __('page.description'); ?> }}</p>
 						</div>
 					</div>
 				</div>
 			</template>
 		</transition>
 </div>
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-14 col-xs-12">
+		<img class="img-responsive" src="./public/images/home-logo-USAID.jpg">
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-14 col-xs-12">
+		<img class="img-responsive" src="./public/images/home-logo-PEPFAR.jpg">
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-14 col-xs-12">
+		<img class="img-responsive" src="./public/images/home-logo-LINKAGES.jpg">
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-14 col-xs-12">
+		<img class="img-responsive" src="./public/images/home-logo-FHI-360.jpg">
+	</div>
+</div>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -165,7 +245,8 @@
 	new Vue({
 	  el: '#wrap',
 	  data: () => ({
-	      step: 1,
+	      step: 0,
+	      term: false,
 	      isActive: false,
 	      questions: [],
 	      answers: [],
@@ -181,37 +262,38 @@ question{{ $keys + 1 }}: [],
 	}
 	  }),
 	  methods:{
+	  	getWelcome(){
+	  		this.step = 0
+	  	},
+	  	acceptTerm(){
+	  		if(this.term){
+	  			this.step++
+	  		}
+	  	},
+	  	nextStep(){
+	  		if(!this.term){
+	  			return
+	  		}
+	  		this.step++
+	  		// 	this.$http.post('{{ route('ass.save') }}').then(response => {
+
+			//     this.someData = response.body;
+
+			// 	}, response => {
+
+			// })
+	  	},
 	  	next(){
 
 	  		if(this.step <= this.stepLength){
 	  			setTimeout(() => {
-				   this.step++
+				   this.nextStep()
 				}, 300)
 	  		}
 
-	    	let values = Object.values(this.registration).filter((key) => {
-	    		return key !== null
-	    	})
-
-			var total = [].concat
-	    			.apply([], values)
-	    			.reduce(function(a, b) { return +a + +b })
-
-	    	this.answer = this.answers.filter((key, item) => {
-	    		return total >= key.from && total <= key.to
-	    	})[0]
 	  	},
-	  	nextContinue(){
-	  		console.log(this.registration["question"+ this.step].length)
-	  		if(this.registration["question"+ this.step].length == 0){
-	  			return
-	  		}
-
-	  		if(this.step <= this.stepLength){
-	  			setTimeout(() => {
-				   this.step++
-				}, 300)
-	  		}
+	  	completeRecommanded(){
+	  		this.step = this.getResultStep
 
 	    	let values = Object.values(this.registration).filter((key) => {
 	    		return key !== null
@@ -224,6 +306,25 @@ question{{ $keys + 1 }}: [],
 	    	this.answer = this.answers.filter((key, item) => {
 	    		return total >= key.from && total <= key.to
 	    	})[0]
+
+	    	console.log(this.step)
+	  	},
+	  	nextContinue(){
+
+	  		if(this.registration["question"+ this.step].length == 0){
+	  			return
+	  		}
+
+	  		if(this.step <= this.stepLength){
+	  			setTimeout(() => {
+				    this.nextStep()
+				}, 300)
+	  		}
+
+	  		if(this.step == this.questionLength){
+	  			//save
+	  		}
+
 	  	},
 	  	previous(){
 	  		if(this.step >= 1){
@@ -234,8 +335,6 @@ question{{ $keys + 1 }}: [],
 	    	let values = Object.values(this.registration).filter((key) => {
 	    		return key !== null
 	    	})
-
-	    	console.log(values)
 
 	    	var total = [].concat
 	    			.apply([], values)
@@ -257,6 +356,9 @@ question{{ $keys + 1 }}: [],
 	    	}
 	    },
 	    currentStep(index){
+	    	if(!this.term){
+	    		return
+	    	}
 
 	    	const id = index + 1
 
@@ -283,6 +385,26 @@ question{{ $keys + 1 }}: [],
 
 	  },
 	  computed: {
+	  	getResultStep(){
+	  		return this.questions.length + 2
+	  	},
+	  	getRecommenStep(){
+	  		return this.questions.length + 1
+	  	},
+	  	recommendationClass(){
+	  		if(this.step == this.getRecommenStep){
+	  			return 'active'
+	  		}else if(this.step > this.getRecommenStep){
+	  			return 'completed'
+	  		}
+	  	},
+	  	welcomeClass(){
+	  		if(this.step == 0){
+	  			return 'active'
+	  		}else{
+	  			return 'completed'
+	  		}
+	  	},
 	  	stepLength(){
 	  		return this.step <= this.questions.length ? this.step : this.questions.length
 	  	},
@@ -290,9 +412,7 @@ question{{ $keys + 1 }}: [],
 	  		return this.questions.length
 	  	},
 	  	resultCompletedClass(){
-	  		let length = this.questions.length + 1
-
-	  		if(this.step == length){
+	  		if(this.step == this.getResultStep){
 	  			return 'completed'
 	  		}
 	  	}

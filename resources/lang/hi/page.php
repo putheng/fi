@@ -12,5 +12,11 @@ return [
     'kh' => 'ភាសាខ្មែរ',
 
     'sub_question' => 'subtitle',
+    'description' => 'description',
+    'recommend' => 'Recommend',
+    'recommend_lang' => 'title',
+    'close' => 'Close',
+    'recommend_description' => 'Description KH',
+    'recommend_kh' => 'Recommend KH',
 
 ];

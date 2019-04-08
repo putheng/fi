@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Question;
+use App\Models\Recommend;
 use App\Models\Result;
+use App\Models\Term;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,8 +16,10 @@ class QuestionController extends Controller
     {
         $questions = Question::get();
         $results = Result::get();
+        $recommends = Recommend::get();
+        $term = Term::first();
 
-    	return view('admin.question.index', compact('questions', 'results'));
+    	return view('admin.question.index', compact('questions', 'results', 'recommends', 'term'));
     }
 
     public function create()
@@ -30,9 +34,11 @@ class QuestionController extends Controller
             'titleEn' => 'required|unique:questions',
             'subtitle' => 'required|unique:questions',
     		'subtitleEn' => 'required|unique:questions',
+            'header_en' => 'required',
+            'header' => 'required',
     	]);
 
-    	$question = Question::create($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
+    	$question = Question::create($request->only('header_en', 'header', 'titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         if(!empty($request->image)){
             $image = Image::find($request->image);
@@ -55,9 +61,11 @@ class QuestionController extends Controller
             'titleEn' => 'required',
             'subtitle' => 'required',
             'subtitleEn' => 'required',
+            'header_en' => 'required',
+            'header' => 'required',
         ]);
 
-        $question->update($request->only('titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
+        $question->update($request->only('header_en', 'header', 'titleKh', 'titleEn', 'type', 'subtitle', 'subtitleEn'));
 
         return back();
     }
