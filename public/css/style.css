@@ -552,3 +552,15 @@ p.title{
   margin-left: 10px;
   border-radius: 5px;
 }
+
+.custom-style{
+    margin-top: 70px!important;
+    font-size: 40px!important;
+}
+.bg-light{
+  background: #fff;
+  width:100%;
+}
+.container{
+  padding-top: 0!important;
+}
