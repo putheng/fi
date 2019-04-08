@@ -105,7 +105,7 @@
 			<div class="main container">
 				<div class="row">
 					<div class="col-sm-3 col-xs-6 col-md-offset-1">
-						<img src="/images/step-6.png" class="img-responsive hide-mobile">
+						<img src="{{ $term->image->path() }}" class="img-responsive hide-mobile">
 					</div>
 					<div class="col-sm-7 col-xs-6">
 						<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
@@ -189,7 +189,7 @@
 				<div class="main container">
 					<div class="row">
 						<div class="col-sm-3 col-xs-6 col-md-offset-1">
-							<img src="/images/step-6.png" class="img-responsive">
+							<img src="{{ $recommend->image->path() }}" class="img-responsive">
 						</div>
 						<div class="col-sm-7 col-xs-6">
 							<br>
