@@ -67,7 +67,7 @@
 					<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
 				</template>
 				<template v-for="(question, index) in questions">
-					<h3 class="text-center  font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>
+					<h3 class="text-center  custom-style font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>
 				</template>
 			</div>
 		</div>
@@ -251,7 +251,7 @@
 		<!---copy right-->
 		<div class="col-md-12 padding-bottom">
 			<hr/>
-			<p class="font-sr"><small><i>រក្សាសិទ្ធិ :copyright: ដោយ Name Here </i></small></p>
+			<p class="font-sr"><small><i>រក្សាសិទ្ធិដោយ: Name Here </i></small></p>
 			<p class="font-sr"><small><i>
 				គេហទំព័រនេះទទួលការគាំទ្រថវិកាពីប្រជាពលរដ្ឋអាមេរិក តាមរយៈទីភ្នាក់ងារជំនួយអាមេរិក USAID និង ផែនការបន្ទាន់សម្រាប់ជួយសង្គ្រោះផ្នែកជំងឺអេដស៍របស់ប្រធានាធិបតីអាមេរិក (PEPFAR) ។ រាល់មាតិកានៅក្នុងគេហទំព័រនេះគឺជាការទទួលខុសត្រូវរបស់មជ្ឈមណ្ឌលជាតិប្រយុទ្ធនឹងជំងឺអេដស៍ សើស្បែក និងកាមរោគ (NCHADS) និង គម្រោង LINKAGES អង្គការ FHI 360 មិនឆ្លុះបញ្ចាំងពីទស្សនៈរបស់ USAID, PEPFAR, ឬរដ្ឋាភិបាលសហរដ្ឋអាមេរិកឡើយ។</i></small>
 			</p>

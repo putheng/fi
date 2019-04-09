@@ -576,3 +576,8 @@ p.title{
   font-size: 40px;
   margin-top: 80px;
 }
+
+h4{
+  font-size:24px;
+  font-style: italic;
+}
