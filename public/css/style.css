@@ -565,3 +565,14 @@ p.title{
   list-style: none;
   padding-left: 10px;
 }
+.bg-light{
+  width: 100%;
+  background: #fff;
+}
+.container{
+  padding-top: 0!important;
+}
+.custom-style{
+  font-size: 40px;
+  margin-top: 80px;
+}
