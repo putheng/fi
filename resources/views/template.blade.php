@@ -201,7 +201,7 @@
 										@foreach($info->answers as $answer)
 											<li>
 												<input id="answer_{{ $answer->id }}" type="radio" name="info{{ $info->id }}">
-												<label for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
+												<label class="font-sr" for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
 											</li>
 										@endforeach
 									</ul>
