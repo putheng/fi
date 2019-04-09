@@ -237,21 +237,21 @@
 		<div class="col-md-12">
 			<hr/>
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/public/images/home-logo-USAID.jpg">
+				<img class="img-responsive" src="/images/home-logo-USAID.jpg">
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/public/images/home-logo-PEPFAR.jpg">
+				<img class="img-responsive" src="/images/home-logo-PEPFAR.jpg">
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/public/images/home-logo-LINKAGES.jpg">
+				<img class="img-responsive" src="/images/home-logo-LINKAGES.jpg">
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/public/images/home-logo-FHI-360.jpg">
+				<img class="img-responsive" src="/images/home-logo-FHI-360.jpg">
 			</div>
 		</div>
 		
 		<!---copy right-->
-		<div class="col-md-12">
+		<div class="col-md-12 padding-bottom">
 			<hr/>
 			<p class="font-sr"><small><i>រក្សាសិទ្ធិ © ដោយ Name Here </i></small></p>
 			<p class="font-sr"><small><i>
