@@ -196,7 +196,7 @@
 							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
 							<div>
 								@foreach($infos as $info)
-									<p>{{ $info->title }}</p>
+									<p class="font-sr">{{ $info->title }}</p>
 									<ul class="list-group-inline-x">
 										@foreach($info->answers as $answer)
 											<li>
