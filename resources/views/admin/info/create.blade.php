@@ -86,16 +86,6 @@
         </div>
     </div>
 
-    <div id="image-upload">
-    </div>
-    <div class="form-group">
-        <label for="titleEn" class="col-md-2 control-label">
-            {{ __('questions.photo') }}
-        </label>
-        <div class="col-md-10">
-            <input type="file" id="file" name="file" accept="image/*" />
-        </div>
-    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             

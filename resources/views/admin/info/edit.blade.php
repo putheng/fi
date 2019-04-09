@@ -86,28 +86,6 @@
         </div>
     </div>
 
-    <div id="image-upload">
-        @if($info->image)
-            <div class="form-group ">
-                <div class="col-md-4 col-md-offset-2">
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail">
-                            <img class="clinic-img" src="{{ $info->image->path() }}" alt="Logo URL">
-                            <input type="hidden" name="image_id" value="{{ $info->image->id }}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="titleEn" class="col-md-2 control-label">
-            {{ __('questions.photo') }}
-        </label>
-        <div class="col-md-10">
-            <input type="file" id="file" name="file" accept="image/*" />
-        </div>
-    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             
