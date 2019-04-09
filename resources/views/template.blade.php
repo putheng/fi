@@ -56,6 +56,7 @@
 			</div>
 		</div>
 	</nav>
+
 	<br>
 	<div class="container">
 		<div class="row">
@@ -65,6 +66,31 @@
 				</template>
 				<template v-if="step == getRecommenStep">
 					<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<template v-if="step == 0">
+				<h3 class="text-center font-sr">{{ $term->getHeading() }}</h3>
+			</template>
+			<template v-if="step == getRecommenStep">
+				<h3 class="text-center font-sr custom-style">{{ $recommend->getHeading() }}</h3>
+			</template>
+			<template v-for="(question, index) in questions">
+				<h3 class="text-center font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="breadcrumb">
+				<template>
+					<li :class="welcomeClass">
+						<a @click.prevent="getWelcome" href="#" class="font-sr">{{ $term->getBradcume() }}</a>
+					</li>
+
 				</template>
 				<template v-for="(question, index) in questions">
 					<h3 class="text-center  font-sr" v-if="step == (index + 1)">@{{ question.header }}</h3>
@@ -102,6 +128,48 @@
 	</div>
 	<div class="container">
 		<div class="row">
+				<template>
+					<li :class="recommendationClass">
+						<a href="#" class="font-sr">{{ $recommend->getTitle() }}</a>
+					</li>
+				</template>
+				<li :class="resultCompletedClass" class="alway-show">
+					<a href="#" class="font-sr">{{ __('page.results') }}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+	<transition name="slide" >
+		<template v-if="step === 0">
+			<div class="main container">
+				<div class="row">
+					<div class="col-sm-3 col-xs-6 col-md-offset-1">
+						<img src="{{ $term->image->path() }}" class="img-responsive hide-mobile">
+					</div>
+					<div class="col-sm-7 col-xs-6">
+						<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
+						<p class="font-sr">
+							{{ $term->getSubtitle() }}
+						</p>
+						<br>
+						<p>
+							<input id="term" type="checkbox" v-model="term">
+							<label for="term" class="font-sr"> {{ $term->getTerm() }}</label>
+						</p>
+						<p>
+							<input @click="acceptTerm" type="button" value="{{ __('term.botton') }}" class="btn btn-primary font-sr">
+						</p>
+						<p><br>
+							<i class=" font-sr">{{ $term->getNote() }}</i>
+						</p>
+						<br>
+					</div>
+				</div>
+			</div>
+		</template>
+	</transition>
+		@foreach($questions as $key => $question)
 			<transition name="slide" >
 				<template v-if="step === 0">
 					<div class="main container">
@@ -201,6 +269,14 @@
 								<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
 									{{ __('page.next') }}
 								</a>
+											</div>
+										</label>
+									@endforeach
+									<br>
+									<a href="#" @click.prevent="nextContinue" class="btn btn-primary font-sr pull-right">
+										{{ __('page.next') }}
+									</a>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -220,6 +296,38 @@
 								<br>
 								<p class="font-sr">{{ answer.<?php echo __('page.description'); ?> }}</p>
 							</div>
+		<?php endforeach; ?>
+		<transition name="slide" >
+			<template v-if="step == getRecommenStep">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+							<img src="{{ $recommend->image->path() }}" class="img-responsive">
+						</div>
+						<div class="col-sm-7 col-xs-6">
+							<br>
+							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
+							<br>
+							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
+								{{ __('page.next') }}
+							</a>
+						</div>
+					</div>
+				</div>
+			</template>
+		</transition>
+		<transition name="slide" >
+			<template v-if="step == getResultStep">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+							<img :src="'/uploads/'+ answer.image.path" class="img-responsive">
+						</div>
+						<div class="col-sm-7 col-xs-6">
+							<br>
+							<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
+							<br>
+							<p class="font-sr">{{ answer.<?php echo __('page.description'); ?> }}</p>
 						</div>
 					</div>
 				</template>
