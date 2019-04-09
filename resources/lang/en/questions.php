@@ -31,5 +31,6 @@ return [
     'description' => 'Description KH',
     'description_en' => 'Description EN',
     'welcome' => 'Term & Condition',
+    'free' => 'Free questions',
 
 ];

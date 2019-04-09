@@ -566,4 +566,16 @@ p.title{
 }
 .padding-bottom{
   padding-bottom:20px
+=======
+.list-group-inline-x li:last-child {
+  margin-right: 0;
+}
+.list-group-inline-x li {
+  display: inline;
+  margin-right: 50px;
+}
+
+.list-group-inline-x{
+  list-style: none;
+  padding-left: 10px;
 }

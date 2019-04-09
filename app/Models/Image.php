@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Info;
 use App\Models\Question;
 use App\Models\Recommend;
 use App\Models\Result;
@@ -21,6 +22,11 @@ class Image extends Model
     public function question()
     {
     	return $this->belongsTo(Question::class);
+    }
+
+    public function inf()
+    {
+        return $this->belongsTo(Info::class);
     }
 
     public function result()

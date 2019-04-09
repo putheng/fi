@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\ViewComposers\ClinicsComposer;
+use App\ViewComposers\InfoComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,6 +17,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('map', ClinicsComposer::class);
+        View::composer(['template', 'admin.question.partials._recommend'], InfoComposer::class);
     }
 
     /**

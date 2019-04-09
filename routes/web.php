@@ -131,6 +131,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
 
         Route::get('/results', 'ResultController@index')->name('result');
         Route::post('/results', 'ResultController@store');
+
+        Route::get('/info/create', 'InfoController@create')->name('info.create');
+        Route::post('/info/create', 'InfoController@store');
+        Route::get('/info/{info}', 'InfoController@edit')->name('info.edit');
+        Route::get('/info/{info}/delete', 'InfoController@destroy')->name('info.delete');
+
+        Route::get('/info/{info}/answer', 'InfoAnswerController@create')->name('info.answer.create');
+        Route::post('/info/{info}/answer', 'InfoAnswerController@store');
+        Route::get('/info/answer/{answer}/destroy', 'InfoAnswerController@destroy')->name('info.answer.delete');
+
         Route::get('/results/{result}/edit', 'ResultController@edit')->name('result.edit');
         Route::post('/results/{result}/edit', 'ResultController@update');
 
