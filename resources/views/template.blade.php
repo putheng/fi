@@ -16,7 +16,7 @@
 <div id="wrap" class="row">
 	<nav class="navbar navbar-default navbar-fixed-top navbar-with-search text-white">
 		<div class="container">
-			<div class="row">
+			<div class="col-md-12">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#">
@@ -57,8 +57,8 @@
 		</div>
 	</nav>
 	<br>
-	<div class="container">
-		<div class="row">
+	<div class="row main-content">
+		<div class="container">
 			<div class="col-md-12">
 				<template v-if="step == 0">
 					<h3 class="text-center custom-style font-sr">{{ $term->getHeading() }}</h3>
@@ -72,8 +72,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="row">
+	<div class="row">
+		<div class="container">
 			<div class="col-md-12">
 				<ul class="breadcrumb">
 					<template>
@@ -100,16 +100,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="row">
+	<div class="row">
+		<div class="container">
 			<transition name="slide" >
 				<template v-if="step === 0">
-					<div class="main container">
-						<div class="row">
-							<div class="col-sm-3 col-xs-6 col-md-offset-1">
+					<div class="col-md-12">
+						
+							<div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 								<img src="{{ $term->image->path() }}" class="img-responsive hide-mobile">
 							</div>
-							<div class="col-sm-7 col-xs-6">
+							<div class="col-md-7 col-sm-12 col-xs-12">
 								<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
 								<p class="font-sr">
 									{{ $term->getSubtitle() }}
@@ -127,19 +127,19 @@
 								</p>
 								<br>
 							</div>
-						</div>
+						
 					</div>
 				</template>
 			</transition>	
 			@foreach($questions as $key => $question)
 				<transition name="slide" >
 					<template v-if="step === {{ ($key+1) }}">
-					<div class="main container">
-						<div class="row">
-							<div class="col-sm-3 col-md-offset-1">
+					<div class="main row">
+						<div class="container">
+							<div class="col-md-3 col-sm-12 col-md-offset-1">
 								<img src="{{ optional($question->image)->path() }}" class="img-responsive hide-mobile">
 							</div>
-							<div class="col-sm-7">
+							<div class="col-md-7 col-sm-12 col-xs-12">
 								<br>
 								<p class="font-sr title">{{ $question->{__('page.title')} }}</p>
 								<br>
@@ -189,12 +189,12 @@
 			
 			<transition name="slide" >
 				<template v-if="step == getRecommenStep">
-					<div class="main container">
-						<div class="row">
-							<div class="col-sm-3 col-xs-6 col-md-offset-1">
+					<div class="main row">
+						<div class="container">
+							<div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 								<img src="{{ $recommend->image->path() }}" class="img-responsive">
 							</div>
-							<div class="col-sm-7 col-xs-6">
+							<div class="col-md-7 col-sm-12 col-xs-12">
 								<br>
 								<p class="font-sr title">{{ $recommend->getDescription() }}</p>
 								<br>
@@ -209,12 +209,12 @@
 
 			<transition name="slide" >
 				<template v-if="step == getResultStep">
-					<div class="main container">
-						<div class="row">
-							<div class="col-sm-3 col-xs-6 col-md-offset-1">
+					<div class="main row">
+						<div class="container">
+							<div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 								<img :src="'/uploads/'+ answer.image.path" class="img-responsive">
 							</div>
-							<div class="col-sm-7 col-xs-6">
+							<div class="col-md-7 col-sm-12 col-xs-12">
 								<br>
 								<p class="font-sr title">{{ answer.<?php echo __('page.result'); ?> }}</p>
 								<br>
@@ -226,40 +226,42 @@
 			</transition>
 		</div>
 	</div>	
+
+	<!--Partner Logo footer-->		
+	<div class="bg-light row">
+		<div class="container">
+			<div class="col-md-12">
+				<hr/>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+					<img class="img-responsive" src="/images/home-logo-USAID.jpg">
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+					<img class="img-responsive" src="/images/home-logo-PEPFAR.jpg">
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+					<img class="img-responsive" src="/images/home-logo-LINKAGES.jpg">
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+					<img class="img-responsive" src="/images/home-logo-FHI-360.jpg">
+				</div>
+			</div>
+			<!---copy right-->
+			<div class="col-md-12 padding-bottom">
+				<hr/>
+				<p class="font-sr"><small><i>រក្សាសិទ្ធិដោយ: Name Here </i></small></p>
+				<p class="font-sr"><small><i>
+					គេហទំព័រនេះទទួលការគាំទ្រថវិកាពីប្រជាពលរដ្ឋអាមេរិក តាមរយៈទីភ្នាក់ងារជំនួយអាមេរិក USAID និង ផែនការបន្ទាន់សម្រាប់ជួយសង្គ្រោះផ្នែកជំងឺអេដស៍របស់ប្រធានាធិបតីអាមេរិក (PEPFAR) ។ រាល់មាតិកានៅក្នុងគេហទំព័រនេះគឺជាការទទួលខុសត្រូវរបស់មជ្ឈមណ្ឌលជាតិប្រយុទ្ធនឹងជំងឺអេដស៍ សើស្បែក និងកាមរោគ (NCHADS) និង គម្រោង LINKAGES អង្គការ FHI 360 មិនឆ្លុះបញ្ចាំងពីទស្សនៈរបស់ USAID, PEPFAR, ឬរដ្ឋាភិបាលសហរដ្ឋអាមេរិកឡើយ។</i></small>
+				</p>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
 	
 </div>
 <!--end wrap-->
 
-<!--Partner Logo footer-->		
-<div class="bg-light">
-	<div class="container">
-		<div class="col-md-12">
-			<hr/>
-			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/images/home-logo-USAID.jpg">
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/images/home-logo-PEPFAR.jpg">
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/images/home-logo-LINKAGES.jpg">
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<img class="img-responsive" src="/images/home-logo-FHI-360.jpg">
-			</div>
-		</div>
-		<!---copy right-->
-		<div class="col-md-12 padding-bottom">
-			<hr/>
-			<p class="font-sr"><small><i>រក្សាសិទ្ធិដោយ: Name Here </i></small></p>
-			<p class="font-sr"><small><i>
-				គេហទំព័រនេះទទួលការគាំទ្រថវិកាពីប្រជាពលរដ្ឋអាមេរិក តាមរយៈទីភ្នាក់ងារជំនួយអាមេរិក USAID និង ផែនការបន្ទាន់សម្រាប់ជួយសង្គ្រោះផ្នែកជំងឺអេដស៍របស់ប្រធានាធិបតីអាមេរិក (PEPFAR) ។ រាល់មាតិកានៅក្នុងគេហទំព័រនេះគឺជាការទទួលខុសត្រូវរបស់មជ្ឈមណ្ឌលជាតិប្រយុទ្ធនឹងជំងឺអេដស៍ សើស្បែក និងកាមរោគ (NCHADS) និង គម្រោង LINKAGES អង្គការ FHI 360 មិនឆ្លុះបញ្ចាំងពីទស្សនៈរបស់ USAID, PEPFAR, ឬរដ្ឋាភិបាលសហរដ្ឋអាមេរិកឡើយ។</i></small>
-			</p>
-			<br>
-			<br>
-		</div>
-	</div>
-</div>
+
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>

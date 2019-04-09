@@ -126,9 +126,8 @@ body {
 
 #wrap {
     min-height: 100%;
-    height: auto !important;
     height: 100%;
-    margin: 0 auto -60px;
+    margin: auto;
 }
 
 #footer {
@@ -141,8 +140,8 @@ body {
 }
 
 .main{
-    height:95vh;
-    min-height: 95vh
+    height:auto;
+    padding-bottom: 20px;
 }
 
 .container .credit {
@@ -568,12 +567,23 @@ p.title{
 .bg-light{
   width: 100%;
   background: #fff;
+  position: relative;
+  clear: both;
 }
 .container{
   padding-top: 0!important;
+  position: relative;
+  clear: both;
+}
+.row{
+  clear: both;
+  position: relative;
+  margin:auto;
 }
 .custom-style{
   font-size: 40px;
+}
+.main-content{
   margin-top: 80px;
 }
 
