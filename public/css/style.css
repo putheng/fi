@@ -552,3 +552,16 @@ p.title{
   margin-left: 10px;
   border-radius: 5px;
 }
+
+.list-group-inline-x li:last-child {
+  margin-right: 0;
+}
+.list-group-inline-x li {
+  display: inline;
+  margin-right: 50px;
+}
+
+.list-group-inline-x{
+  list-style: none;
+  padding-left: 10px;
+}

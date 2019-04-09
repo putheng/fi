@@ -180,7 +180,7 @@
 							<br><br><br>
 						</div>
 					</div>
-					</div>
+				</div>
 				</template>
 			</transition>
 		<?php endforeach; ?>
@@ -194,6 +194,20 @@
 						<div class="col-sm-7 col-xs-6">
 							<br>
 							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
+							<div>
+								@foreach($infos as $info)
+									<p>{{ $info->title }}</p>
+									<ul class="list-group-inline-x">
+										@foreach($info->answers as $answer)
+											<li>
+												<input id="answer_{{ $answer->id }}" type="radio" name="info{{ $info->id }}">
+												<label for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
+											</li>
+										@endforeach
+									</ul>
+									<br>
+								@endforeach
+							</div>
 							<br>
 							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
 								{{ __('page.next') }}
