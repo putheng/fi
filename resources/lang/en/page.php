@@ -20,6 +20,9 @@ return [
     'recommend_description' => 'description_en',
 
     'copy_right' => 'This website is made possible by the generous support of the American people through the United States Agency for International Development (USAID) and the U.S. President\'s Emergency Plan for AIDS Relief (PEPFAR). The contents are the responsibility of National Center for HIV/AIDS, Dermatology and STI (NCHADS) and FHI360/LINKAGES Project and do not necessarily reflect the views of USAID, PEPFAR, or the United States Government.',
-    'copy_heading' => 'Copyright © 2018 by'
+    'copy_heading' => 'Copyright © 2018 by',
+
+    'clinic_services' => 'service_desc_lang1',
+    'clinic_site' => 'name',
 
 ];

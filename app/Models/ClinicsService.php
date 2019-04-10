@@ -19,6 +19,12 @@ use Illuminate\Database\Eloquent\Model;
      */
     protected $fillable = ['clinic_id', 'service_desc_lang1', 'service_desc_lang2'];
 
+    public function getTitleAttribute()
+    {
+        $language = \Lang::get('page.clinic_services');
+        return $this->{$language};
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

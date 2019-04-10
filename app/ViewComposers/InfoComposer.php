@@ -2,6 +2,7 @@
 
 namespace App\ViewComposers;
 
+use App\Models\ClinicsService;
 use App\Models\Info;
 use Illuminate\View\View;
 

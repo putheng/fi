@@ -63,12 +63,11 @@
 				<p id="location-search-alert"></p>
 				<div class="form-group">
 					<label class="control-label">Locations</label>
-					<select id="userAddress" class="form-control">
+					<select id="userAddress" class="form-control font-sr">
 						<option value="Your Location">My current location</option>
-						
 						@foreach($sites as $key => $site)
 							<option value="{{ $site->name }}">
-								{{ $site->name }}
+								{{ $site->title }}
 							</option>
 						@endforeach
 					</select>
@@ -86,11 +85,11 @@
 
 				<div class="form-group">
 					<label class="control-label">Service Type</label>
-					<select id="type" class="form-control">
+					<select id="services" class="form-control font-sr">
 						<option value="">All</option>
-						<option value="HIV Test">HIV Test</option>
-						<option value="Other Test">Other Test</option>
-						<option value="Sth Test">Sth Test</option>
+						@foreach($services as $service)
+							<option value="{{ $service->service_desc_lang1 }}">{{ $service->title }}</option>
+						@endforeach
 					</select>
 				</div>
 
@@ -174,10 +173,12 @@
 
     $('#submitLocationSearch').on('click', function(e) {
     	var type = $('#type').val();
+    	var services = $('#services').val();
 
       	e.preventDefault();
-        	$.get('/data', {type:type}, function(data){
+        	$.get('/data', {type:type,services:services}, function(data){
           
+          	console.log(data);
           	filterLocations(data.data);
         });
     });

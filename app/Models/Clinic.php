@@ -230,4 +230,14 @@ class Clinic extends Model
         return $q->where('type', request('type'));
     }
 
+    public function scopeFilterServices(Builder $q)
+    {
+        if(!empty(request('services'))){
+            $clinics = ClinicsService::where('service_desc_lang1', request('services'))
+                ->pluck('clinic_id')->toArray();
+
+            return $q->whereIn('id', $clinics);
+        }
+    }
+
 }

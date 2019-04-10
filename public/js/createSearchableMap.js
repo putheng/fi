@@ -138,8 +138,8 @@ function getLocation() {
           searchResultsAlert.innerHTML = 'Chipotle Locations within ' + killomatter + ' km of ' + address + '';
         } else {
           $('#resultsLength').html('No results found<hr>');
-          searchResultsAlert.innerHTML = 'Nothing found!';
-          document.getElementById('locations-near-you').innerHTML = '';
+          $('#locations-near-disable').html('');
+          $('#locations-near-enable').html('');
           searchResultsAlert.innerHTML = 'Sorry, no Chipotle locations were found within '+ killomatter + ' km of ' + address + '.';
         }
 

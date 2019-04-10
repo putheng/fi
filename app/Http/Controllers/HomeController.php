@@ -42,7 +42,7 @@ class HomeController extends Controller
 
     public function data(Request $request)
     {
-        $clinics = Clinic::filter()->get();
+        $clinics = Clinic::filter()->filterServices()->get();
 
         return LocationResource::collection($clinics);
     }

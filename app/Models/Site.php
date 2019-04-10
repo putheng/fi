@@ -64,4 +64,11 @@ class Site extends Model
             ->get();
     }
 
+    public function getTitleAttribute()
+    {
+        $language = \Lang::get('page.clinic_site');
+
+        return $this->{$language};
+    }
+
 }
