@@ -189,21 +189,35 @@
 			
 			<transition name="slide" >
 				<template v-if="step == getRecommenStep">
-					<div class="main row">
-						<div class="container">
-							<div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
-								<img src="{{ $recommend->image->path() }}" class="img-responsive">
+				<div class="main container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+							<img src="{{ $recommend->image->path() }}" class="img-responsive">
+						</div>
+						<div class="col-sm-7 col-xs-6">
+							<br>
+							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
+							<div>
+								@foreach($infos as $info)
+									<p class="font-sr">{{ $info->title }}</p>
+									<ul class="list-group-inline-x">
+										@foreach($info->answers as $answer)
+											<li>
+												<input id="answer_{{ $answer->id }}" type="radio" name="info{{ $info->id }}">
+												<label class="font-sr" for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
+											</li>
+										@endforeach
+									</ul>
+									<br>
+								@endforeach
 							</div>
-							<div class="col-md-7 col-sm-12 col-xs-12">
-								<br>
-								<p class="font-sr title">{{ $recommend->getDescription() }}</p>
-								<br>
-								<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
-									{{ __('page.next') }}
-								</a>
-							</div>
+							<br>
+							<a href="#" @click.prevent="completeRecommanded" class="btn btn-primary font-sr pull-right">
+								{{ __('page.next') }}
+							</a>
 						</div>
 					</div>
+				</div>
 				</template>
 			</transition>
 
