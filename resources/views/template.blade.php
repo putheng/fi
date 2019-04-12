@@ -110,20 +110,21 @@
 								<img src="{{ $term->image->path() }}" class="img-responsive hide-mobile">
 							</div>
 							<div class="col-md-7 col-sm-12 col-xs-12">
-								<h4 class=" font-sr">{{ $term->getTitle() }}</h4>
-								<p class="font-sr">
+								<h4 class=" font-sr title">{{ $term->getTitle() }}</h4>
+								<p class="font-sr answer">
 									{{ $term->getSubtitle() }}
 								</p>
 								<br>
+								<br>
 								<p>
 									<input id="term" type="checkbox" v-model="term">
-									<label for="term" class="font-sr"> {{ $term->getTerm() }}</label>
+									<label for="term" class="font-sr answer"> {{ $term->getTerm() }}</label>
 								</p>
 								<p>
 									<input @click="acceptTerm" type="button" value="{{ __('term.botton') }}" class="btn btn-primary font-sr">
 								</p>
 								<p><br>
-									<i class=" font-sr">{{ $term->getNote() }}</i>
+									<i class=" font-sr answer">{{ $term->getNote() }}</i>
 								</p>
 								<br>
 							</div>
@@ -191,20 +192,22 @@
 				<template v-if="step == getRecommenStep">
 				<div class="main container">
 					<div class="row">
-						<div class="col-sm-3 col-xs-6 col-md-offset-1">
+						<div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 							<img src="{{ $recommend->image->path() }}" class="img-responsive">
 						</div>
-						<div class="col-sm-7 col-xs-6">
+						<div class="col-md-7 col-sm-12 col-xs-12">
 							<br>
 							<p class="font-sr title">{{ $recommend->getDescription() }}</p>
 							<div>
 								@foreach($infos as $info)
-									<p class="font-sr">{{ $info->title }}</p>
+									<p class="font-sr answer">{{ $info->title }}</p>
+									<br>
+									<br>
 									<ul class="list-group-inline-x">
 										@foreach($info->answers as $answer)
-											<li>
-												<input id="answer_{{ $answer->id }}" type="radio" name="info{{ $info->id }}">
-												<label class="font-sr" for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
+											<li class="col-md-12 info">
+												<input class="col-md-1" id="answer_{{ $answer->id }}" type="radio" name="info{{ $info->id }}">
+												<label class="font-sr answer col-md-5" for="answer_{{ $answer->id }}">{{ $answer->title }}</label>
 											</li>
 										@endforeach
 									</ul>
