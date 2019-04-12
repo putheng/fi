@@ -125,23 +125,17 @@
                                         @lang('reservations/res.name')
                                     </th>
                                     <th style="width: 10%">
-                                        @lang('reservations/res.token')
-                                        /<br/>
                                         @lang('reservations/res.code')
                                     </th>
                                     <th style="width: 10%">
                                         @lang('reservations/res.phone')
-                                        /<br/>
+                                    </th>
+                                    <th style="width: 10%">
                                         @lang('reservations/res.gender')
                                     </th>
                                     <th style="width: 5%">
                                         @lang('reservations/res.risk')
                                     </th>
-                                    {{--<th style="width: 10%">--}}
-                                    {{--@lang('reservations/res.res_option')--}}
-                                    {{--/<br />--}}
-                                    {{--@lang('reservations/res.line_id')--}}
-                                    {{--</th>--}}
                                     <th style="width: 15%; min-width: 220px;">
                                         @lang('reservations/res.actions')
                                     </th>
@@ -182,13 +176,9 @@
                                         $reservations = $date["reservations"];
                                     @endphp
 
-                                    {{--Print the date row--}}
                                     <tr class="date-row {{ $date["is_holiday"] == 0 ? "date-row-normal" : "date-row-holiday" }}">
                                         <td>
                                             <strong>{{ $date["display_date"] }}</strong>
-                                            {{--@if(count($reservations) == 0)--}}
-                                            {{--: --}}
-                                            {{--@endif--}}
                                         </td>
                                         <td colspan="10">
                                             @if(count($reservations) == 0)
@@ -217,13 +207,13 @@
                                                     {!! truncate($res->client_name, 20) !!}
                                                 </td>
                                                 <td>
-                                                    {{ $res->token_num }}
-                                                    /<br/>
                                                     {{ $res->res_code_long }}
                                                 </td>
                                                 <td>
                                                     {!! truncate($res->client_phone_num, 13) !!}
-                                                    <br/>
+                                                    
+                                                </td>
+                                                <td>
                                                     {{ $res->gender }}
                                                 </td>
                                                 <td style="text-align:left">

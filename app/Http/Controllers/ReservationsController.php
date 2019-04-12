@@ -92,7 +92,7 @@ class ReservationsController extends BaseController
         $reservationActionsDisabled = $this->isLimitedAdmin($user) || $this->isStrongAdmin($user);
         $reservationStatusHidden = $this->isLimitedAdmin($user);
         $changeStatusLimited = $this->isSingleClinicUser($user);
-
+        
         return view('admin.reservations.index', compact('clinics'))
             ->with('dates', $dates)
             ->with('dateStart', $dateStart)
