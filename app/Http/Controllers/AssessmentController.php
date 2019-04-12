@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Common\ORAConsts;
 use DB;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,15 @@ class AssessmentController extends Controller
 {
     public function reservation(Request $request)
     {
-    	dd('ok');
+        $id = $this->saveReservation(
+            1,
+            null,
+            null,
+            'INDEX',
+            '2' // risk level
+        );
+
+        $this->saveAssessments($request, $id);
     }
 
     public function saveReservation($tokenId, $param, $paramR, $kp, $risk)
@@ -23,77 +32,46 @@ class AssessmentController extends Controller
             'is_arrived' => 0,
             'screened_status' => ORAConsts::RES_SCREENED_STATUS_EMPTY,
             'confirmed_status' => ORAConsts::RES_CONFIRMED_STATUS_EMPTY,
-            'res_url_param' => $resUrlParam,
-            'res_url_param_r' => $resUrlParamR,
-            'res_risk_result' => $riskLevel,
-            'res_kp_labels' => $kpLabels,
+            'res_url_param' => $param,
+            'res_url_param_r' => $paramR,
+            'res_risk_result' => $risk,
+            'res_kp_labels' => $kp,
             'created_at' => $date,
             'updated_at' => $date
         ]);
     }
 
-    public function nullableInput(Request $request, $prefix)
+    public function saveAssessments(
+        $resId, $q2, $q3, $q4, $q5, $q6,
+        $q7, $q8, $is_msm=0, $is_sw=0, $is_pwid=0,
+        $is_tg=0, $is_indeterminate=0, $is_kp=0,
+        $risks_count=1, $test_recent=0,
+    )
     {
-    	$value = $request->input($prefix);
-        
-        return strlen($value) == 0 ? null : $value;
-    }
-
-    public function assemblyAnswers(Request $request, $prefix, $count)
-    {
-        $buffer = [];
-        for ($i = 1; $i < $count + 1; $i++) {
-            $current = $request->input($prefix . "_r" . ($i < 10 ? "0" : "") . $i);
-            if (strlen($current) > 0)
-                array_push($buffer, $current);
-        }
-        return implode(",", $buffer);
-    }
-
-    public function saveAssessments(Request $request, $resId)
-    {
-        $q02 = $this->nullableInput($request, "q02_radio");
-        $q03 = $this->nullableInput($request, "q03_radio");
-        $q04 = $this->nullableInput($request, "q04_radio");
-        $q05 = $this->nullableInput($request, "q05_radio");
-        $q06 = $this->nullableInput($request, "q06_radio");
-
-        $is_msm = $this->nullableInput($request, "is_msm");
-        $is_sw = $this->nullableInput($request, "is_sw");
-        $is_pwid = $this->nullableInput($request, "is_pwid");
-        $is_tg = $this->nullableInput($request, "is_tg");
-        $is_indeterminate = $this->nullableInput($request, "is_indeterminate");
-        $is_kp = $this->nullableInput($request, "is_kp");
-        $risks_count = $this->nullableInput($request, "risks_count");
-        $test_recent = $this->nullableInput($request, "test_recent");
-
-        // Create the multi answer
-        $q07 = $this->assemblyAnswers($request, "q07", 5);
-        $q08 = $this->assemblyAnswers($request, "q08", 11);
         // Save
         $date = date('Y-m-d H:i:s');
 
         DB::table('reservations_assessments')
-        ->insert([
-            'reservation_id' => $resId,
-            'last_test' => $q02,
-            'hiv_status' => $q03,
-            'treatment_history' => $q04,
-            'gender' => $q05,
-            'sex_at_birth' => $q06,
-            'sex_with' => $q07,
-            'risks' => $q08,
-            'res_is_msm' => $is_msm,
-            'res_is_sw' => $is_sw,
-            'res_is_pwid' => $is_pwid,
-            'res_is_tg' => $is_tg,
-            'res_is_indeterminate' => $is_indeterminate,
-            'res_is_kp' => $is_kp,
-            'res_risks_count' => $risks_count,
-            'res_test_recent' => $test_recent,
-            'created_at' => $date,
-            'updated_at' => $date
-        ]);
+            ->insert([
+                'reservation_id' => $resId,
+                'last_test' => $q2, // question 2
+                'hiv_status' => $q3, // question 3
+                'treatment_history' => $q4, // question 4
+                'gender' => $q5, // question 5
+                'sex_at_birth' => $q6, // question 6
+                'sex_with' => $q7, // question 7
+                'risks' => $q8, // question 8
+                'res_is_msm' => $is_msm, // 0
+                'res_is_sw' => $is_sw, // 0
+                'res_is_pwid' => $is_pwid, // 0
+                'res_is_tg' => $is_tg, // 0
+                'res_is_indeterminate' => $is_indeterminate, // 1
+                'res_is_kp' => $is_kp, // 0
+                'res_risks_count' => $risks_count, //1
+                'res_test_recent' => $test_recent, // 0
+                'created_at' => $date,
+                'updated_at' => $date
+            ]);
 
         try {
 
@@ -131,16 +109,11 @@ class AssessmentController extends Controller
     {
         try {
 
-            $query = DB::table('tokens');
-            if ($tokenNum >= 0) {
-                $query = $query->where('token_num', '=', $tokenNum);
-            } else {
-                $query = $query->where('is_default', '=', 1);
-            }
-            $query = $query->whereNull('deleted_at');
-            $result = $query->first();
+            return DB::table('tokens')
+                ->where('is_default', '=', 1)
+                ->whereNull('deleted_at')
+                ->first();
 
-            return $result;
         } catch (\Exception $e) {
             Log::error('Error retrieving token. Number: ' . $tokenNum . " Error: " . $e->getMessage());
         }

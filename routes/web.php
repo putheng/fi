@@ -10,7 +10,7 @@ Route::model('users', 'App\Models\User');
 Route::get('/', 'HomeController@index');
 Route::get('/map', 'HomeController@map');
 
-Route::post('/assessment/save', 'AssessmentController@reservation')->name('ass.save');
+Route::get('/assessment/save', 'AssessmentController@reservation')->name('ass.save');
 
 Route::group(array('prefix' => 'admin'), function () {
 
